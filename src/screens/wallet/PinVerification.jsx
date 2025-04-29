@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import {
   SafeAreaView,
   Text,
@@ -188,26 +188,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     zIndex: 0,
   },
-  resendContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginTop: 24,
-  },
-  resendText: {
-    fontSize: 14,
-    color: "#00011B",
-  },
-  resendButton: {
-    fontSize: 14,
-    fontWeight: "500",
-  },
-  resendActive: {
-    color: "#000000",
-    textDecorationLine: "none",
-  },
-  resendDisabled: {
-    color: "#A0A3BD",
-  },
+
   imageContainer: {
     flex: 1,
     justifyContent: "center",

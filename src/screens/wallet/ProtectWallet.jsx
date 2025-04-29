@@ -2,7 +2,7 @@ import { SafeAreaView, Text, View, StyleSheet, Image } from "react-native";
 import DynamicStepLayout from "../StepOneLayout";
 import PrimaryButton from "../../components/PrimaryButton";
 import { useNavigate } from "react-router-native";
-import { Images, protectWalletOptions, walletOptions } from "../../constants";
+import { Images, protectWalletOptions } from "../../constants";
 import ToggleSwitch from "../../components/Switch";
 
 const ProtectWallet = () => {
@@ -163,12 +163,6 @@ const styles = StyleSheet.create({
   icons: {
     width: 18,
     height: 18,
-  },
-  warningText: {
-    color: "#B54708",
-    fontSize: 15,
-    lineHeight: 22,
-    textAlign: "left",
   },
 });
 

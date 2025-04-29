@@ -71,13 +71,6 @@ const PrivateKey = () => {
 
 const styles = StyleSheet.create({
   textArea: {
-    // height: 12,
-    // borderColor: "#F1F1F1",
-    // borderWidth: 1,
-    // padding: 10,
-    // backgroundColor: "#fff",
-    // marginTop: 20,
-    // borderRadius: 5w
     width: "30%",
   },
 
