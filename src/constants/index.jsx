@@ -5,13 +5,15 @@ import Auth from "../../assets/auth.png"
 import Auth2 from "../../assets/auth2.png"
 import Icon from "../../assets/icon.png"
 import Auth3 from "../../assets/auth#.png"
+import Success from "../../assets/succes.png"
 
 export const Images = {
     Logo,
     Slider,
     Auth,
     Auth2,
-    Auth3
+    Auth3,
+Success
 }
 
 export const Icons = {

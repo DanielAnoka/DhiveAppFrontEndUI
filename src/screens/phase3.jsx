@@ -5,7 +5,6 @@ import {
     View,
     StyleSheet,
     TouchableOpacity,
-    Clipboard,
     Animated,
     Dimensions,
     Image
@@ -20,26 +19,30 @@ import { useNavigate } from 'react-router-native';
 
 const { height } = Dimensions.get('window');
 
-const Phase2 = () => {
-    const [hidden, setHidden] = useState(false);
+const Phase3 = () => {
     const [modalVisible, setModalVisible] = useState(false);
+    const [selectedWords, setSelectedWords] = useState([]);
     const slideAnim = useRef(new Animated.Value(0)).current;
     const navigate = useNavigate();
+
     const handleNext = () => {
-        navigate('/phase3')
-    }
+        navigate('/password');
+    };
 
     const seedPhrase = [
-        "rock", "praise", "jump",
-        "food", "joke", "sleep",
-        "junk", "roller", "check",
-        "road", "egg", "lion"
+        { word: "road", number: 10 },
+        { word: "egg", number: 11 },
+        { word: "lion", number: 12 },
+        { word: "rock", number: 1 },
+        { word: "praise", number: 2 },
+        { word: "jump", number: 3 },
+        { word: "junk", number: 7 },
+        { word: "roller", number: 8 },
+        { word: "check", number: 9 },
+        { word: "food", number: 4 },
+        { word: "joke", number: 5 },
+        { word: "sleep", number: 6 }
     ];
-
-    const handleCopy = () => {
-        Clipboard.setString(seedPhrase.join(' '));
-        console.log('Copied to clipboard');
-    };
 
     const toggleModal = () => {
         if (!modalVisible) {
@@ -60,6 +63,21 @@ const Phase2 = () => {
         }
     };
 
+    const handleWordPress = (wordNumber) => {
+
+        setSelectedWords(prevState => {
+            if (prevState.includes(wordNumber)) {
+                return prevState.filter(num => num !== wordNumber);
+            } else {
+                return [...prevState, wordNumber];
+            }
+        });
+    };
+
+    const isSelected = (wordNumber) => {
+        return selectedWords.includes(wordNumber);
+    };
+
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
             <View style={styles.headerContainer}>
@@ -69,58 +87,37 @@ const Phase2 = () => {
                     </View>
                 </TouchableOpacity>
 
-                <Text style={styles.backText}>Secure Your Wallet</Text>
+                <Text style={styles.backText}>Confirm Backup</Text>
             </View>
 
             <DynamicStepLayout currentStep={2}>
                 <Text style={styles.text}>
-                    Your <Text style={styles.boldText}>Secret Passphrase</Text> is the master key to your wallet. This is the only way to recover your wallet if you ever get locked out of the app or sign into a new device.
+                    To ensure your recovery phrase has been backed up, select the{' '}
+                    <Text style={styles.boldText}>2nd, 5th & 10th</Text> of your phrase below.
                 </Text>
 
                 <View style={{ marginVertical: 42, marginTop: 50, marginHorizontal: 15 }}>
-                    <TouchableOpacity
-                        onPress={() => setHidden(!hidden)}
-                        style={styles.toggleContainer}
-                    >
-                        <Text style={styles.toggleText}>
-                            {hidden ? 'Reveal recovery phrase' : 'Hide recovery phrase'}
-                        </Text>
-                        <Ionicons
-                            name={hidden ? "eye-off" : "eye"}
-                            size={16}
-                            color="#101828"
-                            style={{ marginLeft: 6 }}
-                        />
-                    </TouchableOpacity>
-
                     <View style={styles.phraseContainer}>
                         {seedPhrase.map((word, index) => (
-                            <View key={index} style={styles.phraseItem}>
-                                {hidden ? (
-                                    <BlurView intensity={50} tint="light" style={styles.blurBox}>
-                                        <Text style={styles.hiddenText}>{index + 1}.</Text>
-                                    </BlurView>
-                                ) : (
-                                    <Text style={styles.phraseText}>
-                                        {index + 1}. {word}
-                                    </Text>
-                                )}
-                            </View>
+                            <TouchableOpacity
+                                key={index}
+                                style={[
+                                    styles.phraseItem,
+                                    isSelected(word.number) && styles.selectedItem,
+                                ]}
+                                onPress={() => handleWordPress(word.number)}
+                            >
+                                <Text style={styles.phraseText}>
+                                    {word.number}. {word.word}
+                                </Text>
+                            </TouchableOpacity>
                         ))}
                     </View>
-
-                    <TouchableOpacity
-                        style={styles.copyButton}
-                        onPress={handleCopy}
-                    >
-                        <Text style={styles.copyText}>Copy to clipboard</Text>
-                        <Ionicons name="copy-outline" size={16} color="#101828" style={{ marginLeft: 8 }} />
-                    </TouchableOpacity>
                 </View>
 
                 <Button
                     onPress={toggleModal}
-                    text="Backup to Drive"
+                    text="Complete Set-Up"
                     style={styles.button}
                     textStyle={styles.buttonText}
                 />
@@ -134,24 +131,21 @@ const Phase2 = () => {
             {/* Slide-up modal */}
             {modalVisible && (
                 <Animated.View
-                    style={[
-                        styles.modalContainer,
-                        {
-                            transform: [{
-                                translateY: slideAnim.interpolate({
-                                    inputRange: [0, 1],
-                                    outputRange: [height, 0],
-                                }),
-                            }]
-                        }
-                    ]}
+                    style={[styles.modalContainer, {
+                        transform: [{
+                            translateY: slideAnim.interpolate({
+                                inputRange: [0, 1],
+                                outputRange: [height, 0],
+                            }),
+                        }]
+                    }]}
                 >
                     <View style={styles.modalContent}>
                         <TouchableOpacity style={styles.closeIcon} onPress={toggleModal}>
                             <Ionicons name="close" size={24} color="black" />
                         </TouchableOpacity>
 
-                        {/* Add Image */}
+
                         <Image source={Images.Success} style={styles.successImage} />
 
                         <View style={styles.textContainer}>
@@ -165,8 +159,6 @@ const Phase2 = () => {
 
                         <CustomButton text='Continue' onPress={handleNext} />
                     </View>
-
-
                 </Animated.View>
             )}
         </SafeAreaView>
@@ -208,38 +200,8 @@ const styles = StyleSheet.create({
         marginTop: 20,
         letterSpacing: 0.48,
     },
-    closeIcon: {
-        position: 'absolute',
-        top: 16,
-        right: 16,
-        zIndex: 10,
-    },
     boldText: {
         fontWeight: 'bold',
-    },
-    toggleContainer: {
-        position: 'absolute',
-        top: -24,
-        alignSelf: 'center',
-        zIndex: 10,
-        flexDirection: 'row',
-        alignItems: 'center',
-        paddingHorizontal: 14,
-        paddingVertical: 8,
-        backgroundColor: '#fff',
-        borderRadius: 20,
-        borderColor: '#D0D5DD',
-        borderWidth: 1,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 4,
-        elevation: 5,
-    },
-    toggleText: {
-        color: '#101828',
-        fontWeight: '600',
-        fontSize: 14,
     },
     phraseContainer: {
         flexDirection: 'row',
@@ -251,29 +213,19 @@ const styles = StyleSheet.create({
     phraseItem: {
         width: '30%',
         marginVertical: 8,
-        paddingRight: 20,
-        paddingTop: 10,
-    },
-    phraseText: {
-        color: '#444CE7',
-        fontWeight: '600',
-        fontSize: 14,
-    },
-    copyButton: {
-        alignSelf: 'center',
-        paddingHorizontal: 16,
-        paddingVertical: 10,
-        borderRadius: 6,
-        backgroundColor: '#F9FAFB',
-        flexDirection: 'row',
-        alignItems: 'center',
+        padding: 10,
+        borderRadius: 8,
         borderWidth: 1,
         borderColor: '#E4E7EC',
+        alignItems: 'center',
     },
-    copyText: {
-        fontWeight: '600',
-        color: '#101828',
+    phraseText: {
         fontSize: 14,
+        color: '#444CE7',
+        fontWeight: '600',
+    },
+    selectedItem: {
+        backgroundColor: '#E0E7FF',
     },
     button: {
         backgroundColor: '#444CE7',
@@ -285,19 +237,6 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 16,
         fontWeight: '600',
-    },
-    blurBox: {
-        height: 28,
-        borderRadius: 6,
-        paddingHorizontal: 6,
-        justifyContent: 'center',
-        alignItems: 'flex-start',
-        overflow: 'hidden',
-    },
-    hiddenText: {
-        color: '#E0E7FF',
-        fontWeight: '600',
-        fontSize: 14,
     },
     overlay: {
         position: 'absolute',
@@ -368,9 +307,6 @@ const styles = StyleSheet.create({
         lineHeight: 24,
         marginBottom: 24,
     },
-
-
-
 });
 
-export default Phase2;
+export default Phase3;
