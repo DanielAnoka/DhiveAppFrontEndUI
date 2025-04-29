@@ -1,9 +1,7 @@
-import React from 'react';
-import { View, StyleSheet, SafeAreaView } from 'react-native';
+import React from "react";
+import { View, StyleSheet, SafeAreaView } from "react-native";
 
-const DynamicStepLayout = ({ children, currentStep = 1 }) => {
-  const steps = [1, 2, 3, 4]; 
-
+const DynamicStepLayout = ({ children, currentStep = 1, steps }) => {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
@@ -27,15 +25,15 @@ const DynamicStepLayout = ({ children, currentStep = 1 }) => {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
   },
   container: {
     flex: 1,
     paddingHorizontal: 24,
-    backgroundColor: '#fff',
+    backgroundColor: "#fdfdfd",
   },
   indicatorRow: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginBottom: 10,
     marginTop: 60,
   },
@@ -43,11 +41,11 @@ const styles = StyleSheet.create({
     width: 30,
     height: 5,
     borderRadius: 4,
-    backgroundColor: '#E9EBF0',
+    backgroundColor: "#E9EBF0",
     marginRight: 8,
   },
   activeIndicator: {
-    backgroundColor: '#000',
+    backgroundColor: "#000",
   },
 });
 
