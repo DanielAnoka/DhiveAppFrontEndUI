@@ -31,7 +31,7 @@ const Next = () => {
         </View>
       </TouchableOpacity>
 
-      <DynamicStepLayout currentStep={2} steps={[1, 2, 3, 4]}>
+      <DynamicStepLayout currentStep={2} length={4}>
         <View style={styles.container}>
           <View style={styles.imageWrapper}>
             <Image

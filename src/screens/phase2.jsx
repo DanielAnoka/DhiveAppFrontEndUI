@@ -26,7 +26,7 @@ const phase1 = () => {
         <Text style={styles.backText}>Secure Your Wallet</Text>
       </View>
 
-      <DynamicStepLayout currentStep={2} steps={[1, 2, 3, 4]}>
+      <DynamicStepLayout currentStep={2} length={4}>
         <Text style={styles.text}>
           Your <Text style={styles.boldText}>Secret Passphrase</Text> is the
           master key to your wallet. This is the only way to recover your wallet

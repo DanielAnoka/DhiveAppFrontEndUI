@@ -13,6 +13,7 @@ import ImportAccount from "../screens/wallet/ImportAccount";
 import ProtectWallet from "../screens/wallet/ProtectWallet";
 import PinVerification from "../screens/wallet/PinVerification";
 import Success from "../screens/wallet/Success";
+import PrivateKey from "../screens/wallet/PrivateKey";
 
 export default function AppNavigator() {
   return (
@@ -26,6 +27,7 @@ export default function AppNavigator() {
       <Route path="/phase2" element={<Phase2 />} />
       <Route path="/add-wallet" element={<AddExistingWallet />} />
       <Route path="/recovery-phase" element={<RecoveryPhrase />} />
+      <Route path="/private-key" element={<PrivateKey />} />
       <Route path="/import-account" element={<ImportAccount />} />
       <Route path="/protect-wallet" element={<ProtectWallet />} />
       <Route path="/pin" element={<PinVerification />} />

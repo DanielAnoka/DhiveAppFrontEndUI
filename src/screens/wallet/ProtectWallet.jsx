@@ -10,7 +10,7 @@ const ProtectWallet = () => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#fdfdfd" }}>
-      <DynamicStepLayout steps={[1, 2, 3]} currentStep={3}>
+      <DynamicStepLayout length={3} currentStep={3}>
         <View
           style={{
             flexDirection: "column",

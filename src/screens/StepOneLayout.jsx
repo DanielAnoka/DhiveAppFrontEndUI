@@ -1,20 +1,22 @@
 import React from "react";
 import { View, StyleSheet, SafeAreaView } from "react-native";
 
-const DynamicStepLayout = ({ children, currentStep = 1, steps }) => {
+const DynamicStepLayout = ({ children, currentStep = 1, steps, length }) => {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         <View style={styles.indicatorRow}>
-          {steps.map((step) => (
-            <View
-              key={step}
-              style={[
-                styles.indicator,
-                step === currentStep && styles.activeIndicator,
-              ]}
-            />
-          ))}
+          {Array(length)
+            .fill("")
+            .map((_, step) => (
+              <View
+                key={step}
+                style={[
+                  styles.indicator,
+                  step + 1 === currentStep && styles.activeIndicator,
+                ]}
+              />
+            ))}
         </View>
         {children}
       </View>

@@ -28,7 +28,7 @@ const Auth = () => {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <StepOneLayout currentStep={1} steps={[1, 2, 3, 4]}>
+      <StepOneLayout currentStep={1} length={4}>
         <View style={{ flex: 1 }}>
           <Text style={styles.label}>Email Address</Text>
           <TextInput

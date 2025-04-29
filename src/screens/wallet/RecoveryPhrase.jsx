@@ -8,7 +8,7 @@ const RecoveryPhrase = () => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#fdfdfd" }}>
-      <DynamicStepLayout steps={[1, 2, 3]} currentStep={1}>
+      <DynamicStepLayout length={3} currentStep={1}>
         <View
           style={{
             flexDirection: "column",

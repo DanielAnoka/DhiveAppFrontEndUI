@@ -32,7 +32,7 @@ const phase1 = () => {
         <Text style={styles.backText}>Secure Your Wallet</Text>
       </View>
 
-      <DynamicStepLayout currentStep={2} steps={[1, 2, 3, 4]}>
+      <DynamicStepLayout currentStep={2} length={4}>
         <Text style={styles.text}>
           Your passphrase is the only way to recover your Dhive wallet. Without
           it, you could permanently lose access to your assets.
