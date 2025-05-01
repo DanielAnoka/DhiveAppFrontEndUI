@@ -12,7 +12,7 @@ import {
 import DynamicStepLayout from './StepOneLayout';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Button from '../components/Button';
-import { BlurView } from 'expo-blur';
+
 import CustomButton from '../components/Button';
 import { Images } from '../constants';
 import { useNavigate } from 'react-router-native';

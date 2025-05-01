@@ -6,6 +6,23 @@ import Auth2 from "../../assets/auth2.png"
 import Icon from "../../assets/icon.png"
 import Auth3 from "../../assets/auth#.png"
 import Success from "../../assets/succes.png"
+import Btc from "../../assets/btc.png"
+import Bnb from "../../assets/bnb.png"
+import Ethe from "../../assets/ethe.png"
+import Usdt from "../../assets/usdt.png"
+import Profile from "../../assets/profile.png"
+import Buy from "../../assets/buy-crypto.png"
+import Shop from "../../assets/shop.png"
+import Wallet from "../../assets/wallet.png"
+import Feeds from "../../assets/document.png"
+import Send from "../../assets/send.png"
+import ArrowDown from "../../assets/arrow-down.png"
+import P2P from "../../assets/p2p.png"
+import More from "../../assets/more.png"
+import Scranner from "../../assets/scanner.png"
+import Scranner2 from "../../assets/scanner2.png"
+import Bell from "../../assets/bell.png"
+import Coin from "../../assets/coine.png"
 
 export const Images = {
     Logo,
@@ -13,12 +30,30 @@ export const Images = {
     Auth,
     Auth2,
     Auth3,
-Success
+    Success,
+    Btc,
+    Bnb,
+    Ethe,
+    Usdt,
+    Coin
 }
 
 export const Icons = {
     Google,
-    Icon
+    Icon,
+    Feeds,
+    Wallet,
+    Shop,
+    Profile,
+    Shop,
+    Buy,
+    Send,
+    More,
+    P2P,
+    ArrowDown,
+    Scranner,
+    Scranner2,
+    Bell
 }
 
 export const slides = [
