@@ -1,3 +1,29 @@
+// export const Images = {
+//   Logo,
+//   Slider,
+//   Auth,
+//   Auth2,
+//   Auth3,
+//   Wallet,
+//   Avatar,
+//   Password,
+//   Confetti,
+//   Filter,
+//   Item,
+// };
+
+// export const Icons = {
+//   Google,
+//   Icon,
+//   BuyCrypto,
+//   FingerPrint,
+//   Heart,
+//   Lock,
+//   Key,
+//   Document,
+//   Shop,
+// };
+
 import Logo from "../../assets/logo.png";
 import Slider from "../../assets/slider.png";
 import Google from "../../assets/google.png";
@@ -5,7 +31,24 @@ import Auth from "../../assets/auth.png";
 import Auth2 from "../../assets/auth2.png";
 import Icon from "../../assets/icon.png";
 import Auth3 from "../../assets/auth#.png";
+import Success from "../../assets/succes.png";
+import Btc from "../../assets/btc.png";
+import Bnb from "../../assets/bnb.png";
+import Ethe from "../../assets/ethe.png";
+import Usdt from "../../assets/usdt.png";
+import Profile from "../../assets/profile.png";
+import Buy from "../../assets/buy-crypto.png";
+import Shop from "../../assets/shop.png";
 import Wallet from "../../assets/wallet.png";
+import Feeds from "../../assets/document.png";
+import Send from "../../assets/send.png";
+import ArrowDown from "../../assets/arrow-down.png";
+import P2P from "../../assets/p2p.png";
+import More from "../../assets/more.png";
+import Scranner from "../../assets/scanner.png";
+import Scranner2 from "../../assets/scanner2.png";
+import Bell from "../../assets/bell.png";
+import Coin from "../../assets/coine.png";
 import BuyCrypto from "../../assets/buy-crypto.png";
 import Heart from "../../assets/heart-tick.png";
 import Lock from "../../assets/lock.png";
@@ -15,6 +58,8 @@ import Avatar from "../../assets/avatar.png";
 import Password from "../../assets/password.png";
 import FingerPrint from "../../assets/finger-scan.png";
 import Confetti from "../../assets/confetti.png";
+import Filter from "../../assets/filter.png";
+import Item from "../../assets/item.png";
 
 export const Images = {
   Logo,
@@ -22,21 +67,41 @@ export const Images = {
   Auth,
   Auth2,
   Auth3,
+  Success,
+  Btc,
+  Bnb,
+  Ethe,
+  Usdt,
+  Coin,
   Wallet,
   Avatar,
   Password,
   Confetti,
+  Filter,
+  Item,
 };
 
 export const Icons = {
-  Google,
-  Icon,
   BuyCrypto,
   FingerPrint,
   Heart,
   Lock,
   Key,
   Document,
+  Shop,
+  Google,
+  Icon,
+  Feeds,
+  Wallet,
+  Profile,
+  Buy,
+  Send,
+  More,
+  P2P,
+  ArrowDown,
+  Scranner,
+  Scranner2,
+  Bell,
 };
 
 export const slides = [
