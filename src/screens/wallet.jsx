@@ -9,8 +9,8 @@ export default function App() {
         <SafeAreaView style={styles.container}>
             {/* StatusBar Customization */}
             <StatusBar
-                barStyle="light-content" // Text color in the status bar
-                backgroundColor="#1F235B" // Status bar background color
+                barStyle="light-content" 
+                backgroundColor="#1F235B" 
             />
 
             <View style={styles.headerWrapper}>

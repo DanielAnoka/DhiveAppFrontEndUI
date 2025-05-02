@@ -17,8 +17,8 @@ import {
 import { useNavigate } from 'react-router-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import CustomButton from '../components/Button';
-import { Icons } from '../constants';
-import { Images } from '../constants';
+import { Icons, Images } from '../constants';
+
 
 const { height } = Dimensions.get('window');
 
@@ -231,9 +231,15 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   warning: {
-    color: '#f39c12',
+    color: '#B54708',
     marginBottom: 10,
     fontSize: 13,
+    backgroundColor: '#FFFAEB',
+    padding: 15,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#FEDF89',
+    textAlign: 'center',
   },
   label: {
     marginTop: 20,
@@ -302,7 +308,7 @@ const styles = StyleSheet.create({
   },
   importButton: {
     backgroundColor: '#444CE7',
-    marginTop: '50%',
+    marginTop: '39%',
     padding: 15,
     alignItems: 'center',
     borderRadius: 10,
@@ -323,23 +329,18 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
     zIndex: 2,
-    justifyContent: 'flex-end', 
+    justifyContent: 'flex-end',
   },
   modalContent: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
     padding: 20,
-    paddingBottom: 40,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'white',
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
-    minHeight: 300,
-    justifyContent: 'flex-start',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: -2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 6,
-    elevation: 8,
-    position: 'relative',
-    paddingTop: 40,
+    alignItems: 'center',
   },
   closeIcon: {
     position: 'absolute',

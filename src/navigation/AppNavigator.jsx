@@ -16,6 +16,12 @@ import AreaOfInteret from '../screens/area';
 import Wallet from "../screens/wallet";
 import ManageToken from "../screens/manageToken";
 import { ImportCryptoScreen } from '../screens/ImportCrypto';
+import Send from '../screens/send';
+import Receive from "../screens/receive"
+import ReceiveToken from '../screens/ReceiveToken'; 
+import SendToken from "../screens/select"
+import Tf from "../screens/transferHistory"
+import TransactionHistory from '../screens/transactionHistory';
 
 export default function AppNavigator() {
   return (
@@ -34,6 +40,12 @@ export default function AppNavigator() {
       <Route path="/" element={<Wallet />} />
       <Route path="/token" element={<ManageToken />} />
       <Route path="/import" element={<ImportCryptoScreen />} />
+      <Route path="/send" element={<Send />} />
+      <Route path='/receive' element={<Receive />} />
+      <Route path='receiveToken' element={<ReceiveToken />} />
+      <Route path='/sendToken' element={<SendToken />} />
+      <Route path='/tf' element={<Tf />} />
+      <Route path='/transaction' element={<TransactionHistory />} />
     </Routes>
   );
 }

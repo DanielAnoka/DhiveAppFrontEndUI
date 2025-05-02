@@ -58,7 +58,7 @@ const OTPVerification = () => {
         const joinedOtp = newOtp.join('');
         if (joinedOtp.length === 4 && joinedOtp === '1111') {
             setTimeout(() => {
-                navigate('/next'); // 🔁 Replace with your next screen route
+                navigate('/next'); 
             }, 200);
         }
     };

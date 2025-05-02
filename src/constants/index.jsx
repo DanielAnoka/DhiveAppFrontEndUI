@@ -23,6 +23,11 @@ import Scranner from "../../assets/scanner.png"
 import Scranner2 from "../../assets/scanner2.png"
 import Bell from "../../assets/bell.png"
 import Coin from "../../assets/coine.png"
+import Info from "../../assets/info-circle.png"
+import Lock from "../../assets/lock.png"
+import Empty from "../../assets/empty.png"
+import ArrowUp from "../../assets/arrow-up.png"
+import Swap from "../../assets/swap.png"
 
 export const Images = {
     Logo,
@@ -35,7 +40,9 @@ export const Images = {
     Bnb,
     Ethe,
     Usdt,
-    Coin
+    Coin,
+    Lock,
+    Empty
 }
 
 export const Icons = {
@@ -53,7 +60,7 @@ export const Icons = {
     ArrowDown,
     Scranner,
     Scranner2,
-    Bell
+    Bell, Info, ArrowUp, Swap
 }
 
 export const slides = [
@@ -72,4 +79,96 @@ export const slides = [
         title: 'Built for Security, Powered by You',
         description: 'Create an on-chain wallet in seconds. No third-party logins. Full control of your assets, trades, and tokens.',
     },
+];
+
+export const assets = [
+    {
+        name: 'Sent USDT',
+        description: '-392.45 USDT',
+        date: 'Yesterday',
+        about: 'Sent to 0x49e3b...oabeb3',
+        price: 1.0,
+        change: 0.02,
+        amount: 392.45,
+        icon: Icons.ArrowUp,
+        backgroundColor: '#00011B',
+    },
+    {
+        name: 'Swap',
+        description: '+0.9893820 USDT',
+        date: 'Yesterday',
+        about: 'BNB to Ethereum',
+        price: 85987.99,
+        change: 4.96,
+        amount: 0,
+        icon: Icons.Swap,
+        backgroundColor: '#00011B',
+    },
+    {
+        name: 'Received USDT',
+        description: '+150.00 USDT',
+        date: 'Today',
+        about: 'From 0x82b9f...cc2e1a',
+        price: 1.0,
+        change: 0.0,
+        amount: 150.0,
+        icon: Icons.ArrowDown,
+        backgroundColor: '#00011B',
+    },
+    {
+        name: 'Sent ETH',
+        description: '-0.12 ETH',
+        date: '2 days ago',
+        about: 'To 0x1c3d...af09b1',
+        price: 2741.55,
+        change: -1.23,
+        amount: 0.12,
+        icon: Icons.ArrowUp,
+        backgroundColor: '#00011B',
+    },
+    {
+        name: 'Received BNB',
+        description: '+0.59 BNB',
+        date: '3 days ago',
+        about: 'From Binance',
+        price: 317.44,
+        change: 0.32,
+        amount: 0.59,
+        icon: Icons.ArrowDown,
+        backgroundColor: '#00011B',
+    },
+    {
+        name: 'Swap',
+        description: '+40.5 MATIC',
+        date: 'Last Week',
+        about: 'USDT to MATIC',
+        price: 0.9,
+        change: 1.4,
+        amount: 40.5,
+        icon: Icons.Swap,
+        backgroundColor: '#00011B',
+    },
+    {
+        name: 'Sent BTC',
+        description: '-0.0045 BTC',
+        date: 'Last Week',
+        about: 'Sent to Coinbase',
+        price: 62134.0,
+        change: -0.5,
+        amount: 0.0045,
+        icon: Icons.ArrowUp,
+        backgroundColor: '#00011B',
+    },
+    {
+        name: 'Received USDC',
+        description: '+300.00 USDC',
+        date: 'Last Month',
+        about: 'Airdrop',
+        price: 1.0,
+        change: 0,
+        amount: 300,
+        icon: Icons.ArrowDown,
+        backgroundColor: '#00011B',
+    },
+
 ];

@@ -18,6 +18,9 @@ const AssetsList = ({ navigation }) => {
   const handleChange = () => {
     navigate('/token')
   };
+  const handleTransaction = () => {
+    navigate('/transaction')
+  };
 
   const validatedAssets = assets.map((asset) => ({
     ...asset,
@@ -34,7 +37,7 @@ const AssetsList = ({ navigation }) => {
           <Text style={styles.title}>Assets</Text>
           <TouchableOpacity
             style={styles.historyButton}
-            onPress={() => navigation?.navigate?.('TransactionHistory')}
+            onPress={handleTransaction}
           >
             <Text style={styles.link}>Transaction History</Text>
             <Icon name="chevron-forward" size={16} color="#4F46E5" />
@@ -43,7 +46,7 @@ const AssetsList = ({ navigation }) => {
 
         {/* Asset List */}
         <FlatList
-          data={validatedAssets} // Using validated assets here
+          data={validatedAssets}
           keyExtractor={(item) => item.name}
           renderItem={({ item }) => <AssetCard {...item} />}
           contentContainerStyle={styles.list}

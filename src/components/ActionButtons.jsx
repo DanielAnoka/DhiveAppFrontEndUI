@@ -1,28 +1,41 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import { Icons } from '../constants';
+import { useNavigate } from 'react-router-native';
+import { Icons } from '../constants'; 
 
 const actions = [
-  { name: 'Send', icon: Icons.Send, backgroundColor: '#EFF8FF' }, 
-  { name: 'Receive', icon: Icons.ArrowDown, backgroundColor: '#F5F8FF' },
-  { name: 'P2P', icon: Icons.P2P, backgroundColor: '#FDF2F8' }, 
-  { name: 'More', icon: Icons.More, backgroundColor: '#ECFDF3' }, 
+  { name: 'Send', icon: Icons.Send, backgroundColor: '#EFF8FF', path: '/send' },
+  { name: 'Receive', icon: Icons.ArrowDown, backgroundColor: '#F5F8FF', path: '/receive' },
+  { name: 'P2P', icon: Icons.P2P, backgroundColor: '#FDF2F8', path: '/p2p' },
+  { name: 'More', icon: Icons.More, backgroundColor: '#ECFDF3', path: '/more' },
 ];
 
-const ActionButtons = () => (
-  <View style={styles.container}>
-    <View style={styles.row}>
-      {actions.map((action) => (
-        <TouchableOpacity key={action.name} style={styles.btn}>
-          <View style={[styles.iconCircle, { backgroundColor: action.backgroundColor }]}>
-            <Image source={action.icon} style={styles.icon} />
-          </View>
-          <Text style={styles.text}>{action.name}</Text>
-        </TouchableOpacity>
-      ))}
+const ActionButtons = () => {
+  const navigate = useNavigate(); 
+
+  const handlePress = (path) => {
+    navigate(path);
+  };
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.row}>
+        {actions.map((action) => (
+          <TouchableOpacity
+            key={action.name}
+            style={styles.btn}
+            onPress={() => handlePress(action.path)}
+          >
+            <View style={[styles.iconCircle, { backgroundColor: action.backgroundColor }]}>
+              <Image source={action.icon} style={styles.icon} />
+            </View>
+            <Text style={styles.text}>{action.name}</Text>
+          </TouchableOpacity>
+        ))}
+      </View>
     </View>
-  </View>
-);
+  );
+};
 
 const styles = StyleSheet.create({
   container: {

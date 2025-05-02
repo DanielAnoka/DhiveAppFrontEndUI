@@ -1,41 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet, Dimensions, Image } from 'react-native';
 import { Icons } from '../constants';
+import Trading from './trading';
 
 const { width } = Dimensions.get('window');
 
 const BottomNav = () => {
+    const [modalVisible, setModalVisible] = useState(false);
     return (
-        <View style={styles.container}>
-            <TouchableOpacity style={styles.tab}>
-                <Image source={Icons.Feeds} style={styles.icon} />
-                <Text style={styles.label}>Feeds</Text>
-            </TouchableOpacity>
+        <>
+            <View style={styles.container}>
+                <TouchableOpacity style={styles.tab}>
+                    <Image source={Icons.Feeds} style={styles.icon} />
+                    <Text style={styles.label}>Feeds</Text>
+                </TouchableOpacity>
 
 
-            <TouchableOpacity style={[styles.tab, styles.leftTab]}>
-                <Image source={Icons.Shop} style={styles.icon} />
-                <Text style={styles.label}>Explore</Text>
-            </TouchableOpacity>
+                <TouchableOpacity style={[styles.tab, styles.leftTab]}>
+                    <Image source={Icons.Shop} style={styles.icon} />
+                    <Text style={styles.label}>Explore</Text>
+                </TouchableOpacity>
 
 
-            <View style={styles.fabWrapper}>
-                <TouchableOpacity style={styles.fabButton}>
-                    <Image source={Icons.Buy} style={styles.fabIcon} />
+                <View style={styles.fabWrapper}>
+                    <TouchableOpacity style={styles.fabButton} onPress={() => setModalVisible(true)}>
+                        <Image source={Icons.Buy} style={styles.fabIcon} />
+                    </TouchableOpacity>
+                </View>
+
+
+                <TouchableOpacity style={[styles.tab, styles.rightTab]}>
+                    <Image source={Icons.Wallet} style={styles.icon} />
+                    <Text style={[styles.label, styles.activeLabel]}>Assets</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.tab}>
+                    <Image source={Icons.Profile} style={styles.icon} />
+                    <Text style={styles.label}>Profile</Text>
                 </TouchableOpacity>
             </View>
-
-
-            <TouchableOpacity style={[styles.tab, styles.rightTab]}>
-                <Image source={Icons.Wallet} style={styles.icon} />
-                <Text style={[styles.label, styles.activeLabel]}>Assets</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.tab}>
-                <Image source={Icons.Profile} style={styles.icon} />
-                <Text style={styles.label}>Profile</Text>
-            </TouchableOpacity>
-        </View>
+            <Trading visible={modalVisible}
+                onClose={() => setModalVisible(false)} />
+        </>
     );
 };
 

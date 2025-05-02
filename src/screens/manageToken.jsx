@@ -35,9 +35,9 @@ const ManageToken = () => {
 
     const handleBack = () => {
         navigate('/')
-    } 
+    }
 
-    const handleNext =()=>{
+    const handleNext = () => {
         navigate('/import')
     }
 
