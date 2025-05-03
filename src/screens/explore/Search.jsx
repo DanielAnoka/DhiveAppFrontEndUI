@@ -17,6 +17,9 @@ const Search = () => {
   const handleCancel = () => {
     setSearchTerm("");
   };
+  const filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().startsWith(searchTerm.toLowerCase())
+  );
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
       <StatusBar barStyle="dark-content" backgroundColor="#fdfdfd" />
@@ -28,9 +31,9 @@ const Search = () => {
           handleCancel={handleCancel}
         />
       </View>
-      {searchTerm.length > 0 ? (
+      {filteredProducts.length > 0 && searchTerm.length > 0 ? (
         <FlatList
-          data={products}
+          data={filteredProducts}
           keyExtractor={() => Math.random() * 20}
           renderItem={({ item }) => <ItemCard {...item} />}
           contentContainerStyle={{

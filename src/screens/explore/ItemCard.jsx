@@ -1,9 +1,10 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity, Dimensions } from "react-native";
 import React from "react";
 import { Images } from "../../constants/image";
 import { useNavigate } from "react-router-native";
 
 const ItemCard = ({ name, price, imgUrl, company }) => {
+  const width = Dimensions.get("window").width;
   const navigate = useNavigate();
   return (
     <TouchableOpacity
@@ -13,7 +14,8 @@ const ItemCard = ({ name, price, imgUrl, company }) => {
       <Image
         source={imgUrl}
         resizeMode="contain"
-        className="w-full h-[250px]"
+        style={{ maxWidth: width * 0.5 }}
+        className="w-full h-[140px]"
       />
       <Text className="font-normal text-[#535862] w-[90%]" numberOfLines={1}>
         {name}

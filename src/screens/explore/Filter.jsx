@@ -12,9 +12,6 @@ import { filterTypes } from "../../constants";
 import ContainerWrapper from "../../components/ContainerWrapper";
 import PrimaryButton from "../../components/PrimaryButton";
 import FilterTypeModal from "./FilterTypeModal";
-// import { Images, walletOptions } from "../../constants";
-// import PrimaryButton from "../../components/PrimaryButton";
-// import SecondaryButton from "../../components/SecondaryButton";
 
 const FilterPage = () => {
   const navigate = useNavigate();
@@ -64,6 +61,10 @@ const FilterPage = () => {
         <PrimaryButton text={"Apply"} />
       </View>
 
+      {/* <ResizableModal
+        onClose={() => setShowCategoryModal((prev) => !prev)}
+        visible={showCategoryModal}
+      /> */}
       <FilterTypeModal
         selectedType={selectedType}
         onClose={() => setShowCategoryModal((prev) => !prev)}
