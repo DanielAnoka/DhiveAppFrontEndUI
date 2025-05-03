@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet, Dimensions, Image } from 'react-native';
 import { Icons } from '../constants';
-import Trading from './trading';
 
 const { width } = Dimensions.get('window');
 
@@ -12,7 +11,7 @@ const BottomNav = () => {
             <View style={styles.container}>
                 <TouchableOpacity style={styles.tab}>
                     <Image source={Icons.Feeds} style={styles.icon} />
-                    <Text style={styles.label}>Feeds</Text>
+                    <Text style={[styles.label, styles.activeLabel]}>Feeds</Text>
                 </TouchableOpacity>
 
 
@@ -31,7 +30,7 @@ const BottomNav = () => {
 
                 <TouchableOpacity style={[styles.tab, styles.rightTab]}>
                     <Image source={Icons.Wallet} style={styles.icon} />
-                    <Text style={[styles.label, styles.activeLabel]}>Assets</Text>
+                    <Text style={styles.label}>Assets</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.tab}>
@@ -39,8 +38,7 @@ const BottomNav = () => {
                     <Text style={styles.label}>Profile</Text>
                 </TouchableOpacity>
             </View>
-            <Trading visible={modalVisible}
-                onClose={() => setModalVisible(false)} />
+          
         </>
     );
 };
