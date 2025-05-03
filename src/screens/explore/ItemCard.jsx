@@ -1,10 +1,15 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { Images } from "../../constants/image";
+import { useNavigate } from "react-router-native";
 
 const ItemCard = ({ name, price, imgUrl, company }) => {
+  const navigate = useNavigate();
   return (
-    <View className="flex-1 m-2.5 p-2.5">
+    <TouchableOpacity
+      onPress={() => navigate("/product-details")}
+      className="flex-1 m-2.5 p-2.5"
+    >
       <Image
         source={imgUrl}
         resizeMode="contain"
@@ -24,7 +29,7 @@ const ItemCard = ({ name, price, imgUrl, company }) => {
           {company}
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

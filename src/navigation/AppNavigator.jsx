@@ -25,6 +25,7 @@ import TransactionHistory from "../screens/transactionHistory";
 import ExplorePage from "../screens/explore";
 import Search from "../screens/explore/Search";
 import FilterPage from "../screens/explore/Filter";
+import ProductDetails from "../screens/explore/ProductDetails";
 
 export default function AppNavigator() {
   return (
@@ -52,6 +53,7 @@ export default function AppNavigator() {
       <Route path="/explore" element={<ExplorePage />} />
       <Route path="/search" element={<Search />} />
       <Route path="/filter" element={<FilterPage />} />
+      <Route path="/product-details" element={<ProductDetails />} />
     </Routes>
   );
 }

@@ -39,6 +39,7 @@ const FilterTypeModal = ({ visible, onClose, selectedType }) => {
               <Text className="text-primary">Done</Text>
             </TouchableOpacity>
           </View>
+          <View className="border-t w-full border-[#E9EAEB]" />
           <TypeOptions type={selectedType.type} />
         </View>
       </Modal>

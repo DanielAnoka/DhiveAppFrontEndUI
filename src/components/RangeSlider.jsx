@@ -7,10 +7,7 @@ const CustomRangeSlider = ({ low, setLow, high, setHigh }) => {
   //   const [high, setHigh] = useState(90);
 
   return (
-    <View style={{ padding: 20, height: 250 }}>
-      <Text>
-        Selected: {low} - {high}
-      </Text>
+    <View style={{ paddingHorizontal: 10, paddingVertical: 20 }}>
       <RangeSlider
         style={{ width: "100%" }}
         min={0}
@@ -22,10 +19,10 @@ const CustomRangeSlider = ({ low, setLow, high, setHigh }) => {
         renderThumb={() => (
           <View
             style={{
-              width: 20,
-              height: 20,
+              width: 25,
+              height: 25,
               backgroundColor: "#444CE7",
-              borderRadius: 10,
+              borderRadius: 20,
             }}
           />
         )}
@@ -40,7 +37,7 @@ const CustomRangeSlider = ({ low, setLow, high, setHigh }) => {
           />
         )}
         renderRailSelected={() => (
-          <View style={{ height: 4, backgroundColor: "#444CE7" }} />
+          <View style={{ height: 6, backgroundColor: "#444CE7" }} />
         )}
         onValueChanged={(low, high) => {
           setLow(low);
