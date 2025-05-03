@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
         borderColor: '#F3F4F6',
     },
     iconContainer: {
-        width: 40,
-        height: 40,
+        width: 30,
+        height: 30,
         borderRadius: 20,
         justifyContent: 'center',
         alignItems: 'center',
@@ -43,8 +43,8 @@ const styles = StyleSheet.create({
         elevation: 2,
     },
     icon: {
-        width: 19,
-        height: 19,
+        width: 10,
+        height: 20,
         resizeMode: 'contain',
     },
     info: {

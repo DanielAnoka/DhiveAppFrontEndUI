@@ -67,7 +67,7 @@ const TransactionHistory = () => {
     }
   };
 
-  const handleBack = () => navigate("/");
+  const handleBack = () => navigate(-1);
   const handleTf = () => toggleModal();
 
   return (
@@ -293,8 +293,8 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   noTransactionsImage: {
-    width: 120,
-    height: 120,
+    width: 212,
+    height: 200,
     marginBottom: 16,
   },
   noTransactionsText: {

@@ -7,12 +7,12 @@ const actions = [
   { name: "Send", icon: Icons.Send, backgroundColor: "#EFF8FF", path: "/send" },
   {
     name: "Receive",
-    icon: Icons.ArrowDown,
+    icon: Icons.ArrowDown2,
     backgroundColor: "#F5F8FF",
     path: "/receive",
   },
   { name: "P2P", icon: Icons.P2P, backgroundColor: "#FDF2F8", path: "/p2p" },
-  { name: "More", icon: Icons.More, backgroundColor: "#ECFDF3", path: "/more" },
+  { name: "More", icon: Icons.More, backgroundColor: "#ECFDF3", path: "/tf" },
 ];
 
 const ActionButtons = () => {

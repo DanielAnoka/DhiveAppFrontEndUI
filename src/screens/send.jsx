@@ -26,9 +26,7 @@ const Send = () => {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
 
-  const handleBack = () => {
-    navigate("/");
-  };
+  const handleBack = () => navigate('/');
 
   const validatedAssets = assets.map((asset) => ({
     ...asset,

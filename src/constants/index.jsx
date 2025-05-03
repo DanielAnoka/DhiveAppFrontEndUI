@@ -181,3 +181,15 @@ export const filterTypes = [
     resetOptions: "All",
   },
 ];
+
+export const chains = [
+  { label: 'Dhive Network', icon: Icons.Trading },
+  { label: 'Ethereum', icon: Icons.Trading },
+  { label: 'Binance Smart Chain', icon: Icons.Trading },
+];
+
+const tokens = [
+  { label: 'EGAX', icon: Icons.Trading },
+  { label: 'USDT', icon: Icons.Trading },
+  { label: 'ETH', icon: Icons.Trading },
+];

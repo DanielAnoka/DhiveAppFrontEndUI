@@ -33,9 +33,7 @@ const ManageToken = () => {
 
   const navigate = useNavigate();
 
-  const handleBack = () => {
-    navigate("/");
-  };
+  const handleBack = () => navigate(-1);
 
   const handleNext = () => {
     navigate("/import");

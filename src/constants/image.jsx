@@ -15,6 +15,8 @@ import Password from "../../assets/password.png";
 import Confetti from "../../assets/confetti.png";
 import Filter from "../../assets/filter.png";
 import Item from "../../assets/item.png";
+import Empty from "../../assets/empty.png";
+import PadLock from "../../assets/padLock.png";
 
 export const Images = {
   Logo,
@@ -34,4 +36,5 @@ export const Images = {
   Confetti,
   Filter,
   Item,
+  Empty,PadLock
 };

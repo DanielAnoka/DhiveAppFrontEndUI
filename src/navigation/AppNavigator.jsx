@@ -22,6 +22,9 @@ import ReceiveToken from '../screens/ReceiveToken';
 import SendToken from "../screens/select"
 import Tf from "../screens/transferHistory"
 import TransactionHistory from '../screens/transactionHistory';
+import Bridge from "../screens/BridgeTrading/index";
+import Swap from "../screens/Swap";
+import SwapToken from "../screens/Swap/swap"
 
 export default function AppNavigator() {
   return (
@@ -46,6 +49,14 @@ export default function AppNavigator() {
       <Route path='/sendToken' element={<SendToken />} />
       <Route path='/tf' element={<Tf />} />
       <Route path='/transaction' element={<TransactionHistory />} />
+      <Route path='/bridge' element={<Bridge />} />
+      <Route path='/swap' element={<Swap />} />
+      <Route path='/tokenSwap' element={<SwapToken />} />
+      {/* <Route path="/explore" element={<Explore />} /> */}
+      {/* <Route path="/navigate" element={<Navigate />} /> */}
+      {/* <Route path="/trading" element={<Trading />} /> */}
+      {/* <Route path="/profile" element={<Profile />} /> */}
+      {/* <Route path="/feed" element={<Feed />} /> */}
     </Routes>
   );
 }

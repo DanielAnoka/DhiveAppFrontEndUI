@@ -7,21 +7,22 @@ import {
   StyleSheet,
   SafeAreaView,
   FlatList,
+  Image,
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { useNavigate } from "react-router-native";
-import AssetCard from "../components/AssetCard";
-import { Images } from "../constants/image";
+import AssetCard from "../../components/AssetCard";
+import { Images } from "../../constants/image";
 
 const assets = [
   { name: "USDT", price: 1.0, amount: 392.45, icon: Images.Usdt },
   { name: "Bitcoin", price: 85987.99, amount: 0, icon: Images.Btc },
-  { name: "Ethereum ", price: 85987.99, amount: 0, icon: Images.Ethe },
+  { name: "Ethereum", price: 85987.99, amount: 0, icon: Images.Ethe },
   { name: "BNB", price: 85987.99, amount: 0, icon: Images.Bnb },
   { name: "DOGE", price: 85987.99, amount: 0, icon: Images.Coin },
 ];
 
-const Receive = () => {
+const Swap = () => {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
 
@@ -36,9 +37,8 @@ const Receive = () => {
   const filteredAssets = validatedAssets.filter((asset) =>
     asset.name.toLowerCase().includes(search.toLowerCase())
   );
-
   const handleAssetPress = (asset) => {
-    navigate("/receiveToken", { state: { asset } });
+    navigate("/tokenSwap", { state: { asset } });
   };
 
   return (
@@ -71,7 +71,7 @@ const Receive = () => {
           data={filteredAssets}
           keyExtractor={(item) => item.name}
           renderItem={({ item }) => (
-            <AssetCard {...item} onPress={() => handleAssetPress(item)} />
+            <AssetCard change={undefined} {...item} onPress={() => handleAssetPress(item)} />
           )}
           contentContainerStyle={styles.list}
         />
@@ -132,4 +132,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Receive;
+export default Swap;

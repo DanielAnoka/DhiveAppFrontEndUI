@@ -1,19 +1,28 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet, Dimensions, Image } from 'react-native';
-import { Icons } from '../constants';
+import { Icons } from '../constants/icon';
 import Trading from './trading';
+import { useNavigate } from "react-router-native";
 
 const { width } = Dimensions.get("window");
 
 const BottomNav = () => {
-    const [modalVisible, setModalVisible] = useState(false);
-    return (
-        <>
-            <View style={styles.container}>
-                <TouchableOpacity style={styles.tab}>
-                    <Image source={Icons.Feeds} style={styles.icon} />
-                    <Text style={styles.label}>Feeds</Text>
-                </TouchableOpacity>
+  const navigate = useNavigate();
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const handleSelectOption = (optionId) => {
+    setModalVisible(false);
+    if (optionId === 'bridge') navigate('/bridge');
+    if (optionId === 'swap') navigate('/swap');
+  };
+  
+  return (
+    <>
+      <View style={styles.container}>
+        <TouchableOpacity style={styles.tab}>
+          <Image source={Icons.Feed} style={styles.icon} />
+          <Text style={styles.label}>Feeds</Text>
+        </TouchableOpacity>
 
         <TouchableOpacity
           onPress={() => navigate("/explore")}
@@ -28,7 +37,7 @@ const BottomNav = () => {
             style={styles.fabButton}
             onPress={() => setModalVisible(true)}
           >
-            <Image source={Icons.Buy} style={styles.fabIcon} />
+            <Image source={Icons.Home} style={styles.fabIcon} />
           </TouchableOpacity>
         </View>
 
@@ -37,20 +46,21 @@ const BottomNav = () => {
           <Text style={[styles.label, styles.activeLabel]}>Assets</Text>
         </TouchableOpacity>
 
-                <TouchableOpacity style={styles.tab}>
-                    <Image source={Icons.Profile} style={styles.icon} />
-                    <Text style={styles.label}>Profile</Text>
-                </TouchableOpacity>
-            </View>
-            <Trading visible={modalVisible}
-                onClose={() => setModalVisible(false)} />
-        </>
-    );
+        <TouchableOpacity style={styles.tab}>
+          <Image source={Icons.Profile} style={styles.icon} />
+          <Text style={styles.label}>Profile</Text>
+        </TouchableOpacity>
+      </View>
+      <Trading visible={modalVisible}
+        onClose={() => setModalVisible(false)}
+        onSelectOption={handleSelectOption} />
+    </>
+  );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
+     flexDirection: "row",
     height: 70,
     borderTopWidth: 1,
     borderColor: "#eee",

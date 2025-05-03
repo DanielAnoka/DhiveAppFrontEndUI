@@ -43,9 +43,7 @@ export const ImportCryptoScreen = () => {
     "Solana",
   ];
 
-  const handleBack = () => {
-    navigate("/token");
-  };
+  const handleBack = () => navigate(-1);
 
   const handleNext = () => {
     navigate("/");
