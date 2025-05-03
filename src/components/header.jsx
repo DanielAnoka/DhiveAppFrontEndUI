@@ -1,7 +1,14 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, Dimensions } from 'react-native';
-import { Icons } from '../constants';
-import Icon from 'react-native-vector-icons/Ionicons';
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  Dimensions,
+} from "react-native";
+import Icon from "react-native-vector-icons/Ionicons";
+import { Icons } from "../constants/icon";
 
 const HeaderSection = () => {
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
@@ -9,7 +16,7 @@ const HeaderSection = () => {
     setIsBalanceVisible(!isBalanceVisible);
   };
 
-  const isSmallScreen = Dimensions.get('window').width < 375;
+  const isSmallScreen = Dimensions.get("window").width < 375;
 
   return (
     <View style={styles.container}>
@@ -27,13 +34,12 @@ const HeaderSection = () => {
         </View>
       </View>
 
-
       <View style={styles.balanceSection}>
         <View style={styles.balanceRow}>
           <Text style={styles.totalLabel}>Total Balance</Text>
 
           <Icon
-            name={isBalanceVisible ? 'eye-off-outline' : 'eye-outline'}
+            name={isBalanceVisible ? "eye-off-outline" : "eye-outline"}
             size={20}
             color="#ccc"
             style={{ marginLeft: 4 }}
@@ -41,7 +47,7 @@ const HeaderSection = () => {
           />
         </View>
         <Text style={[styles.balance, { fontSize: isSmallScreen ? 42 : 52 }]}>
-          {isBalanceVisible ? '$392.45' : '****'}
+          {isBalanceVisible ? "$392.45" : "****"}
         </Text>
         <Text style={styles.change}>
           +$0.01 (+0.05%) <Text style={styles.today}>Today</Text>
@@ -53,75 +59,75 @@ const HeaderSection = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#1F235B',
+    backgroundColor: "#1F235B",
     paddingHorizontal: 16,
     paddingTop: 20,
     paddingBottom: 30,
   },
   topRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     marginBottom: 15,
     paddingHorizontal: 10,
   },
   assetsText: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 24,
-    fontWeight: '500',
+    fontWeight: "500",
     lineHeight: 32,
   },
   iconGroup: {
-    flexDirection: 'row',
+    flexDirection: "row",
     gap: 12,
   },
   iconCircle: {
     width: 32,
     height: 32,
-    backgroundColor: '#FFFFFF17',
+    backgroundColor: "#FFFFFF17",
     borderRadius: 16,
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'relative',
+    justifyContent: "center",
+    alignItems: "center",
+    position: "relative",
   },
   icon: {
     width: 20,
     height: 20,
-    resizeMode: 'contain',
+    resizeMode: "contain",
   },
   redDot: {
     width: 8,
     height: 8,
     borderRadius: 4,
-    backgroundColor: 'red',
-    position: 'absolute',
+    backgroundColor: "red",
+    position: "absolute",
     top: 4,
     right: 4,
   },
   balanceSection: {
-    alignItems: 'center',
+    alignItems: "center",
     marginTop: 20,
   },
   balanceRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   totalLabel: {
-    color: '#ccc',
+    color: "#ccc",
     fontSize: 14,
   },
   balance: {
-    fontWeight: 'bold',
-    color: '#fff',
+    fontWeight: "bold",
+    color: "#fff",
     marginTop: 4,
   },
   change: {
-    color: '#4CAF50',
+    color: "#4CAF50",
     fontSize: 15,
     marginTop: 2,
   },
   today: {
-    color: '#fff',
+    color: "#fff",
   },
 });
 
