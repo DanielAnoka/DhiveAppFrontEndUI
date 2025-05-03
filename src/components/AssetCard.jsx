@@ -1,33 +1,40 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity
+} from 'react-native';
 
-const AssetCard = ({ name, price, change, amount, icon }) => {
-  // Ensure price, change, and amount are valid numbers
+const AssetCard = ({ name, price, change, amount, icon, onPress }) => {
   const validPrice = price != null && !isNaN(price) ? price : 0;
   const validChange = change != null && !isNaN(change) ? change : 0;
   const validAmount = amount != null && !isNaN(amount) ? amount : 0;
 
   return (
-    <View style={styles.row}>
-      <Image source={icon} style={styles.icon} />
+    <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
+      <View style={styles.row}>
+        <Image source={icon} style={styles.icon} />
 
-      {/* Name + Change + Token Price */}
-      <View style={styles.assetInfo}>
-        <View style={styles.nameRow}>
-          <Text style={styles.name}>{name}</Text>
-          <Text style={[styles.change, { color: validChange >= 0 ? '#16A34A' : '#DC2626' }]}>
-            {validChange >= 0 ? '+' : ''}{validChange}%
-          </Text>
+        <View style={styles.assetInfo}>
+          <View style={styles.nameRow}>
+            <Text style={styles.name}>{name}</Text>
+            {validChange !== 0 && (
+              <Text style={[styles.change, { color: validChange >= 0 ? '#16A34A' : '#DC2626' }]}>
+                {validChange >= 0 ? '+' : ''}{validChange}%
+              </Text>
+            )}
+          </View>
+          <Text style={styles.tokenPrice}>${validPrice.toFixed(2)}</Text>
         </View>
-        <Text style={styles.tokenPrice}>${validPrice.toFixed(2)}</Text>
-      </View>
 
-      {/* Amount & USD Value */}
-      <View style={styles.amountInfo}>
-        <Text style={styles.amount}>{validAmount}</Text>
-        <Text style={styles.usd}>${(validAmount * validPrice).toFixed(2)}</Text>
+        <View style={styles.amountInfo}>
+          <Text style={styles.amount}>{validAmount}</Text>
+          <Text style={styles.usd}>${(validAmount * validPrice).toFixed(2)}</Text>
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -52,7 +59,7 @@ const styles = StyleSheet.create({
   nameRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8, 
+    gap: 8,
   },
   name: {
     fontSize: 14,

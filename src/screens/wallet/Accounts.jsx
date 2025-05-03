@@ -1,7 +1,7 @@
 import { View, Text, Image } from "react-native";
 import React from "react";
 import CheckBox from "../../components/CheckBox";
-import { Images } from "../../constants";
+import { Images } from "../../constants/image";
 
 const Accounts = () => {
   return (

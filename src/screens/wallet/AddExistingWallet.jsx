@@ -8,10 +8,11 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import { Images, walletOptions } from "../../constants";
+import { walletOptions } from "../../constants";
 import PrimaryButton from "../../components/PrimaryButton";
 import SecondaryButton from "../../components/SecondaryButton";
 import ImportOptions from "./ImportOptions";
+import { Images } from "../../constants/image";
 
 const AddExistingWallet = () => {
   const [showImportOptions, setShowImportOptions] = useState(false);

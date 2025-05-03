@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Switch, StyleSheet, Text } from "react-native";
+import { View, Switch, StyleSheet } from "react-native";
 
 const ToggleSwitch = ({ onChange }) => {
   const [isEnabled, setIsEnabled] = useState(false);

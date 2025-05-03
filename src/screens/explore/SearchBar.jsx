@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { useNavigate } from "react-router-native";
-import { Images } from "../../constants";
+import { Images } from "../../constants/image";
 
 const SearchBar = ({ searchTerm, setSearchTerm, handleCancel }) => {
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ const SearchBar = ({ searchTerm, setSearchTerm, handleCancel }) => {
       <View
         style={[
           styles.container,
-          { width: searchTerm.length > 0 ? "65%" : "85%" },
+          { width: searchTerm.length > 0 ? "70%" : "85%" },
         ]}
       >
         <Ionicons name="search" color="#A4A7AE" size={20} />
@@ -38,24 +38,28 @@ const SearchBar = ({ searchTerm, setSearchTerm, handleCancel }) => {
           placeholder="Search products"
         />
       </View>
-
-      <TouchableOpacity
-        onPress={() => {
-          handleCancel();
-          navigate("/explore");
-        }}
-      >
-        <Text style={styles.cancelButton}>Cancel</Text>
-      </TouchableOpacity>
-      {searchTerm.length > 0 && (
-        <TouchableOpacity style={styles.button}>
-          <Image
-            source={Images.Filter}
-            resizeMode="contain"
-            style={{ width: 20, height: 20, marginLeft: 10 }}
-          />
+      <View className="flex-row justify-between items-center gap-3">
+        <TouchableOpacity
+          onPress={() => {
+            handleCancel();
+            navigate("/explore");
+          }}
+        >
+          <Text style={styles.cancelButton}>Cancel</Text>
         </TouchableOpacity>
-      )}
+        {searchTerm.length > 0 && (
+          <TouchableOpacity
+            onPress={() => navigate("/filter")}
+            className="p-2 bg-[#F5F5F5] rounded-full w-fit"
+          >
+            <Image
+              source={Images.Filter}
+              resizeMode="contain"
+              style={{ width: 20, height: 20 }}
+            />
+          </TouchableOpacity>
+        )}
+      </View>
     </View>
   );
 };

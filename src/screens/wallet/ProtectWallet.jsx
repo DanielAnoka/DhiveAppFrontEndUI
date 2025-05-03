@@ -2,8 +2,9 @@ import { SafeAreaView, Text, View, StyleSheet, Image } from "react-native";
 import DynamicStepLayout from "../StepOneLayout";
 import PrimaryButton from "../../components/PrimaryButton";
 import { useNavigate } from "react-router-native";
-import { Images, protectWalletOptions } from "../../constants";
+import { protectWalletOptions } from "../../constants";
 import ToggleSwitch from "../../components/Switch";
+import { Images } from "../../constants/image";
 
 const ProtectWallet = () => {
   const navigate = useNavigate();

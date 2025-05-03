@@ -1,63 +1,31 @@
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image } from "react-native";
 import React from "react";
-import { Images } from "../../constants";
+import { Images } from "../../constants/image";
 
 const ItemCard = ({ name, price, imgUrl, company }) => {
   return (
-    <View style={styles.card}>
-      <Image source={imgUrl} resizeMode="contain" style={styles.image} />
-      <Text style={styles.name} numberOfLines={1}>
+    <View className="flex-1 m-2.5 p-2.5">
+      <Image
+        source={imgUrl}
+        resizeMode="contain"
+        className="w-full h-[250px]"
+      />
+      <Text className="font-normal text-[#535862] w-[90%]" numberOfLines={1}>
         {name}
       </Text>
-      <Text style={styles.price}>${price}</Text>
-      <View
-        style={{
-          flexDirection: "row",
-          gap: 10,
-          marginTop: 10,
-          alignItems: "center",
-        }}
-      >
+      <Text className="text-lg text-[#535862] font-bold mt-2.5">${price}</Text>
+      <View className="flex-row gap-x-2.5 mt-2.5 items-center">
         <Image
           source={Images.Avatar}
           resizeMode="contain"
-          style={{ width: 20, height: 20 }}
+          className="w-5 h-5"
         />
-        <Text style={{ width: "50%" }} numberOfLines={2}>
+        <Text className="w-1/2" numberOfLines={2}>
           {company}
         </Text>
       </View>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  card: {
-    flex: 1,
-    margin: 10,
-    backgroundColor: "",
-    borderRadius: 10,
-    padding: 10,
-  },
-  image: {
-    width: "100%",
-    height: 250,
-    borderRadius: 10,
-  },
-  name: {
-    fontWeight: "400",
-    color: "#535862",
-    width: "90%",
-  },
-  price: {
-    fontSize: 18,
-    color: "#535862",
-    marginTop: 10,
-    fontWeight: "bold",
-  },
-  row: {
-    justifyContent: "space-between",
-  },
-});
 
 export default ItemCard;

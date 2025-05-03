@@ -1,7 +1,7 @@
 import { SafeAreaView, Text, View, StyleSheet, Image } from "react-native";
 import PrimaryButton from "../../components/PrimaryButton";
 import { useNavigate } from "react-router-native";
-import { Images } from "../../constants";
+import { Images } from "../../constants/image";
 
 const Success = () => {
   const navigate = useNavigate();

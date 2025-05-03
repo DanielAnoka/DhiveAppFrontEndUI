@@ -2,22 +2,29 @@
 import React from "react";
 import { Routes, Route } from "react-router-native";
 
-import SplashScreen from "../screens/SplashScreen";
-import OnboardingScreen from "../screens/OnboardingScreen";
-import Auth from "../screens/Auth";
-import OTPVerification from "../screens/OTPVerification";
-import Next from "../screens/next";
-import Phase1 from "../screens/phase1";
-import Phase2 from "../screens/phase2";
-import Phase3 from "../screens/phase3";
-import CreatePassword from "../screens/createPassword";
-import Pin from "../screens/setPin";
-import AreaOfInteret from "../screens/area";
+// import SplashScreen from "../screens/SplashScreen";
+// import OnboardingScreen from "../screens/OnboardingScreen";
+// import Auth from "../screens/Auth";
+// import OTPVerification from "../screens/OTPVerification";
+// import Next from "../screens/next";
+// import Phase1 from "../screens/phase1";
+// import Phase2 from "../screens/phase2";
+// import Phase3 from "../screens/phase3";
+// import CreatePassword from "../screens/createPassword";
+// import Pin from "../screens/setPin";
+// import AreaOfInteret from "../screens/area";
 import Wallet from "../screens/wallet";
 import ManageToken from "../screens/manageToken";
 import { ImportCryptoScreen } from "../screens/ImportCrypto";
+import Send from "../screens/send";
+import Receive from "../screens/receive";
+import ReceiveToken from "../screens/ReceiveToken";
+import SendToken from "../screens/select";
+import Tf from "../screens/transferHistory";
+import TransactionHistory from "../screens/transactionHistory";
 import ExplorePage from "../screens/explore";
 import Search from "../screens/explore/Search";
+import FilterPage from "../screens/explore/Filter";
 
 export default function AppNavigator() {
   return (
@@ -36,8 +43,15 @@ export default function AppNavigator() {
       <Route path="/" element={<Wallet />} />
       <Route path="/token" element={<ManageToken />} />
       <Route path="/import" element={<ImportCryptoScreen />} />
+      <Route path="/send" element={<Send />} />
+      <Route path="/receive" element={<Receive />} />
+      <Route path="receiveToken" element={<ReceiveToken />} />
+      <Route path="/sendToken" element={<SendToken />} />
+      <Route path="/tf" element={<Tf />} />
+      <Route path="/transaction" element={<TransactionHistory />} />
       <Route path="/explore" element={<ExplorePage />} />
       <Route path="/search" element={<Search />} />
+      <Route path="/filter" element={<FilterPage />} />
     </Routes>
   );
 }

@@ -10,9 +10,9 @@ import {
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { useNavigate } from "react-router-native";
-import { Images } from "../../constants";
 import ItemCard from "./ItemCard";
 import BottomNav from "../../components/BottomNav";
+import { Images } from "../../constants/image";
 
 export const products = [
   {
@@ -104,7 +104,10 @@ const ExplorePage = () => {
           >
             <Ionicons name="search" size={20} />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity
+            onPress={() => navigate("/filter")}
+            style={styles.button}
+          >
             <Image
               source={Images.Filter}
               resizeMode="contain"
