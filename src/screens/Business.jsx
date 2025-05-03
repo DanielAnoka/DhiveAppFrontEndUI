@@ -14,12 +14,13 @@ import {
   SafeAreaView,
 } from 'react-native';
 import BottomNav from '../components/BottomNav';
-import { Navigate } from 'react-router-native';
+import { Navigate, useNavigate } from 'react-router-native';
 
 export default function Business() {
   const [modalVisible, setModalVisible] = useState(false);
   const [step, setStep] = useState(0);
   const [pin, setPin] = useState('');
+  const navigate =useNavigate()
 
   const openModal = () => {
     setStep(0);
@@ -41,10 +42,9 @@ export default function Business() {
   return (
     <SafeAreaView style={styles.fullScreen}>
       <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-        {/* Static images */}<TouchableOpacity onPress={()=>{Navigate('/Message')}}>
         <Image style={{ margin: 10 }} source={require('../../assets/a.png')} resizeMode="contain" />
-        </TouchableOpacity>
-        <Image source={require('../../assets/b.png')} resizeMode="contain" style={styles.image} />
+                <TouchableOpacity onPress={()=>{navigate('/Message')}}>
+<Image source={require('../../assets/b.png')} resizeMode="contain" style={styles.image} />        </TouchableOpacity>
         <Image source={require('../../assets/c.png')} resizeMode="contain" style={styles.image} />
         <Image source={require('../../assets/d.png')} resizeMode="contain" style={styles.image} />
         <Image source={require('../../assets/e.png')} resizeMode="contain" style={styles.image} />
