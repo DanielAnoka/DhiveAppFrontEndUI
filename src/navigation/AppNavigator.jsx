@@ -22,6 +22,7 @@ import ReceiveToken from '../screens/ReceiveToken';
 import SendToken from "../screens/select"
 import Tf from "../screens/transferHistory"
 import TransactionHistory from '../screens/transactionHistory';
+import BridgeScreen from "../screens/BridgeScreen"
 
 export default function AppNavigator() {
   return (
@@ -46,6 +47,7 @@ export default function AppNavigator() {
       <Route path='/sendToken' element={<SendToken />} />
       <Route path='/tf' element={<Tf />} />
       <Route path='/transaction' element={<TransactionHistory />} />
+      <Route path='/bridge' element={<BridgeScreen />} />
     </Routes>
   );
 }

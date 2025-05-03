@@ -2,10 +2,18 @@ import React, { useState } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet, Dimensions, Image } from 'react-native';
 import { Icons } from '../constants';
 import Trading from './trading';
+import { useNavigate } from 'react-router-native';
+
 
 const { width } = Dimensions.get('window');
 
 const BottomNav = () => {
+    const navigate = useNavigate();
+    const handleSelectOption = (optionId) => {
+        setModalVisible(false);
+        if (optionId === 'bridge') navigate('/bridge');
+        if (optionId === 'swap') navigate('/bridge');
+    };
     const [modalVisible, setModalVisible] = useState(false);
     return (
         <>
@@ -40,7 +48,9 @@ const BottomNav = () => {
                 </TouchableOpacity>
             </View>
             <Trading visible={modalVisible}
-                onClose={() => setModalVisible(false)} />
+                onClose={() => setModalVisible(false)}
+                onSelectOption={handleSelectOption}
+            />
         </>
     );
 };
