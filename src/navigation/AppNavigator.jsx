@@ -9,7 +9,7 @@ export default function AppNavigator() {
   return (
     <Routes>
       <Route
-        path='/'
+        path='/b'
         element={<Business_Notification />}
       />
       <Route
@@ -17,7 +17,7 @@ export default function AppNavigator() {
         element={<Business />}
       />
       <Route
-        path='/Message'
+        path='/'
         element={<MessageScreen />}
       />
     </Routes>
