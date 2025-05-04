@@ -25,14 +25,14 @@ export default function BusinessLive() {
   ));
 
   // Remaining images to display in 2 per row
-  const gridImages = Array.from({ length: 9 }, (_, i) => (
+  const gridImages = Array.from({ length: 14 }, (_, i) => (
     <Pressable
       key={`grid-${i}`}
       onPress={() => navigate('/LiveOverlayScreen')} // Example navigation route
     >
       <Image
         source={require('../../assets/tolive.png')}
-        resizeMode="cover"
+        resizeMode="contain"
         style={styles.gridImage}
       />
     </Pressable>
@@ -66,7 +66,7 @@ export default function BusinessLive() {
       >
         {horizontalImages}
       </ScrollView>
-
+<View style={{marginTop: -20}}>
       {/* Grid Section - Two per Row */}
       {chunkedGridImages.map((row, index) => (
         <View key={`row-${index}`} style={styles.row}>
@@ -77,7 +77,7 @@ export default function BusinessLive() {
           ))}
         </View>
       ))}
-
+</View>
 
     </ScrollView><BottomNav /></View>
   );
@@ -95,32 +95,39 @@ export default function BusinessLive() {
       width: '100%',
     },
     horizontalScrollContainer: {
+      marginTop: 30,
       height: 120,
       marginBottom: 10,
+      marginLeft: 24,
+      marginRight: 24
+
     },
     horizontalContentContainer: {
       flexDirection: 'row',
-      alignItems: 'center',
+      //alignItems: 'center',
     },
     horizontalImage: {
-      width: 100,
-      height: 100,
-      marginRight: 10,
+      width: 85,
+      height: 85,
+      marginRight: 6,
     },
     row: {
       flexDirection: 'row',
-      justifyContent: 'space-between',
-      marginBottom: 10,
+      //justifyContent: 'space-between',
+      marginBottom: 13,
+      gap: 18, 
+      justifyContent: 'center',
     },
     gridItem: {
-      width: '45%', // Takes half of the row
-      paddingHorizontal: 3,
+      width: '42%', // Takes half of the row
+      //paddingHorizontal: 1,
     },
     gridImage: {
-      width: '100%',
-      aspectRatio: 1,
-      borderRadius: 12,
-      resizeMode: 'cover',
+      width: 163,
+height: 181,
+borderRadius: 24,
+
+      //aspectRatio: 1,
     },
   });
   

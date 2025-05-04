@@ -20,9 +20,13 @@ import {
 } from 'react-router-native';
 import BottomNav from '../components/BottomNav';
 import { Video } from 'expo-av';
+import { FlatList } from 'react-native';
 
 
-const { height } = Dimensions.get('window');
+
+const windowHeight = Dimensions.get('window').height;
+const bottomNavHeight = 70;
+const feedItemHeight = windowHeight - bottomNavHeight;
 const actions = [
   { name: 'win',   label: '' },
   { name: 'buy',   label: '' },
@@ -105,111 +109,7 @@ const Header = () => {
   );
 };
 
-const FeedItem = ({ placeholder }) => {
-  const [modalVisible, setModalVisible] = useState(false);
-  const [message, setMessage] = useState('');
-  const dummyComments = [
-    "I wish I could just purchase this right now. Though I've been thinking differently on the color.",
-    'Looks great! Where did you get it?',
-    'Amazing product — totally adding to cart!',
-  ];
 
-  const actions = [
-    { name: 'win', label: '' },
-    { name: 'buy', label: '' },
-    { name: 'trade', label: '' },
-    { name: 'heart', label: '' },
-    { name: 'comment', label: '' },
-  ];
-
-  return (
-    <View style={styles.feedItem}>
-      <ImageBackground
-        source={placeholder}
-        style={styles.streamContent}
-        imageStyle={styles.streamImage} // optional, for cover
-      >
-        {/* mid‑right icons */}
-        <View style={styles.iconColumnMid}>
-          {actions.map(({ name, label }, i) => (
-            <TouchableOpacity
-              key={i}
-              style={styles.iconWrapper}
-              onPress={() => name === 'comment' && setModalVisible(true)}
-            >
-              <Image source={iconMap[name]} style={styles.iconMid} />
-              {label !== '' && <Text style={styles.iconLabelMid}>{label}</Text>}
-            </TouchableOpacity>
-          ))}
-        </View>
-  
-        {/* ←— Product info now overlaid at the bottom of the image */}
-        <View style={styles.productOverlay}>
-          <Text style={styles.productTitle}>Apple Watch Series 9 (Pink)</Text>
-          <View style={styles.priceBadge}>
-            <Text style={styles.priceText}>$132.78</Text>
-          </View>
-        </View>
-      </ImageBackground>
-  
-
-      <Modal
-        visible={modalVisible}
-        transparent
-        animationType="slide"
-        onRequestClose={() => setModalVisible(false)}
-      >
-        <View style={styles.modalOverlay}>
-          <View style={styles.sheetContainer}>
-            <Text style={styles.modalTitle}>Comments</Text>
-            <ScrollView style={styles.commentList}>
-              {dummyComments.map((text, idx) => (
-                <View key={idx} style={styles.commentRow}>
-                  <Image
-                    source={require('../../assets/profile.jpg')}
-                    style={styles.commentAvatar}
-                  />
-                  <View style={styles.commentContent}>
-                    <Text style={styles.commentAuthor}>Wade Warren</Text>
-                    <Text style={styles.commentText}>{text}</Text>
-                    {text.length > 10 && (
-                      <View style={styles.commentActions}>
-                        <Text style={styles.commentAction}>Like</Text>
-                        <Text style={styles.commentAction}>•</Text>
-                        <Text style={styles.commentAction}>Reply</Text>
-                      </View>
-                    )}
-                  </View>
-                </View>
-              ))}
-            </ScrollView>
-            <View style={styles.messageInputRow}>
-              <TextInput
-                style={styles.textInput}
-                placeholder="Send a message"
-                placeholderTextColor="#888"
-                value={message}
-                onChangeText={setMessage}
-              />
-              <TouchableOpacity
-                style={styles.sendButton}
-                onPress={() => setMessage('')}
-              >
-                <Text style={styles.sendText}>➤</Text>
-              </TouchableOpacity>
-            </View>
-            <TouchableOpacity
-              onPress={() => setModalVisible(false)}
-              style={styles.closeBtn}
-            >
-              <Text style={styles.closeText}>Close</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </Modal>
-    </View>
-  );
-};
 
 
 // 3a) Full‑width video placeholder
@@ -237,7 +137,7 @@ function VideoPlaceholder({ src }) {
   ];
 
   const actions = [
-    { name: 'wina', label: '' },
+    { name: 'win', label: '' },
     { name: 'buy' },
     { name: 'trade' },
     { name: 'heart', label: '' },
@@ -245,7 +145,7 @@ function VideoPlaceholder({ src }) {
   ];
 
   const iconMap = {
-    wina: require('../../assets/win.png'),
+    win: require('../../assets/win.png'),
     buy: require('../../assets/buy.png'),
     trade: require('../../assets/trade.png'),
     heart: require('../../assets/heart.png'),
@@ -268,7 +168,7 @@ function VideoPlaceholder({ src }) {
   };
 
   return (
-    <View style={styles.feedItem}>
+    <View style={[styles.feedItem, { height: feedItemHeight }]}>
       <View style={styles.streamContent}>
         <Video
           ref={videoRef}
@@ -401,11 +301,11 @@ function VideoPlaceholder({ src }) {
 function MixedPlaceholder({ items }) {
   const videoItem = items.find(i => i.kind === 'video');
   const imageItems = items.filter(i => i.kind === 'image');
+  const [modalVisible, setModalVisible] = useState(false);
+  const [message, setMessage] = useState('');
 
   const videoRef = useRef(null);
   const [status, setStatus] = useState({});
-  const [commentModalVisible, setCommentModalVisible] = useState(false);
-  const [message, setMessage] = useState('');
 
   const dummyComments = [
     "I wish I could just purchase this right now.",
@@ -421,7 +321,7 @@ function MixedPlaceholder({ items }) {
     }
   };
   const actions = [
-    { name: 'wina', label: '' },
+    { name: 'win', label: '' },
     { name: 'buy' },
     { name: 'trade' },
     { name: 'heart', label: '' },
@@ -429,16 +329,18 @@ function MixedPlaceholder({ items }) {
   ];
 
   const iconMap = {
-    wina: require('../../assets/win.png'),
+    win: require('../../assets/win.png'),
     buy: require('../../assets/buy.png'),
     trade: require('../../assets/trade.png'),
     heart: require('../../assets/heart.png'),
     comment: require('../../assets/comment.png'),
   };
+  
+  
 
   return (
-    <View style={styles.feedItem}>
-      <View style={{ width: '100%', aspectRatio: 9 / 16 }}>
+    <View style={[styles.feedItem, { height: feedItemHeight }]}>
+      <View style={{ width: '100%', height: '100%' }}>
   {/* Top half: Video */}
   <View style={{ flex: 1 }}>
     <Video
@@ -481,6 +383,16 @@ function MixedPlaceholder({ items }) {
             </TouchableOpacity>
           ))}
         </View>
+
+        <View style={styles.bottomControlsContainer}>
+          <View style={styles.repostContainer2}>
+            <TouchableOpacity style={styles.repostButtonHorizontal}>
+              <Image source={require('../../assets/Badge.png')} style={styles.repostIconHorizontal2} />
+            </TouchableOpacity>
+          </View>
+          
+        </View>
+        
       {/* Product overlay */}
       <View style={styles.productOverlay}>
         <Text style={styles.productTitle}>Apple Watch Series 9 (Pink)</Text>
@@ -490,51 +402,69 @@ function MixedPlaceholder({ items }) {
       </View>
 
       {/* Comment Modal — matching VideoPlaceholder style */}
-      <Modal
-        visible={commentModalVisible}
+            {/* Comments Modal */}
+            <Modal
+        visible={modalVisible}
         transparent
         animationType="slide"
-        onRequestClose={() => setCommentModalVisible(false)}
+        onRequestClose={() => setModalVisible(false)}
       >
         <View style={styles.modalOverlay}>
           <View style={styles.sheetContainer}>
-            <Text style={styles.modalTitle}>Comments</Text>
+            <Image source={require('../../assets/rectangle.png')} style={styles.modalTopImage} />
+            <View style={styles.modalHeader}>
+              <Text style={styles.modalTitle}>Comments</Text>
+              <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.headerCloseButton}>
+                <Text style={styles.headerCloseText}>×</Text>
+              </TouchableOpacity>
+            </View>
+
             <ScrollView style={styles.commentList}>
               {dummyComments.map((text, idx) => (
-                <View key={idx} style={styles.commentRow}>
-                  <Image
-                    source={require('../../assets/profile.jpg')}
-                    style={styles.commentAvatar}
-                  />
-                  <View style={styles.commentContent}>
-                    <Text style={styles.commentAuthor}>Wade Warren</Text>
-                    <Text style={styles.commentText}>{text}</Text>
-                    {text.length > 10 && (
-                      <View style={styles.commentActions}>
-                        <Text style={styles.commentAction}>Like</Text>
-                        <Text style={styles.commentAction}>•</Text>
-                        <Text style={styles.commentAction}>Reply</Text>
-                      </View>
-                    )}
+                <View key={idx} style={styles.commentContainer}>
+                  <View style={styles.commentRow}>
+                    <Image
+                      source={require('../../assets/profile.jpg')}
+                      style={styles.commentAvatar}
+                    />
+                    <View style={styles.commentContent}>
+                      <Text style={styles.commentAuthor}>Wade Warren</Text>
+                      <Text style={styles.commentText}>{text}</Text>
+                    </View>
                   </View>
+
+                  {text.length > 10 && (
+                    <View style={styles.commentActionsUnder}>
+                      <Text style={styles.commentAction}>Like</Text>
+                      <Text style={styles.commentAction}>•</Text>
+                      <Text style={styles.commentAction}>Reply</Text>
+                    </View>
+                  )}
                 </View>
               ))}
             </ScrollView>
-            <View style={styles.messageInputRow}>
-              <TextInput
-                style={styles.textInput}
-                placeholder="Send a message"
-                placeholderTextColor="#888"
-                value={message}
-                onChangeText={setMessage}
-              />
-              <TouchableOpacity style={styles.sendButton} onPress={() => setMessage('')}>
-                <Text style={styles.sendText}>➤</Text>
+
+            <View style={styles.inputRowContainer}>
+              <View style={styles.messageInputBox}>
+                <TextInput
+                  style={styles.textInput}
+                  placeholder="Send a message"
+                  placeholderTextColor="#888"
+                  value={message}
+                  onChangeText={setMessage}
+                />
+              </View>
+
+              <TouchableOpacity
+                style={styles.sendButton}
+                onPress={() => setMessage('')}
+              >
+                <Image
+                  source={require('../../assets/Button.png')}
+                  style={{ width: 40, height: 40, alignSelf: 'flex-start', marginTop: 10 }}
+                />
               </TouchableOpacity>
             </View>
-            <TouchableOpacity onPress={() => setCommentModalVisible(false)} style={styles.closeBtn}>
-              <Text style={styles.closeText}>Close</Text>
-            </TouchableOpacity>
           </View>
         </View>
       </Modal>
@@ -549,7 +479,7 @@ function CarouselPlaceholder({ items }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [message, setMessage] = useState('');
   const actions = [
-    { name: 'wina', label: '' },
+    { name: 'win', label: '' },
     { name: 'buy' },
     { name: 'trade' },
     { name: 'heart', label: '' },
@@ -557,7 +487,7 @@ function CarouselPlaceholder({ items }) {
   ];
 
   const iconMap = {
-    wina: require('../../assets/win.png'),
+    win: require('../../assets/win.png'),
     buy: require('../../assets/buy.png'),
     trade: require('../../assets/trade.png'),
     heart: require('../../assets/heart.png'),
@@ -573,7 +503,7 @@ function CarouselPlaceholder({ items }) {
   ];
 
   return (
-    <View style={styles.feedItem}>
+    <View style={[styles.feedItem, { height: feedItemHeight }]}>
       <ScrollView
         horizontal
         pagingEnabled
@@ -586,7 +516,7 @@ function CarouselPlaceholder({ items }) {
         }}
       >
         {items.map((src, i) => (
-          <View key={i} style={{ width: Dimensions.get('window').width, aspectRatio: 9 / 16 }}>
+          <View key={i} style={{ width: Dimensions.get('window').width, height: '100%' }}>
             <Image
               source={src}
               style={{ width: '100%', height: '100%' }}
@@ -597,16 +527,19 @@ function CarouselPlaceholder({ items }) {
       </ScrollView>
       {/* Pagination Dots */}
       <View style={styles.carouselDots}>
-        {items.map((_, i) => (
-          <View
-            key={i}
-            style={[
-              styles.dot,
-              i === index ? styles.dotActive : null
-            ]}
-          />
-        ))}
-      </View>
+  {items.map((_, i) => {
+    console.log('Rendering dot:', i); // ADD THIS LINE
+    return (
+      <View
+        key={i}
+        style={[
+          styles.dot,
+          i === index ? styles.dotActive : null
+        ]}
+      />
+    );
+  })}
+</View>
 
       {/* Side icons */}
       <View style={styles.iconColumnMid}>
@@ -632,6 +565,15 @@ function CarouselPlaceholder({ items }) {
         </View>
       </View>
 
+      <View style={styles.bottomControlsContainer}>
+          <View style={styles.repostContainer2}>
+            <TouchableOpacity style={styles.repostButtonHorizontal}>
+              <Image source={require('../../assets/Badge.png')} style={styles.repostIconHorizontal2} />
+            </TouchableOpacity>
+          </View>
+          
+        </View>
+
       {/* Comment Modal */}
       <Modal
         visible={modalVisible}
@@ -641,43 +583,60 @@ function CarouselPlaceholder({ items }) {
       >
         <View style={styles.modalOverlay}>
           <View style={styles.sheetContainer}>
-            <Text style={styles.modalTitle}>Comments</Text>
+            <Image source={require('../../assets/rectangle.png')} style={styles.modalTopImage} />
+            <View style={styles.modalHeader}>
+              <Text style={styles.modalTitle}>Comments</Text>
+              <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.headerCloseButton}>
+                <Text style={styles.headerCloseText}>×</Text>
+              </TouchableOpacity>
+            </View>
+
             <ScrollView style={styles.commentList}>
               {dummyComments.map((text, idx) => (
-                <View key={idx} style={styles.commentRow}>
-                  <Image
-                    source={require('../../assets/profile.jpg')}
-                    style={styles.commentAvatar}
-                  />
-                  <View style={styles.commentContent}>
-                    <Text style={styles.commentAuthor}>Wade Warren</Text>
-                    <Text style={styles.commentText}>{text}</Text>
-                    {text.length > 10 && (
-                      <View style={styles.commentActions}>
-                        <Text style={styles.commentAction}>Like</Text>
-                        <Text style={styles.commentAction}>•</Text>
-                        <Text style={styles.commentAction}>Reply</Text>
-                      </View>
-                    )}
+                <View key={idx} style={styles.commentContainer}>
+                  <View style={styles.commentRow}>
+                    <Image
+                      source={require('../../assets/profile.jpg')}
+                      style={styles.commentAvatar}
+                    />
+                    <View style={styles.commentContent}>
+                      <Text style={styles.commentAuthor}>Wade Warren</Text>
+                      <Text style={styles.commentText}>{text}</Text>
+                    </View>
                   </View>
+
+                  {text.length > 10 && (
+                    <View style={styles.commentActionsUnder}>
+                      <Text style={styles.commentAction}>Like</Text>
+                      <Text style={styles.commentAction}>•</Text>
+                      <Text style={styles.commentAction}>Reply</Text>
+                    </View>
+                  )}
                 </View>
               ))}
             </ScrollView>
-            <View style={styles.messageInputRow}>
-              <TextInput
-                style={styles.textInput}
-                placeholder="Send a message"
-                placeholderTextColor="#888"
-                value={message}
-                onChangeText={setMessage}
-              />
-              <TouchableOpacity style={styles.sendButton} onPress={() => setMessage('')}>
-                <Text style={styles.sendText}>➤</Text>
+
+            <View style={styles.inputRowContainer}>
+              <View style={styles.messageInputBox}>
+                <TextInput
+                  style={styles.textInput}
+                  placeholder="Send a message"
+                  placeholderTextColor="#888"
+                  value={message}
+                  onChangeText={setMessage}
+                />
+              </View>
+
+              <TouchableOpacity
+                style={styles.sendButton}
+                onPress={() => setMessage('')}
+              >
+                <Image
+                  source={require('../../assets/Button.png')}
+                  style={{ width: 40, height: 40, alignSelf: 'flex-start', marginTop: 10 }}
+                />
               </TouchableOpacity>
             </View>
-            <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.closeBtn}>
-              <Text style={styles.closeText}>Close</Text>
-            </TouchableOpacity>
           </View>
         </View>
       </Modal>
@@ -692,7 +651,7 @@ export default function FollowingScreen() {
   const horizontalImages = Array.from({ length: 20 }, (_, i) => (
     <TouchableOpacity
       key={i}
-      onPress={() => navigate('/LiveOverlayScreen')}
+      onPress={() => navigate('/BusinessLive')}
       style={styles.horizontalImageWrapper}
     >
       <Image
@@ -704,9 +663,9 @@ export default function FollowingScreen() {
   ));
 
   const feedData = [
-    { type: 'video',    src: require('../../assets/placeholder1.mp4') },
-    {
-      type: 'mixed',
+    { type: 'video',    src: require('../../assets/placeholder3.mp4') },
+    
+      {type: 'mixed',
       items: [
         { kind: 'video', src: require('../../assets/placeholder2.mp4') },
         { kind: 'image', src: require('../../assets/placeholder2a.png') },
@@ -727,37 +686,42 @@ export default function FollowingScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView
-        contentContainerStyle={styles.contentContainer}
+      <FlatList
+        data={feedData}
+        keyExtractor={(_, i) => i.toString()}
+        ListHeaderComponent={() => (
+          <>
+            <Header />
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              style={styles.horizontalScrollContainer}
+            >
+              {horizontalImages}
+            </ScrollView>
+          </>
+        )}
+        renderItem={({ item }) => {
+          switch(item.type) {
+            case 'video':    return <VideoPlaceholder src={item.src} />;
+            case 'mixed':    return <MixedPlaceholder items={item.items} />;
+            case 'carousel': return <CarouselPlaceholder items={item.items} />;
+            default:         return null;
+          }
+        }}
+        pagingEnabled
+        decelerationRate="fast"
         showsVerticalScrollIndicator={false}
-      >
-        <Header />
-
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          style={styles.horizontalScrollContainer}
-        >
-          {horizontalImages}
-        </ScrollView>
-
-        {feedData.map((item, idx) => {
-  switch(item.type) {
-    case 'video':
-      return <VideoPlaceholder key={idx} src={item.src} />;
-    case 'mixed':
-      return <MixedPlaceholder key={idx} items={item.items} />;
-    case 'carousel':
-      return <CarouselPlaceholder key={idx} items={item.items} />;
-    default:
-      return null;
-  }
-})}
-
-      </ScrollView>
-
+        getItemLayout={(_, index) => ({
+          length: feedItemHeight + 24,
+          offset: (feedItemHeight + 24) * index,
+          index,
+        })}
+        contentContainerStyle={{ paddingBottom: bottomNavHeight }}
+      />
       <BottomNav />
     </SafeAreaView>
+  
   );
 }
 
@@ -769,9 +733,14 @@ const styles = StyleSheet.create({
     right: 16,
     zIndex: 1,
   },
+  
   repostContainer: {
     alignItems: 'flex-start',
-    marginBottom: 25,
+    marginBottom: 45,
+  },
+  repostContainer2: {
+    alignItems: 'flex-start',
+    marginBottom: 85,
   },
   repostButtonHorizontal: {
     flexDirection: 'row',
@@ -782,6 +751,10 @@ const styles = StyleSheet.create({
     height: 30,
     tintColor: '#fff',
     marginRight: 10,
+  },
+  repostIconHorizontal2 : {
+    width: 104,
+    height: 22,
   },
   repostTextHorizontal: {
     color: '#fff',
@@ -847,7 +820,7 @@ const styles = StyleSheet.create({
   },
   carouselDots: {
     position: 'absolute',
-    bottom: 12,
+    bottom: 90,
     alignSelf: 'center',
     flexDirection: 'row',
     gap: 6,
@@ -855,6 +828,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     paddingHorizontal: 10,
     paddingVertical: 6,
+    zIndex: 1000
   },
   
   dot: {
@@ -940,21 +914,7 @@ headerCloseText: {
   color: '#000000',       // match your other closeText
 },
   // for CarouselPlaceholder
-  carouselDots: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 4,
-  },
-  dot: {
-    width: 8, height: 8,
-    borderRadius: 4,
-    backgroundColor: '#888',
-    marginHorizontal: 4,
-  },
-  dotActive: {
-    backgroundColor: '#fff',
-  },
-
+ 
   feedItem: {
     marginVertical: 12,
     // remove any fixed height here
@@ -963,8 +923,7 @@ headerCloseText: {
   streamContent: {
     width: '100%',
     // use aspectRatio or dynamic height as before:
-    aspectRatio: 9 / 16,
-
+height: '100%',
     // make this the positioning container:
     position: 'relative',
     overflow: 'hidden',
@@ -1018,6 +977,7 @@ headerCloseText: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    height: 65
   },
   productTitle: {
     color: '#fff',
@@ -1077,13 +1037,22 @@ headerCloseText: {
   segmentTextActive: { color: '#000', fontWeight: '600' },
 
   horizontalScrollContainer: {
-    height: 98, marginTop: 8, paddingHorizontal: 16, marginBottom: 29
+    marginTop: 10,
+    height: 120,
+    marginBottom: 6,
+    marginLeft: 24,
+    marginRight: 24
+
   },
-  horizontalImageWrapper: {
-   width: 98, height: 98, 
-   marginRight: 12, borderRadius: 30,
+  horizontalContentContainer: {
+    flexDirection: 'row',
+    //alignItems: 'center',
   },
-  horizontalImage: { width: 98, height: 98 },
+  horizontalImage: {
+    width: 85,
+    height: 85,
+    marginRight: 6,
+  },
 
   feedItem: { marginVertical: 12 },
 
@@ -1138,7 +1107,7 @@ headerCloseText: {
     justifyContent: 'flex-end',
   },
   sheetContainer: {
-    maxHeight: height * 0.8, // optional cap if you still want a ceiling
+    maxHeight: windowHeight * 0.8, // optional cap if you still want a ceiling
     flexShrink: 1,    width: '100%',
     backgroundColor: '#fff',
     borderTopLeftRadius: 20,
@@ -1148,7 +1117,7 @@ headerCloseText: {
   },
 
   modalTitle: { fontSize: 20, fontWeight: '1500', marginBottom: 7, padding: 8, marginTop: 30 },
-  commentList: { maxHeight: height * 0.9, marginBottom: 12 },
+  commentList: { maxHeight: windowHeight * 0.9, marginBottom: 12 },
   commentRow: { flexDirection: 'row', marginBottom: 10 },
   commentAvatar: { width: 36, height: 36, borderRadius: 18, marginRight: 10 },
   commentContent: {

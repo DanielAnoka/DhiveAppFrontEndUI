@@ -20,9 +20,13 @@ import {
 } from 'react-router-native';
 import BottomNav from '../components/BottomNav';
 import { Video } from 'expo-av';
+import { FlatList } from 'react-native';
 
 
-const { height } = Dimensions.get('window');
+
+const windowHeight = Dimensions.get('window').height;
+const bottomNavHeight = 70;
+const feedItemHeight = windowHeight - bottomNavHeight;
 const actions = [
   { name: 'win',   label: '' },
   { name: 'buy',   label: '' },
@@ -32,7 +36,7 @@ const actions = [
 ];
 
 const iconMap = {
-  win: require('../../assets/wina.png'),
+  win: require('../../assets/win.png'),
   buy: require('../../assets/buy.png'),
   trade: require('../../assets/trade.png'),
   heart: require('../../assets/heart.png'),
@@ -105,115 +109,12 @@ const Header = () => {
   );
 };
 
-const FeedItem = ({ placeholder }) => {
-  const [modalVisible, setModalVisible] = useState(false);
-  const [message, setMessage] = useState('');
-  const dummyComments = [
-    "I wish I could just purchase this right now. Though I've been thinking differently on the color.",
-    'Looks great! Where did you get it?',
-    'Amazing product — totally adding to cart!',
-    'Does it come in other colors?',
-  ];
 
-  const actions = [
-    { name: 'win', label: '' },
-    { name: 'buy', label: '' },
-    { name: 'trade', label: '' },
-    { name: 'heart', label: '' },
-    { name: 'comment', label: '' },
-  ];
-
-  return (
-    <View style={styles.feedItem}>
-      <ImageBackground
-        source={placeholder}
-        style={styles.streamContent}
-        imageStyle={styles.streamImage} // optional, for cover
-      >
-        {/* mid‑right icons */}
-        <View style={styles.iconColumnMid}>
-          {actions.map(({ name, label }, i) => (
-            <TouchableOpacity
-              key={i}
-              style={styles.iconWrapper}
-              onPress={() => name === 'comment' && setModalVisible(true)}
-            >
-              <Image source={iconMap[name]} style={styles.iconMid} />
-              {label !== '' && <Text style={styles.iconLabelMid}>{label}</Text>}
-            </TouchableOpacity>
-          ))}
-        </View>
-  
-        {/* ←— Product info now overlaid at the bottom of the image */}
-        <View style={styles.productOverlay}>
-          <Text style={styles.productTitle}>Apple Watch Series 9 (Pink)</Text>
-          <View style={styles.priceBadge}>
-            <Text style={styles.priceText}>$132.78</Text>
-          </View>
-        </View>
-      </ImageBackground>
-  
-
-      <Modal
-        visible={modalVisible}
-        transparent
-        animationType="slide"
-        onRequestClose={() => setModalVisible(false)}
-      >
-        <View style={styles.modalOverlay}>
-          <View style={styles.sheetContainer}>
-            <Text style={styles.modalTitle}>Comments</Text>
-            <ScrollView style={styles.commentList}>
-              {dummyComments.map((text, idx) => (
-                <View key={idx} style={styles.commentRow}>
-                  <Image
-                    source={require('../../assets/profile.jpg')}
-                    style={styles.commentAvatar}
-                  />
-                  <View style={styles.commentContent}>
-                    <Text style={styles.commentAuthor}>Wade Warren</Text>
-                    <Text style={styles.commentText}>{text}</Text>
-                    {text.length > 10 && (
-                      <View style={styles.commentActions}>
-                        <Text style={styles.commentAction}>Like</Text>
-                        <Text style={styles.commentAction}>•</Text>
-                        <Text style={styles.commentAction}>Reply</Text>
-                      </View>
-                    )}
-                  </View>
-                </View>
-              ))}
-            </ScrollView>
-            <View style={styles.messageInputRow}>
-              <TextInput
-                style={styles.textInput}
-                placeholder="Send a message"
-                placeholderTextColor="#888"
-                value={message}
-                onChangeText={setMessage}
-              />
-              <TouchableOpacity
-                style={styles.sendButton}
-                onPress={() => setMessage('')}
-              >
-                <Text style={styles.sendText}>➤</Text>
-              </TouchableOpacity>
-            </View>
-            <TouchableOpacity
-              onPress={() => setModalVisible(false)}
-              style={styles.closeBtn}
-            >
-              <Text style={styles.closeText}>Close</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </Modal>
-    </View>
-  );
-};
 
 
 // 3a) Full‑width video placeholder
+
+
 
 
 
@@ -233,11 +134,10 @@ function VideoPlaceholder({ src }) {
     "I wish I could just purchase this right now. Though I've been thinking differently on the color.",
     'Looks great! Where did you get it?',
     'Amazing product — totally adding to cart!',
-    'Does it come in other colors?',
   ];
 
   const actions = [
-    { name: 'wina', label: '' },
+    { name: 'win', label: '' },
     { name: 'buy' },
     { name: 'trade' },
     { name: 'heart', label: '' },
@@ -245,7 +145,7 @@ function VideoPlaceholder({ src }) {
   ];
 
   const iconMap = {
-    wina: require('../../assets/wina.png'),
+    win: require('../../assets/win.png'),
     buy: require('../../assets/buy.png'),
     trade: require('../../assets/trade.png'),
     heart: require('../../assets/heart.png'),
@@ -260,8 +160,15 @@ function VideoPlaceholder({ src }) {
     }
   };
 
+  const formatTime = (millis) => {
+    const totalSeconds = Math.floor(millis / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  };
+
   return (
-    <View style={styles.feedItem}>
+    <View style={[styles.feedItem, { height: feedItemHeight }]}>
       <View style={styles.streamContent}>
         <Video
           ref={videoRef}
@@ -289,28 +196,38 @@ function VideoPlaceholder({ src }) {
           ))}
         </View>
 
-        {/* Progress Bar */}
-        <View style={styles.videoProgressContainer}>
-          <View
-            style={[
-              {
-                flex: status.durationMillis
-                  ? status.positionMillis / status.durationMillis
-                  : 0,
-                backgroundColor: '#fff',
-              },
-            ]}
-          />
+        {/* Bottom Controls */}
+        <View style={styles.bottomControlsContainer}>
+          <View style={styles.repostContainer}>
+            <TouchableOpacity style={styles.repostButtonHorizontal}>
+              <Image source={require('../../assets/repost.png')} style={styles.repostIconHorizontal} />
+              <Text style={styles.repostTextHorizontal}>Repost</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.videoTimelineContainer}>
+            <View style={styles.timelineBarWithIcon}>
+              <Image source={require('../../assets/v.png')} style={styles.timelineIcon} />
+              <View style={styles.timelineBackground}>
+                <View style={styles.timelineProgress} />
+              </View>
+            </View>
+            <View style={styles.timeRow}>
+              <Text style={styles.timeTextLeftBelowIcon}>{formatTime(status.positionMillis)}</Text>
+              <Text style={styles.timeTextRight}>{formatTime(status.durationMillis)}</Text>
+            </View>
+          </View>
         </View>
+
+
 
         {/* Product Overlay */}
         <View style={styles.productOverlay}>
-          <Text style={styles.productTitle}>Apple Watch Series 9 (Pink)</Text>
+          <Text style={styles.productTitle}>Apple Watch Series 9 (Pink)</Text>
           <View style={styles.priceBadge}>
             <Text style={styles.priceText}>$132.78</Text>
           </View>
         </View>
-      </View>
+      </View> {/* --- HERE IS THE MISSING CLOSING TAG --- */}
 
       {/* Comments Modal */}
       <Modal
@@ -321,65 +238,79 @@ function VideoPlaceholder({ src }) {
       >
         <View style={styles.modalOverlay}>
           <View style={styles.sheetContainer}>
-            <Text style={styles.modalTitle}>Comments</Text>
+            <Image source={require('../../assets/rectangle.png')} style={styles.modalTopImage} />
+            <View style={styles.modalHeader}>
+              <Text style={styles.modalTitle}>Comments</Text>
+              <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.headerCloseButton}>
+                <Text style={styles.headerCloseText}>×</Text>
+              </TouchableOpacity>
+            </View>
+
             <ScrollView style={styles.commentList}>
               {dummyComments.map((text, idx) => (
-                <View key={idx} style={styles.commentRow}>
-                  <Image
-                    source={require('../../assets/profile.jpg')}
-                    style={styles.commentAvatar}
-                  />
-                  <View style={styles.commentContent}>
-                    <Text style={styles.commentAuthor}>Wade Warren</Text>
-                    <Text style={styles.commentText}>{text}</Text>
-                    {text.length > 10 && (
-                      <View style={styles.commentActions}>
-                        <Text style={styles.commentAction}>Like</Text>
-                        <Text style={styles.commentAction}>•</Text>
-                        <Text style={styles.commentAction}>Reply</Text>
-                      </View>
-                    )}
+                <View key={idx} style={styles.commentContainer}>
+                  <View style={styles.commentRow}>
+                    <Image
+                      source={require('../../assets/profile.jpg')}
+                      style={styles.commentAvatar}
+                    />
+                    <View style={styles.commentContent}>
+                      <Text style={styles.commentAuthor}>Wade Warren</Text>
+                      <Text style={styles.commentText}>{text}</Text>
+                    </View>
                   </View>
+
+                  {text.length > 10 && (
+                    <View style={styles.commentActionsUnder}>
+                      <Text style={styles.commentAction}>Like</Text>
+                      <Text style={styles.commentAction}>•</Text>
+                      <Text style={styles.commentAction}>Reply</Text>
+                    </View>
+                  )}
                 </View>
               ))}
             </ScrollView>
-            <View style={styles.messageInputRow}>
-              <TextInput
-                style={styles.textInput}
-                placeholder="Send a message"
-                placeholderTextColor="#888"
-                value={message}
-                onChangeText={setMessage}
-              />
-              <TouchableOpacity style={styles.sendButton} onPress={() => setMessage('')}>
-                <Text style={styles.sendText}>➤</Text>
+
+            <View style={styles.inputRowContainer}>
+              <View style={styles.messageInputBox}>
+                <TextInput
+                  style={styles.textInput}
+                  placeholder="Send a message"
+                  placeholderTextColor="#888"
+                  value={message}
+                  onChangeText={setMessage}
+                />
+              </View>
+
+              <TouchableOpacity
+                style={styles.sendButton}
+                onPress={() => setMessage('')}
+              >
+                <Image
+                  source={require('../../assets/Button.png')}
+                  style={{ width: 40, height: 40, alignSelf: 'flex-start', marginTop: 10 }}
+                />
               </TouchableOpacity>
             </View>
-            <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.closeBtn}>
-              <Text style={styles.closeText}>Close</Text>
-            </TouchableOpacity>
           </View>
         </View>
       </Modal>
     </View>
   );
 }
-
-
 function MixedPlaceholder({ items }) {
   const videoItem = items.find(i => i.kind === 'video');
   const imageItems = items.filter(i => i.kind === 'image');
+  const [modalVisible, setModalVisible] = useState(false);
+  const [message, setMessage] = useState('');
 
   const videoRef = useRef(null);
   const [status, setStatus] = useState({});
-  const [commentModalVisible, setCommentModalVisible] = useState(false);
-  const [message, setMessage] = useState('');
 
   const dummyComments = [
     "I wish I could just purchase this right now.",
     'Looks great! Where did you get it?',
     'Amazing product — totally adding to cart!',
-    'Does it come in other colors?',
   ];
 
   const togglePlayback = () => {
@@ -390,7 +321,7 @@ function MixedPlaceholder({ items }) {
     }
   };
   const actions = [
-    { name: 'wina', label: '' },
+    { name: 'win', label: '' },
     { name: 'buy' },
     { name: 'trade' },
     { name: 'heart', label: '' },
@@ -398,16 +329,18 @@ function MixedPlaceholder({ items }) {
   ];
 
   const iconMap = {
-    wina: require('../../assets/wina.png'),
+    win: require('../../assets/win.png'),
     buy: require('../../assets/buy.png'),
     trade: require('../../assets/trade.png'),
     heart: require('../../assets/heart.png'),
     comment: require('../../assets/comment.png'),
   };
+  
+  
 
   return (
-    <View style={styles.feedItem}>
-      <View style={{ width: '100%', aspectRatio: 9 / 16 }}>
+    <View style={[styles.feedItem, { height: feedItemHeight }]}>
+      <View style={{ width: '100%', height: '100%' }}>
   {/* Top half: Video */}
   <View style={{ flex: 1 }}>
     <Video
@@ -450,6 +383,16 @@ function MixedPlaceholder({ items }) {
             </TouchableOpacity>
           ))}
         </View>
+
+        <View style={styles.bottomControlsContainer}>
+          <View style={styles.repostContainer2}>
+            <TouchableOpacity style={styles.repostButtonHorizontal}>
+              <Image source={require('../../assets/Badge.png')} style={styles.repostIconHorizontal2} />
+            </TouchableOpacity>
+          </View>
+          
+        </View>
+        
       {/* Product overlay */}
       <View style={styles.productOverlay}>
         <Text style={styles.productTitle}>Apple Watch Series 9 (Pink)</Text>
@@ -459,51 +402,69 @@ function MixedPlaceholder({ items }) {
       </View>
 
       {/* Comment Modal — matching VideoPlaceholder style */}
-      <Modal
-        visible={commentModalVisible}
+            {/* Comments Modal */}
+            <Modal
+        visible={modalVisible}
         transparent
         animationType="slide"
-        onRequestClose={() => setCommentModalVisible(false)}
+        onRequestClose={() => setModalVisible(false)}
       >
         <View style={styles.modalOverlay}>
           <View style={styles.sheetContainer}>
-            <Text style={styles.modalTitle}>Comments</Text>
+            <Image source={require('../../assets/rectangle.png')} style={styles.modalTopImage} />
+            <View style={styles.modalHeader}>
+              <Text style={styles.modalTitle}>Comments</Text>
+              <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.headerCloseButton}>
+                <Text style={styles.headerCloseText}>×</Text>
+              </TouchableOpacity>
+            </View>
+
             <ScrollView style={styles.commentList}>
               {dummyComments.map((text, idx) => (
-                <View key={idx} style={styles.commentRow}>
-                  <Image
-                    source={require('../../assets/profile.jpg')}
-                    style={styles.commentAvatar}
-                  />
-                  <View style={styles.commentContent}>
-                    <Text style={styles.commentAuthor}>Wade Warren</Text>
-                    <Text style={styles.commentText}>{text}</Text>
-                    {text.length > 10 && (
-                      <View style={styles.commentActions}>
-                        <Text style={styles.commentAction}>Like</Text>
-                        <Text style={styles.commentAction}>•</Text>
-                        <Text style={styles.commentAction}>Reply</Text>
-                      </View>
-                    )}
+                <View key={idx} style={styles.commentContainer}>
+                  <View style={styles.commentRow}>
+                    <Image
+                      source={require('../../assets/profile.jpg')}
+                      style={styles.commentAvatar}
+                    />
+                    <View style={styles.commentContent}>
+                      <Text style={styles.commentAuthor}>Wade Warren</Text>
+                      <Text style={styles.commentText}>{text}</Text>
+                    </View>
                   </View>
+
+                  {text.length > 10 && (
+                    <View style={styles.commentActionsUnder}>
+                      <Text style={styles.commentAction}>Like</Text>
+                      <Text style={styles.commentAction}>•</Text>
+                      <Text style={styles.commentAction}>Reply</Text>
+                    </View>
+                  )}
                 </View>
               ))}
             </ScrollView>
-            <View style={styles.messageInputRow}>
-              <TextInput
-                style={styles.textInput}
-                placeholder="Send a message"
-                placeholderTextColor="#888"
-                value={message}
-                onChangeText={setMessage}
-              />
-              <TouchableOpacity style={styles.sendButton} onPress={() => setMessage('')}>
-                <Text style={styles.sendText}>➤</Text>
+
+            <View style={styles.inputRowContainer}>
+              <View style={styles.messageInputBox}>
+                <TextInput
+                  style={styles.textInput}
+                  placeholder="Send a message"
+                  placeholderTextColor="#888"
+                  value={message}
+                  onChangeText={setMessage}
+                />
+              </View>
+
+              <TouchableOpacity
+                style={styles.sendButton}
+                onPress={() => setMessage('')}
+              >
+                <Image
+                  source={require('../../assets/Button.png')}
+                  style={{ width: 40, height: 40, alignSelf: 'flex-start', marginTop: 10 }}
+                />
               </TouchableOpacity>
             </View>
-            <TouchableOpacity onPress={() => setCommentModalVisible(false)} style={styles.closeBtn}>
-              <Text style={styles.closeText}>Close</Text>
-            </TouchableOpacity>
           </View>
         </View>
       </Modal>
@@ -518,7 +479,7 @@ function CarouselPlaceholder({ items }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [message, setMessage] = useState('');
   const actions = [
-    { name: 'wina', label: '' },
+    { name: 'win', label: '' },
     { name: 'buy' },
     { name: 'trade' },
     { name: 'heart', label: '' },
@@ -526,7 +487,7 @@ function CarouselPlaceholder({ items }) {
   ];
 
   const iconMap = {
-    wina: require('../../assets/wina.png'),
+    win: require('../../assets/win.png'),
     buy: require('../../assets/buy.png'),
     trade: require('../../assets/trade.png'),
     heart: require('../../assets/heart.png'),
@@ -542,7 +503,7 @@ function CarouselPlaceholder({ items }) {
   ];
 
   return (
-    <View style={styles.feedItem}>
+    <View style={[styles.feedItem, { height: feedItemHeight }]}>
       <ScrollView
         horizontal
         pagingEnabled
@@ -555,7 +516,7 @@ function CarouselPlaceholder({ items }) {
         }}
       >
         {items.map((src, i) => (
-          <View key={i} style={{ width: Dimensions.get('window').width, aspectRatio: 9 / 16 }}>
+          <View key={i} style={{ width: Dimensions.get('window').width, height: '100%' }}>
             <Image
               source={src}
               style={{ width: '100%', height: '100%' }}
@@ -566,16 +527,19 @@ function CarouselPlaceholder({ items }) {
       </ScrollView>
       {/* Pagination Dots */}
       <View style={styles.carouselDots}>
-        {items.map((_, i) => (
-          <View
-            key={i}
-            style={[
-              styles.dot,
-              i === index ? styles.dotActive : null
-            ]}
-          />
-        ))}
-      </View>
+  {items.map((_, i) => {
+    console.log('Rendering dot:', i); // ADD THIS LINE
+    return (
+      <View
+        key={i}
+        style={[
+          styles.dot,
+          i === index ? styles.dotActive : null
+        ]}
+      />
+    );
+  })}
+</View>
 
       {/* Side icons */}
       <View style={styles.iconColumnMid}>
@@ -601,6 +565,15 @@ function CarouselPlaceholder({ items }) {
         </View>
       </View>
 
+      <View style={styles.bottomControlsContainer}>
+          <View style={styles.repostContainer2}>
+            <TouchableOpacity style={styles.repostButtonHorizontal}>
+              <Image source={require('../../assets/Badge.png')} style={styles.repostIconHorizontal2} />
+            </TouchableOpacity>
+          </View>
+          
+        </View>
+
       {/* Comment Modal */}
       <Modal
         visible={modalVisible}
@@ -610,43 +583,60 @@ function CarouselPlaceholder({ items }) {
       >
         <View style={styles.modalOverlay}>
           <View style={styles.sheetContainer}>
-            <Text style={styles.modalTitle}>Comments</Text>
+            <Image source={require('../../assets/rectangle.png')} style={styles.modalTopImage} />
+            <View style={styles.modalHeader}>
+              <Text style={styles.modalTitle}>Comments</Text>
+              <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.headerCloseButton}>
+                <Text style={styles.headerCloseText}>×</Text>
+              </TouchableOpacity>
+            </View>
+
             <ScrollView style={styles.commentList}>
               {dummyComments.map((text, idx) => (
-                <View key={idx} style={styles.commentRow}>
-                  <Image
-                    source={require('../../assets/profile.jpg')}
-                    style={styles.commentAvatar}
-                  />
-                  <View style={styles.commentContent}>
-                    <Text style={styles.commentAuthor}>Wade Warren</Text>
-                    <Text style={styles.commentText}>{text}</Text>
-                    {text.length > 10 && (
-                      <View style={styles.commentActions}>
-                        <Text style={styles.commentAction}>Like</Text>
-                        <Text style={styles.commentAction}>•</Text>
-                        <Text style={styles.commentAction}>Reply</Text>
-                      </View>
-                    )}
+                <View key={idx} style={styles.commentContainer}>
+                  <View style={styles.commentRow}>
+                    <Image
+                      source={require('../../assets/profile.jpg')}
+                      style={styles.commentAvatar}
+                    />
+                    <View style={styles.commentContent}>
+                      <Text style={styles.commentAuthor}>Wade Warren</Text>
+                      <Text style={styles.commentText}>{text}</Text>
+                    </View>
                   </View>
+
+                  {text.length > 10 && (
+                    <View style={styles.commentActionsUnder}>
+                      <Text style={styles.commentAction}>Like</Text>
+                      <Text style={styles.commentAction}>•</Text>
+                      <Text style={styles.commentAction}>Reply</Text>
+                    </View>
+                  )}
                 </View>
               ))}
             </ScrollView>
-            <View style={styles.messageInputRow}>
-              <TextInput
-                style={styles.textInput}
-                placeholder="Send a message"
-                placeholderTextColor="#888"
-                value={message}
-                onChangeText={setMessage}
-              />
-              <TouchableOpacity style={styles.sendButton} onPress={() => setMessage('')}>
-                <Text style={styles.sendText}>➤</Text>
+
+            <View style={styles.inputRowContainer}>
+              <View style={styles.messageInputBox}>
+                <TextInput
+                  style={styles.textInput}
+                  placeholder="Send a message"
+                  placeholderTextColor="#888"
+                  value={message}
+                  onChangeText={setMessage}
+                />
+              </View>
+
+              <TouchableOpacity
+                style={styles.sendButton}
+                onPress={() => setMessage('')}
+              >
+                <Image
+                  source={require('../../assets/Button.png')}
+                  style={{ width: 40, height: 40, alignSelf: 'flex-start', marginTop: 10 }}
+                />
               </TouchableOpacity>
             </View>
-            <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.closeBtn}>
-              <Text style={styles.closeText}>Close</Text>
-            </TouchableOpacity>
           </View>
         </View>
       </Modal>
@@ -655,13 +645,13 @@ function CarouselPlaceholder({ items }) {
 }
 
 
-export default function FollowingScreen() {
+export default function ForYou() {
   const navigate = useNavigate();
 
   const horizontalImages = Array.from({ length: 20 }, (_, i) => (
     <TouchableOpacity
       key={i}
-      onPress={() => navigate('/LiveOverlayScreen')}
+      onPress={() => navigate('/BusinessLive')}
       style={styles.horizontalImageWrapper}
     >
       <Image
@@ -673,9 +663,15 @@ export default function FollowingScreen() {
   ));
 
   const feedData = [
-    { type: 'video',    src: require('../../assets/placeholder1.mp4') },
     {
-      type: 'mixed',
+      type: 'carousel',
+      items: [
+        require('../../assets/f1.jpg'),
+        require('../../assets/placeholder4b.png'),
+        require('../../assets/placeholder4c.png'),
+      ],
+    },    
+      {type: 'mixed',
       items: [
         { kind: 'video', src: require('../../assets/placeholder2.mp4') },
         { kind: 'image', src: require('../../assets/placeholder2a.png') },
@@ -696,44 +692,141 @@ export default function FollowingScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView
-        contentContainerStyle={styles.contentContainer}
+      <FlatList
+        data={feedData}
+        keyExtractor={(_, i) => i.toString()}
+        ListHeaderComponent={() => (
+          <>
+            <Header />
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              style={styles.horizontalScrollContainer}
+            >
+              {horizontalImages}
+            </ScrollView>
+          </>
+        )}
+        renderItem={({ item }) => {
+          switch(item.type) {
+            case 'video':    return <VideoPlaceholder src={item.src} />;
+            case 'mixed':    return <MixedPlaceholder items={item.items} />;
+            case 'carousel': return <CarouselPlaceholder items={item.items} />;
+            default:         return null;
+          }
+        }}
+        pagingEnabled
+        decelerationRate="fast"
         showsVerticalScrollIndicator={false}
-      >
-        <Header />
-
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          style={styles.horizontalScrollContainer}
-        >
-          {horizontalImages}
-        </ScrollView>
-
-        {feedData.map((item, idx) => {
-  switch(item.type) {
-    case 'video':
-      return <VideoPlaceholder key={idx} src={item.src} />;
-    case 'mixed':
-      return <MixedPlaceholder key={idx} items={item.items} />;
-    case 'carousel':
-      return <CarouselPlaceholder key={idx} items={item.items} />;
-    default:
-      return null;
-  }
-})}
-
-      </ScrollView>
-
+        getItemLayout={(_, index) => ({
+          length: feedItemHeight + 24,
+          offset: (feedItemHeight + 24) * index,
+          index,
+        })}
+        contentContainerStyle={{ paddingBottom: bottomNavHeight }}
+      />
       <BottomNav />
     </SafeAreaView>
+  
   );
 }
 
 const styles = StyleSheet.create({
+  bottomControlsContainer: {
+    position: 'absolute',
+    bottom: 60, // Adjust as needed
+    left: 16,
+    right: 16,
+    zIndex: 1,
+  },
+  
+  repostContainer: {
+    alignItems: 'flex-start',
+    marginBottom: 45,
+  },
+  repostContainer2: {
+    alignItems: 'flex-start',
+    marginBottom: 85,
+  },
+  repostButtonHorizontal: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  repostIconHorizontal: {
+    width: 30,
+    height: 30,
+    tintColor: '#fff',
+    marginRight: 10,
+  },
+  repostIconHorizontal2 : {
+    width: 104,
+    height: 22,
+  },
+  repostTextHorizontal: {
+    color: '#fff',
+    fontSize: 17,
+  },
+  videoTimelineContainer: {
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  timelineBarWithIcon: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '95%',
+  },
+  timelineIcon: {
+    width: 20,
+    height: 20,
+    marginRight: 8,
+  },
+  timelineBackground: {
+    flex: 1,
+    height: 10,
+    backgroundColor: 'rgba(255,255,255,0.3)',
+    borderRadius: 2.5,
+    overflow: 'hidden',
+  },
+  timelineProgress: {
+    backgroundColor: '#fff',
+    height: '100%',
+    borderRadius: 2.5,
+    flex: status.durationMillis ? status.positionMillis / status.durationMillis : 0,
+  },
+  timeRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '95%',
+    marginTop: 4,
+  },
+  timeTextLeftBelowIcon: {
+    color: '#fff',
+    fontSize: 12,
+  },
+  timeTextRight: {
+    color: '#fff',
+    fontSize: 12,
+  },
+  commentContainer: {
+    marginBottom: 16,             // space between comments
+  },
+  commentRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+  },
+  commentActionsUnder: {
+    flexDirection: 'row',
+    marginTop: 1,
+    marginLeft: 52,              // avatar width (40) + marginRight (12)
+  },
+  commentAction: {
+    fontSize: 13,
+    color: '#888',
+    marginRight: 12,
+  },
   carouselDots: {
     position: 'absolute',
-    bottom: 12,
+    bottom: 90,
     alignSelf: 'center',
     flexDirection: 'row',
     gap: 6,
@@ -741,6 +834,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     paddingHorizontal: 10,
     paddingVertical: 6,
+    zIndex: 1000
   },
   
   dot: {
@@ -792,23 +886,41 @@ const styles = StyleSheet.create({
     width: '100%',
     flex: 1,
   },
-
-  // for CarouselPlaceholder
-  carouselDots: {
+inputRowContainer: {
     flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 4,
+    alignItems: 'right',
+    marginTop: 2, 
+    height: 67
   },
-  dot: {
-    width: 8, height: 8,
-    borderRadius: 4,
-    backgroundColor: '#888',
-    marginHorizontal: 4,
-  },
-  dotActive: {
-    backgroundColor: '#fff',
-  },
+// the graphic at the very top of the sheet
+modalTopImage: {
+  width: '60%',
+  height: 5,             // tweak this to control its visual height
+  resizeMode: 'contain',
+  alignSelf: 'center'
+},
 
+// row containing title + close‑button
+modalHeader: {
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  marginBottom: 12,
+},
+
+// tappable area around the “×”
+headerCloseButton: {
+  padding: 8,
+},
+
+// style for the close “×” symbol
+headerCloseText: {
+  fontSize: 27,
+  lineHeight: 24,
+  color: '#000000',       // match your other closeText
+},
+  // for CarouselPlaceholder
+ 
   feedItem: {
     marginVertical: 12,
     // remove any fixed height here
@@ -817,8 +929,7 @@ const styles = StyleSheet.create({
   streamContent: {
     width: '100%',
     // use aspectRatio or dynamic height as before:
-    aspectRatio: 9 / 16,
-
+height: '100%',
     // make this the positioning container:
     position: 'relative',
     overflow: 'hidden',
@@ -872,6 +983,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    height: 65
   },
   productTitle: {
     color: '#fff',
@@ -931,13 +1043,22 @@ const styles = StyleSheet.create({
   segmentTextActive: { color: '#000', fontWeight: '600' },
 
   horizontalScrollContainer: {
-    height: 98, marginTop: 8, paddingHorizontal: 16, marginBottom: 29
+    marginTop: 10,
+    height: 120,
+    marginBottom: 6,
+    marginLeft: 24,
+    marginRight: 24
+
   },
-  horizontalImageWrapper: {
-   width: 98, height: 98, 
-   marginRight: 12, borderRadius: 30,
+  horizontalContentContainer: {
+    flexDirection: 'row',
+    //alignItems: 'center',
   },
-  horizontalImage: { width: 98, height: 98 },
+  horizontalImage: {
+    width: 85,
+    height: 85,
+    marginRight: 6,
+  },
 
   feedItem: { marginVertical: 12 },
 
@@ -992,8 +1113,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   sheetContainer: {
-    height: height * 0.5,
-    width: '100%',
+    maxHeight: windowHeight * 0.8, // optional cap if you still want a ceiling
+    flexShrink: 1,    width: '100%',
     backgroundColor: '#fff',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -1001,9 +1122,9 @@ const styles = StyleSheet.create({
     paddingTop: 16,
   },
 
-  modalTitle: { fontSize: 18, fontWeight: '600', marginBottom: 12 },
-  commentList: { flexGrow: 0, maxHeight: height * 0.25, marginBottom: 12 },
-  commentRow: { flexDirection: 'row', marginBottom: 16 },
+  modalTitle: { fontSize: 20, fontWeight: '1500', marginBottom: 7, padding: 8, marginTop: 30 },
+  commentList: { maxHeight: windowHeight * 0.9, marginBottom: 12 },
+  commentRow: { flexDirection: 'row', marginBottom: 10 },
   commentAvatar: { width: 36, height: 36, borderRadius: 18, marginRight: 10 },
   commentContent: {
     flex: 1,
@@ -1016,51 +1137,28 @@ const styles = StyleSheet.create({
   commentActions: { flexDirection: 'row', marginTop: 6 },
   commentAction: { marginRight: 10, color: '#888', fontSize: 13 },
 
-  messageInputRow: {
-    flexDirection: 'row',
+  messageInputBox: {
+    flex: 1,                  // takes up all remaining width
+    flexDirection: 'row',     // (optional) if you want any icon inside
     alignItems: 'center',
-    borderWidth: 1,
+    borderWidth: 2,
     borderColor: '#ddd',
-    borderRadius: 12,
-    paddingHorizontal: 12,
-    paddingVertical: 8,
+    borderRadius: 8,
+    paddingHorizontal: 8,
+    marginTop: 22,
     backgroundColor: '#fff',
-    marginBottom: 12,
+    height: 36
   },
   textInput: { flex: 1, fontSize: 15, color: '#000' },
   sendButton: {
     marginLeft: 10,
-    backgroundColor: '#4A6CF7',
     padding: 10,
     borderRadius: 50,
   },
   sendText: { color: '#fff', fontSize: 16 },
-  closeBtn: { alignSelf: 'flex-end' },
-  closeText: { color: '#007AFF' },
+  
 
-  // bottom tabs
-  tabBarContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    height: 60,
-    backgroundColor: '#fff',
-    borderTopWidth: 1,
-    borderTopColor: '#eee',
-  },
-  tabButton: { alignItems: 'center' },
-  tabIcon: { width: 35, height: 35 },
-  centralButton: {
-    backgroundColor: '#4E4CF5',
-    padding: 14,
-    borderRadius: 30,
-    marginBottom: 20,
-  },
-  centralIcon: { width: 24, height: 24, tintColor: '#fff' },
+  
 });
 
 

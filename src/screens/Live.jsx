@@ -27,11 +27,12 @@ const LiveOverlayScreen = () => {
     >
       <View style={styles.topBar}>
         <View style={styles.leftTop}>
-          <Image source={require('../../assets/profile.jpg')} style={styles.avatar} />
+          <Image source={require('../../assets/logo.png')} style={styles.avatar} />
           <Text style={styles.username}>Swiftrole,s Dhive</Text>
-          <View style={styles.liveBadge}><Text style={styles.liveText}>+FOLLOW</Text></View>
-          <View style={styles.viewerCount}><Text style={styles.viewerText}>10</Text></View>
+          
         </View>
+        <Image source={require('../../assets/follow.png')} style={{marginLeft: 30}} />
+          <Image source={require('../../assets/view.png')} style={{}} />
         <TouchableOpacity onPress={() => setModalVisible(true)}>
           <Text style={styles.closeButton}>✕</Text>
         </TouchableOpacity>
@@ -62,7 +63,7 @@ const LiveOverlayScreen = () => {
               style={styles.modalClose}
               onPress={() => setModalVisible(false)}
             >
-              <Text style={styles.modalCloseText}>✕</Text>
+              <Image source={require('../../assets/close.png')} />
             </TouchableOpacity>
             <Text style={styles.modalTitle}>End Live Video?</Text>
             <Text style={styles.modalSubtitle}>
@@ -74,8 +75,7 @@ const LiveOverlayScreen = () => {
               onPress={handleEndLive}
             >
               <View style={styles.modalItem}>
-                <View style={[styles.iconCircle, { backgroundColor: '#F34E4E' }]} />
-                <Text style={styles.endText}>End Live Now</Text>
+                <Image source={require('../../assets/end.png')} />
               </View>
             </TouchableOpacity>
 
@@ -84,8 +84,8 @@ const LiveOverlayScreen = () => {
               onPress={() => setModalVisible(false)}
             >
               <View style={styles.modalItem}>
-                <View style={[styles.iconCircle, { backgroundColor: '#000' }]} />
-                <Text style={styles.cancelText}>Cancel</Text>
+                             <Image source={require('../../assets/livec.png')} />
+
               </View>
             </TouchableOpacity>
           </View>
@@ -107,9 +107,10 @@ const styles = StyleSheet.create({
   modalBox: {
     backgroundColor: '#fff',
     borderRadius: 16,
-    padding: 24,
+    padding: 30,
     width: '100%',
     maxWidth: 320,
+    height: '50%',
     alignItems: 'center',
     position: 'relative',
   },
@@ -152,19 +153,13 @@ const styles = StyleSheet.create({
     borderTopColor: '#eee',
     width: '100%',
   },
-  endText: {
-    color: '#F34E4E',
-    fontWeight: 'bold',
-  },
+ 
   cancelButton: {
     borderTopWidth: 1,
     borderTopColor: '#eee',
     width: '100%',
   },
-  cancelText: {
-    color: '#000',
-    fontWeight: '500',
-  },
+  
   
   background: {
     flex: 1,
