@@ -1086,7 +1086,7 @@ height: '100%',
     alignItems: 'center',
     marginBottom: 16,
   },
-  iconMid: { width: 60, height: 60, resizeMode: 'contain' },
+  iconMid: { width: 45, height: 45, resizeMode: 'contain' },
   iconLabelMid: { marginTop: 4, fontSize: 12, color: '#fff' },
 
   productFooter: {
