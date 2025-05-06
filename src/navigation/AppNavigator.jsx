@@ -25,7 +25,9 @@ import TransactionHistory from "../screens/transactionHistory";
 import ExplorePage from "../screens/explore";
 import Search from "../screens/explore/Search";
 import FilterPage from "../screens/explore/Filter";
-import ProductDetails from "../screens/explore/ProductDetails";
+import ProductDetails from "../screens/product-details";
+import DeliveryContact from "../screens/product-details/DeliveryContact";
+import TradeProducts from "../screens/product-details/TradeProducts";
 
 export default function AppNavigator() {
   return (
@@ -53,7 +55,9 @@ export default function AppNavigator() {
       <Route path="/explore" element={<ExplorePage />} />
       <Route path="/search" element={<Search />} />
       <Route path="/filter" element={<FilterPage />} />
-      <Route path="/product-details" element={<ProductDetails />} />
+      <Route path="/product-details/:status" element={<ProductDetails />} />
+      <Route path="/delivery-contact" element={<DeliveryContact />} />
+      <Route path="/trade-products" element={<TradeProducts />} />
     </Routes>
   );
 }

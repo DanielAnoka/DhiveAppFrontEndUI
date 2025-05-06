@@ -16,8 +16,10 @@ import Confetti from "../../assets/confetti.png";
 import Filter from "../../assets/filter.png";
 import Item from "../../assets/item.png";
 import Product from "../../assets/product.png";
+import AU from "../../assets/AU.png";
 
 export const Images = {
+  AU,
   Logo,
   Slider,
   Auth,

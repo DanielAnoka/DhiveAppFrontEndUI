@@ -13,9 +13,11 @@ import PrimaryButton from "../../components/PrimaryButton";
 import SecondaryButton from "../../components/SecondaryButton";
 import ImportOptions from "./ImportOptions";
 import { Images } from "../../constants/image";
+import { useNavigate } from "react-router-native";
 
 const AddExistingWallet = () => {
   const [showImportOptions, setShowImportOptions] = useState(false);
+  const navigate = useNavigate();
   return (
     <SafeAreaView
       style={{
@@ -29,7 +31,7 @@ const AddExistingWallet = () => {
       <View style={styles.headerContainer}>
         <TouchableOpacity
           style={styles.backButton}
-          onPress={() => console.log("hello")}
+          onPress={() => navigate(-1)}
         >
           <View style={styles.circle}>
             <Ionicons name="chevron-back" size={20} color="#000" />

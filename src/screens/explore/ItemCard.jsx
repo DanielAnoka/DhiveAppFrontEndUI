@@ -8,7 +8,7 @@ const ItemCard = ({ name, price, imgUrl, company }) => {
   const navigate = useNavigate();
   return (
     <TouchableOpacity
-      onPress={() => navigate("/product-details")}
+      onPress={() => navigate("/product-details/home")}
       className="flex-1 m-2.5 p-2.5"
     >
       <Image

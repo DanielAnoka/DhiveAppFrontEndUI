@@ -24,8 +24,10 @@ import Location from "../../assets/location.png";
 import Sort from "../../assets/sort.png";
 import Verify from "../../assets/verify.png";
 import Trade from "../../assets/trade.png";
+import Lock2 from "../../assets/lock2.png";
 
 export const Icons = {
+  Lock2,
   DollarSign,
   Trade,
   Category,
