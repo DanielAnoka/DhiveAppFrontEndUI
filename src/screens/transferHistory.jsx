@@ -60,12 +60,11 @@ const TransactionHistory = ({ balance = "392.45", transactions = [] }) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.headerRow}>
-                <TouchableOpacity style={styles.iconCircle} onPress={handleBack}>
-                  <Icon name="chevron-back" size={20} color="#000" />
-                </TouchableOpacity>
-                
-                <View style={{ width: 32 }} />
-              </View>
+        <TouchableOpacity style={styles.iconCircle} onPress={handleBack}>
+          <Icon name="chevron-back" size={20} color="#000" />
+        </TouchableOpacity>
+        <View style={{ width: 32 }} />
+      </View>
       <View style={styles.balanceContainer}>
         <Image
           source={Images.Usdt}

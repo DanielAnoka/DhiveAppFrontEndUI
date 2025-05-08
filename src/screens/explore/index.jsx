@@ -123,9 +123,7 @@ const ExplorePage = () => {
         contentContainerStyle={styles.row}
         numColumns={2}
       />
-      <View style={styles.bottom}>
-        <BottomNav />
-      </View>
+     
     </SafeAreaView>
   );
 };

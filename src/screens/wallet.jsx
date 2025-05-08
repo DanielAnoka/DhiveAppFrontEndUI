@@ -22,9 +22,7 @@ export default function App() {
         <AssetsList />
       </View>
 
-      <View style={styles.bottom}>
-        <BottomNav />
-      </View>
+
     </SafeAreaView>
   );
 }

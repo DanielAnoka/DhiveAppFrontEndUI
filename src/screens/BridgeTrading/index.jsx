@@ -1,5 +1,4 @@
 import {
-    StyleSheet,
     Text,
     View,
     SafeAreaView,
@@ -12,7 +11,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigate } from 'react-router-native';
 import { Icons } from '../../constants/icon';
 import CustomButton from '../../components/Button';
-import Trading from "./trading";
+import Trading from './trading';
 
 const chains = [
     { label: 'Dhive Network', icon: Icons.Trading },
@@ -34,11 +33,11 @@ const BridgeTrading = () => {
     const [selectedToken, setSelectedToken] = useState(null);
     const [showDropdown, setShowDropdown] = useState(false);
     const [showTokenDropdown, setShowTokenDropdown] = useState(false);
-    const [showNewScreen, setShowNewScreen] = useState(false); // State for new screen
+    const [showNewScreen, setShowNewScreen] = useState(false);
 
     const handleSelectChain = (item) => {
         setSelectedChain(item);
-        setSelectedToken(null); // Reset token when chain changes
+        setSelectedToken(null);
         setShowDropdown(false);
     };
 
@@ -48,44 +47,36 @@ const BridgeTrading = () => {
     };
 
     const handleButtonPress = () => {
-        // Handle the action after selecting a token
         console.log('Button Pressed');
-        setShowNewScreen(true); // Show the new screen when button is pressed
+        setShowNewScreen(true);
     };
 
     return (
-        <SafeAreaView style={styles.safeArea}>
-            <View style={styles.container}>
+        <SafeAreaView className="flex-1 bg-white">
+            <View className="flex-1 p-5 bg-white">
                 {/* Header */}
-                <View style={styles.headerRow}>
-                    <TouchableOpacity style={styles.iconCircle} onPress={handleBack}>
+                <View className="flex-row items-center justify-between h-14 mb-2.5">
+                    <TouchableOpacity className="w-8 h-8 rounded-full bg-gray-200 justify-center items-center mt-2.5" onPress={handleBack}>
                         <Icon name="chevron-back" size={20} color="#000" />
                     </TouchableOpacity>
-                    <Text style={styles.headerText}>Bridge Trading</Text>
-                    <View style={{ width: 32 }} />
+                    <Text className="text-base font-medium text-black">Bridge Trading</Text>
+                    <View className="w-8" />
                 </View>
 
-                {/* Conditionally render content */}
                 {!showNewScreen ? (
                     <>
-                        {/* Step 1: Select Chain */}
-                        <Text style={styles.label}>Select Chain</Text>
+                        <Text className="text-sm font-medium text-black mt-5 mb-1.5">Select Chain</Text>
                         <TouchableOpacity
-                            style={styles.dropdownButton}
+                            className="w-full h-12 rounded-xl border border-gray-200 bg-white justify-center px-2.5"
                             onPress={() => setShowDropdown(!showDropdown)}
                             disabled={selectedChain !== null}
                         >
-                            <View style={styles.dropdownContent}>
+                            <View className="flex-row items-center">
                                 <Image
                                     source={selectedChain?.icon || Icons.Trading}
-                                    style={styles.iconImage}
+                                    className="w-5 h-5"
                                 />
-                                <Text
-                                    style={[
-                                        styles.dropdownText,
-                                        !selectedChain && { color: '#717680' },
-                                    ]}
-                                >
+                                <Text className={`ml-2.5 text-sm ${!selectedChain ? 'text-gray-500' : 'text-black'}`}>
                                     {selectedChain?.label ?? 'Select Network to Bridge From'}
                                 </Text>
                                 <Icon
@@ -97,19 +88,18 @@ const BridgeTrading = () => {
                             </View>
                         </TouchableOpacity>
 
-                        {/* Dropdown List for Chains */}
                         {showDropdown && !selectedChain && (
-                            <View style={styles.dropdownList}>
+                            <View className="border border-gray-200 rounded-xl mt-1.5 bg-white shadow">
                                 <FlatList
                                     data={chains}
                                     keyExtractor={(item, index) => index.toString()}
                                     renderItem={({ item }) => (
                                         <TouchableOpacity
-                                            style={styles.dropdownItem}
+                                            className="flex-row items-center py-2.5 px-2.5"
                                             onPress={() => handleSelectChain(item)}
                                         >
-                                            <Image source={item.icon} style={styles.iconImage} />
-                                            <Text style={styles.dropdownText}>{item.label}</Text>
+                                            <Image source={item.icon} className="w-5 h-5" />
+                                            <Text className="ml-2.5 text-sm text-black">{item.label}</Text>
                                         </TouchableOpacity>
                                     )}
                                 />
@@ -118,26 +108,20 @@ const BridgeTrading = () => {
 
                         {selectedChain && (
                             <>
-                                <Text style={styles.label}>Select Token</Text>
+                                <Text className="text-sm font-medium text-black mt-5 mb-1.5">Select Token</Text>
                                 <TouchableOpacity
-                                    style={styles.dropdownButton}
+                                    className="w-full h-12 rounded-xl border border-gray-200 bg-white justify-center px-2.5"
                                     onPress={() => setShowTokenDropdown(!showTokenDropdown)}
                                     disabled={selectedToken !== null}
                                 >
-                                    <View style={styles.dropdownContent}>
+                                    <View className="flex-row items-center">
                                         <Image
                                             source={selectedToken?.icon || Icons.Trading}
-                                            style={styles.iconImage}
+                                            className="w-5 h-5"
                                         />
-                                        <Text
-                                            style={[
-                                                styles.dropdownText,
-                                                !selectedToken && { color: '#717680' },
-                                            ]}
-                                        >
+                                        <Text className={`ml-2.5 text-sm ${!selectedToken ? 'text-gray-500' : 'text-black'}`}>
                                             {selectedToken?.label ?? 'Select Token to Bridge'}
                                         </Text>
-
                                         <Icon
                                             name={showTokenDropdown ? 'chevron-up' : 'chevron-down'}
                                             size={16}
@@ -147,19 +131,18 @@ const BridgeTrading = () => {
                                     </View>
                                 </TouchableOpacity>
 
-                                {/* Dropdown List for Tokens */}
                                 {showTokenDropdown && !selectedToken && (
-                                    <View style={styles.dropdownList}>
+                                    <View className="border border-gray-200 rounded-xl mt-1.5 bg-white shadow">
                                         <FlatList
                                             data={tokens}
                                             keyExtractor={(item, index) => index.toString()}
                                             renderItem={({ item }) => (
                                                 <TouchableOpacity
-                                                    style={styles.dropdownItem}
+                                                    className="flex-row items-center py-2.5 px-2.5"
                                                     onPress={() => handleSelectToken(item)}
                                                 >
-                                                    <Image source={item.icon} style={styles.iconImage} />
-                                                    <Text style={styles.dropdownText}>{item.label}</Text>
+                                                    <Image source={item.icon} className="w-5 h-5" />
+                                                    <Text className="ml-2.5 text-sm text-black">{item.label}</Text>
                                                 </TouchableOpacity>
                                             )}
                                         />
@@ -168,13 +151,15 @@ const BridgeTrading = () => {
                             </>
                         )}
 
-                        {/* Step 3: Continue Button (Only visible after Token selection) */}
                         {selectedToken && (
-                            <CustomButton text="Continue" onPress={handleButtonPress} style={styles.button} />
+                            <CustomButton
+                                text="Continue"
+                                onPress={handleButtonPress}
+                                style="absolute bottom-[50px] left-5 right-5 h-12 rounded-xl justify-center items-center"
+                            />
                         )}
                     </>
                 ) : (
-
                     <Trading />
                 )}
             </View>
@@ -183,96 +168,3 @@ const BridgeTrading = () => {
 };
 
 export default BridgeTrading;
-
-const styles = StyleSheet.create({
-    safeArea: {
-        flex: 1,
-        backgroundColor: '#fff',
-    },
-    container: {
-        flex: 1,
-        padding: 20,
-        backgroundColor: '#fff',
-    },
-    headerRow: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        height: 56,
-        marginBottom: 10,
-    },
-    iconCircle: {
-        width: 32,
-        height: 32,
-        borderRadius: 16,
-        backgroundColor: '#eee',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 10,
-    },
-    headerText: {
-        fontSize: 16,
-        fontWeight: '500',
-        color: '#00011B',
-    },
-    label: {
-        fontSize: 14,
-        fontWeight: '500',
-        marginTop: 20,
-        marginBottom: 5,
-        color: '#00011B',
-    },
-    dropdownButton: {
-        width: '100%',
-        height: 50,
-        borderRadius: 12,
-        borderWidth: 1,
-        borderColor: '#E5E7EB',
-        backgroundColor: '#fff',
-        justifyContent: 'center',
-        paddingHorizontal: 10,
-    },
-    dropdownContent: {
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
-    dropdownText: {
-        marginLeft: 10,
-        color: '#000',
-        fontSize: 14,
-    },
-    iconImage: {
-        width: 20,
-        height: 20,
-        resizeMode: 'contain',
-    },
-    dropdownList: {
-        borderWidth: 1,
-        borderColor: '#E5E7EB',
-        borderRadius: 12,
-        marginTop: 5,
-        backgroundColor: '#fff',
-        elevation: 3,
-    },
-    dropdownItem: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        paddingVertical: 10,
-        paddingHorizontal: 10,
-    },
-    button: {
-        position: 'absolute',
-        bottom: 50,
-        left: 20,
-        right: 20,
-        height: 50,
-        borderRadius: 12,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    buttonText: {
-        color: '#fff',
-        fontSize: 16,
-        fontWeight: '500',
-    },
-});

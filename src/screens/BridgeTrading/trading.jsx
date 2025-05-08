@@ -11,7 +11,7 @@ import {
     Keyboard,
     Alert,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, { useState,useRef } from 'react';
 import { Icons } from '../../constants/icon';
 import Icon from 'react-native-vector-icons/Ionicons';
 import CustomButton from '../../components/Button';
