@@ -3,8 +3,12 @@ import HeaderSection from "../components/header";
 import ActionButtons from "../components/ActionButtons";
 import AssetsList from "../components/AssetsList";
 import BottomNav from "../components/BottomNav";
+import BottomModal from "../components/BottomModal";
+import { useState } from "react";
+import SelectOption from "./p2p/SelectOption";
 
 export default function App() {
+  const [openModal, setOpenModal] = useState(false);
   return (
     <SafeAreaView style={styles.container}>
       {/* StatusBar Customization */}
@@ -15,14 +19,20 @@ export default function App() {
       </View>
 
       <View style={styles.floatingActions}>
-        <ActionButtons />
+        <ActionButtons onP2PClick={() => setOpenModal(true)} />
       </View>
 
       <View style={styles.panel}>
         <AssetsList />
       </View>
-
-
+      <BottomModal
+        visible={openModal}
+        onClose={() => setOpenModal((prev) => !prev)}
+        title={"Select An Option"}
+      >
+        {/* <Text>Hello</Text> */}
+        <SelectOption />
+      </BottomModal>
     </SafeAreaView>
   );
 }

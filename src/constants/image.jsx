@@ -41,9 +41,12 @@ import Modal1 from "../../assets/modal1.jpg";
 import Modal2 from "../../assets/modal2.jpg";
 import Modal3 from "../../assets/modal3.jpg";
 import Modal4 from "../../assets/modal4.jpg";
-
+import Avatar1 from "../../assets/avatar1.png";
+import Avatar2 from "../../assets/avatar2.png";
 
 export const Images = {
+  Avatar1,
+  Avatar2,
   Gradient,
   Review1,
   Review2,
@@ -66,7 +69,8 @@ export const Images = {
   Confetti,
   Filter,
   Item,
-  Empty,PadLock,
+  Empty,
+  PadLock,
   Post1,
   Post2,
   Post3,

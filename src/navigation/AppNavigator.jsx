@@ -109,6 +109,9 @@ import ProductDetails from "../screens/product-details";
 import DeliveryContact from "../screens/product-details/DeliveryContact";
 import TradeProducts from "../screens/trade-products";
 import ReviewPage from "../screens/trade-products/Review";
+import App from "../screens/wallet";
+import P2PTrading from "../screens/p2p/P2PTrading";
+import BuyCoin from "../screens/p2p/BuyCoin";
 
 export default function AppNavigator() {
   return (
@@ -206,13 +209,16 @@ export default function AppNavigator() {
       />
 
       {/* <Route path="/" element={<CreateTokenForm />} /> */}
-      <Route path="/" element={<ExplorePage />} />
+      {/* <Route path="/" element={<ExplorePage />} />
       <Route path="/search" element={<Search />} />
       <Route path="/filter" element={<FilterPage />} />
       <Route path="/product-details/:status" element={<ProductDetails />} />
       <Route path="/delivery-contact" element={<DeliveryContact />} />
       <Route path="/trade-products" element={<TradeProducts />} />
-      <Route path="/review" element={<ReviewPage />} />
+      <Route path="/review" element={<ReviewPage />} /> */}
+      <Route path="/" element={<App />} />
+      <Route path="/p2p-trading/:status" element={<P2PTrading />} />
+      <Route path="/buy-coin" element={<BuyCoin />} />
     </Routes>
   );
 }
