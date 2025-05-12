@@ -27,7 +27,8 @@ import Search from "../screens/explore/Search";
 import FilterPage from "../screens/explore/Filter";
 import ProductDetails from "../screens/product-details";
 import DeliveryContact from "../screens/product-details/DeliveryContact";
-import TradeProducts from "../screens/product-details/TradeProducts";
+import TradeProducts from "../screens/trade-products";
+import ReviewPage from "../screens/trade-products/Review";
 
 export default function AppNavigator() {
   return (
@@ -43,7 +44,7 @@ export default function AppNavigator() {
       <Route path="/password" element={<CreatePassword />} />
       <Route path="/pin" element={<Pin />} />
       <Route path="/area" element={<AreaOfInteret />} /> */}
-      <Route path="/" element={<Wallet />} />
+      {/* <Route path="/" element={<Wallet />} />
       <Route path="/token" element={<ManageToken />} />
       <Route path="/import" element={<ImportCryptoScreen />} />
       <Route path="/send" element={<Send />} />
@@ -51,13 +52,15 @@ export default function AppNavigator() {
       <Route path="receiveToken" element={<ReceiveToken />} />
       <Route path="/sendToken" element={<SendToken />} />
       <Route path="/tf" element={<Tf />} />
-      <Route path="/transaction" element={<TransactionHistory />} />
-      <Route path="/explore" element={<ExplorePage />} />
+      <Route path="/transaction" element={<TransactionHistory />} /> */}
+      {/* <Route path="/explore" element={<ExplorePage />} /> */}
+      <Route path="/" element={<ExplorePage />} />
       <Route path="/search" element={<Search />} />
       <Route path="/filter" element={<FilterPage />} />
       <Route path="/product-details/:status" element={<ProductDetails />} />
       <Route path="/delivery-contact" element={<DeliveryContact />} />
       <Route path="/trade-products" element={<TradeProducts />} />
+      <Route path="/review" element={<ReviewPage />} />
     </Routes>
   );
 }

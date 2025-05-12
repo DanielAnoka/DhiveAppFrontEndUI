@@ -35,7 +35,7 @@ const ProductDetails = () => {
     },
   ];
 
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { status } = useParams();
   const [phase, setPhase] = useState(1);
@@ -277,7 +277,13 @@ const ProductDetails = () => {
                 </Text>
                 <View className="flex-row justify-between px-5 mt-5">
                   <Text className="text-primary">View All 78 Reviews</Text>
-                  <Ionicons name="chevron-forward" size={20} color="#444CE7" />
+                  <TouchableOpacity onPress={() => navigate("/review")}>
+                    <Ionicons
+                      name="chevron-forward"
+                      size={20}
+                      color="#444CE7"
+                    />
+                  </TouchableOpacity>
                 </View>
                 <View className="mt-5">
                   <View className="flex-row">

@@ -17,8 +17,16 @@ import Filter from "../../assets/filter.png";
 import Item from "../../assets/item.png";
 import Product from "../../assets/product.png";
 import AU from "../../assets/AU.png";
+import Review1 from "../../assets/review1.png";
+import Review2 from "../../assets/review2.png";
+import Review3 from "../../assets/review3.png";
+import Gradient from "../../assets/gradient.png";
 
 export const Images = {
+  Gradient,
+  Review1,
+  Review2,
+  Review3,
   AU,
   Logo,
   Slider,

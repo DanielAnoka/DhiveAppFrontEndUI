@@ -5,15 +5,15 @@ import {
   TouchableWithoutFeedback,
   StyleSheet,
   TouchableOpacity,
-  Keyboard,
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import PaymentPin from "./PaymentPin";
-import TransactionDetails from "./TransactionDetails";
-import SuccessPage from "./SuccessPage";
-import OrderDetails from "./OrderDetails";
+import PaymentPin from "../product-details/PaymentPin";
+import SuccessPage from "../product-details/SuccessPage";
+import ConfirmTransaction from "./ConfirmTransaction";
+import Details from "./Details";
+import FilterProducts from "./FilterProducts";
 
-const TransactionModal = ({ visible, onClose, phase, setPhase }) => {
+const TradeModal = ({ visible, onClose, phase, setPhase }) => {
   const GetPage = ({ phase }) => {
     switch (phase) {
       case "payment":
@@ -22,21 +22,23 @@ const TransactionModal = ({ visible, onClose, phase, setPhase }) => {
       case "success":
         return (
           <SuccessPage
-            headText="Successful"
-            subText1={"You have successfully purchased"}
-            subText2={
-              "Apple Watch Series 9 (Pink), from Next-Gen Electronics, You can always check your Order page to revisit this product again."
+            headText="3,584,234,566.899 NGE"
+            subText1={
+              "Please wait while swapped your asset to Next-Gen Electronics"
             }
+            subText2={"Coin (NGE)"}
             onButton1Click={() => setPhase("view-order")}
-            button1Text={"View Your Order"}
-            button2Text={"Message The Business"}
+            button1Text={"View Transaction Summary"}
+            button2Text={"Back Home"}
           />
         );
       case "view-order":
-        return <OrderDetails />;
+        return <Details onClick={onClose} />;
+      case "filter":
+        return <FilterProducts />;
 
       default:
-        return <TransactionDetails />;
+        return <ConfirmTransaction onClick={() => setPhase("payment")} />;
     }
   };
   return (
@@ -44,8 +46,8 @@ const TransactionModal = ({ visible, onClose, phase, setPhase }) => {
       <TouchableWithoutFeedback onPress={onClose}>
         <View style={styles.overlay} />
       </TouchableWithoutFeedback>
-      <View style={[styles.bottomSheet, { padding: 10 }]}>
-        <TouchableOpacity className="absolute right-3 top-7" onPress={onClose}>
+      <View style={[styles.bottomSheet, { padding: 10, paddingTop: 40 }]}>
+        <TouchableOpacity className="absolute right-3 top-12" onPress={onClose}>
           <View className="border bg-[#00011B0A] p-1 rounded-full">
             <Ionicons name="close" size={20} color="#000" />
           </View>
@@ -76,4 +78,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TransactionModal;
+export default TradeModal;

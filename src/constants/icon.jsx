@@ -25,8 +25,10 @@ import Sort from "../../assets/sort.png";
 import Verify from "../../assets/verify.png";
 import Trade from "../../assets/trade.png";
 import Lock2 from "../../assets/lock2.png";
+import Ethereum from "../../assets/ethereum.png";
 
 export const Icons = {
+  Ethereum,
   Lock2,
   DollarSign,
   Trade,

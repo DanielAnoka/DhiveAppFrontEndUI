@@ -33,7 +33,10 @@ const PrivateKey = () => {
                 // onChangeText={(text) => setText(text)}
                 placeholder="Solana"
               /> */}
-              <Dropdown />
+
+              <Dropdown
+                options={[{ value: "Solana" }, { value: "Ethereum" }]}
+              />
               <View
                 style={{
                   marginRight: 30,

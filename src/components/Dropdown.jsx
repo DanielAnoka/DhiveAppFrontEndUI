@@ -8,10 +8,9 @@ import {
   FlatList,
 } from "react-native";
 
-const Dropdown = () => {
+const Dropdown = ({ options }) => {
   const [selectedValue, setSelectedValue] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
-  const options = [{ value: "Solana" }, { value: "Ethereum" }];
 
   const handleSelect = (item) => {
     setSelectedValue(item.value);
@@ -25,7 +24,7 @@ const Dropdown = () => {
           <Text style={{ color: "#252B37" }}>
             {selectedValue
               ? options.find((option) => option.value === selectedValue).value
-              : "Solana"}
+              : options[0].value}
           </Text>
         </View>
       </TouchableOpacity>
@@ -49,9 +48,6 @@ const Dropdown = () => {
 };
 
 const styles = StyleSheet.create({
-  dropdownButton: {
-    marginRight: 30,
-  },
   modalOverlay: {
     flex: 1,
     justifyContent: "center",
