@@ -64,7 +64,7 @@ export default function ProfileScreen() {
           <Icon name="chevron-forward" size={18} color="#999" />
         </TouchableOpacity>
 
-        <TouchableOpacity className="mt-4 px-3 py-2 bg-green-100 rounded-full self-start">
+        <TouchableOpacity className="mt-4 px-3 py-2 bg-green-100 rounded-full self-start" onPress={() => navigate('/business')}>
           <Text className="text-green-700 text-xs font-medium">
             Switch to business account →
           </Text>

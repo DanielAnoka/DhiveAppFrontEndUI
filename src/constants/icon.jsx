@@ -35,6 +35,7 @@ import Tab1 from "../../assets/tab1.png";
 import Tab2 from "../../assets/tab2.png";
 import Tab3 from "../../assets/tab3.png";
 import Hill from "../../assets/hill.png";
+import Hill2 from "../../assets/Hill2.png";
 
 export const Icons = {
   DollarSign,
@@ -64,5 +65,5 @@ export const Icons = {
   Bell,
   ArrowUp,Swap,ArrowDown2,ArrowUp2,Feed,Home,Trading,Frame,
   Tab1,Tab2,Tab3,
-  Hill,
+  Hill,Hill2
 };

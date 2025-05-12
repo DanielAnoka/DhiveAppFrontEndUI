@@ -95,6 +95,10 @@ import Community from "../screens/userProfile/Community";
 import ProfileScreen from "../screens/userProfile/ProfileScreen";
 import ManageWalletScreen from "../screens/userProfile/ManageWalllet";
 import PrivateKey from "../screens/userProfile/privateKey";
+import WalletPrivateKey from "../screens/userProfile/WalletPrivateKey";
+import BusinessLayout from "../MainLayout/BusinessLayout";
+import CreateTokenForm from "../screens/business/CreateTokenForm";
+import BusinessFeeds from "../screens/business/feeds"; 
 
 // Placeholder components for feeds and explore
 import Feeds from "../screens/feeds/index"; 
@@ -104,7 +108,7 @@ export default function AppNavigator() {
   return (
     <Routes>
       {/* Routes with BottomNav */}
-      <Route path="/" element={<MainLayout><Wallet /></MainLayout>} />
+      {/* <Route path="/" element={<MainLayout><Wallet /></MainLayout>} /> */}
       <Route path="/feeds" element={<MainLayout><Feeds /></MainLayout>} />
       <Route path="/explore" element={<MainLayout><Explore /></MainLayout>} />
       <Route path="/profile" element={<MainLayout><Profile /></MainLayout>} />
@@ -139,8 +143,14 @@ export default function AppNavigator() {
       <Route path="/profileScreen" element={<ProfileScreen />} />
       <Route path="/manageWallet" element={<ManageWalletScreen />} />
       <Route path="/privatekey" element={<PrivateKey />} />
+      <Route path="/walletprivatekey" element={<WalletPrivateKey />} />
       {/* Placeholder routes */}
-    
+
+
+      {/* Business Routes  */}
+      <Route path="/business" element={<BusinessLayout><BusinessFeeds /></BusinessLayout>} />  
+
+      <Route path="/" element={<CreateTokenForm />} />
     </Routes>
   );
 }
