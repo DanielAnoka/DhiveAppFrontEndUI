@@ -12,12 +12,14 @@ import {
 import TransferCard from "../components/TransactionCard";
 import { Images } from "../constants/image";
 import { Icons } from "../constants/icon";
+import Icon from "react-native-vector-icons/Ionicons";
+import { useNavigate } from "react-router-native";
 
 const { height } = Dimensions.get("window");
 
 const actions = [
-  { name: "Send", icon: Icons.Send, backgroundColor: "#EFF8FF" },
-  { name: "Receive", icon: Icons.ArrowDown, backgroundColor: "#F5F8FF" },
+  { name: "Send", icon: Icons.ArrowUp2, backgroundColor: "#FFF7F0" },
+  { name: "Receive", icon: Icons.ArrowDown2, backgroundColor: "#EFF8FF" },
   { name: "Swap", icon: Icons.More, backgroundColor: "#ECFDF3" },
 ];
 
@@ -47,15 +49,22 @@ const assets = [
 ];
 
 const TransactionHistory = ({ balance = "392.45", transactions = [] }) => {
+  const navigate = useNavigate();
   const validatedAssets = assets.map((asset) => ({
     ...asset,
     price: asset.price != null && !isNaN(asset.price) ? asset.price : 0,
     change: asset.change != null && !isNaN(asset.change) ? asset.change : 0,
     amount: asset.amount != null && !isNaN(asset.amount) ? asset.amount : 0,
   }));
-
+  const handleBack = () => navigate(-1);
   return (
     <SafeAreaView style={styles.container}>
+      <View style={styles.headerRow}>
+        <TouchableOpacity style={styles.iconCircle} onPress={handleBack}>
+          <Icon name="chevron-back" size={20} color="#000" />
+        </TouchableOpacity>
+        <View style={{ width: 32 }} />
+      </View>
       <View style={styles.balanceContainer}>
         <Image
           source={Images.Usdt}
@@ -149,7 +158,7 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingHorizontal: 50,
+    paddingHorizontal: 70,
   },
   iconCircle: {
     width: 40,
@@ -228,6 +237,20 @@ const styles = StyleSheet.create({
   },
   list: {
     marginHorizontal: 16,
+  },
+  headerRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
+  },
+  iconCircle: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: "#eee",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 

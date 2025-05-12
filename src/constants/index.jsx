@@ -1,4 +1,5 @@
 import { Icons } from "./icon";
+import { Images } from "./image";
 
 export const slides = [
   {
@@ -180,4 +181,27 @@ export const filterTypes = [
     type: "Location",
     resetOptions: "All",
   },
+];
+
+export const chains = [
+  { label: 'Dhive Network', icon: Icons.Trading },
+  { label: 'Ethereum', icon: Icons.Trading },
+  { label: 'Binance Smart Chain', icon: Icons.Trading },
+];
+
+const tokens = [
+  { label: 'EGAX', icon: Icons.Trading },
+  { label: 'USDT', icon: Icons.Trading },
+  { label: 'ETH', icon: Icons.Trading },
+];
+
+export const orders = [
+    { id: 1, image: Images.Order, title: 'iPhone 15 Pro', subtitle: 'From Mark Studio' },
+    { id: 2, image: Images.Order2, title: 'iPhone 15 Pro', subtitle: 'From Mark Studio' },
+    { id: 3, image: Images.Order3, title: 'iPhone 15 Pro', subtitle: 'From Mark Studio' },
+    { id: 4, image: Images.Order4, title: 'iPhone 15 Pro', subtitle: 'From Mark Studio' },
+    { id: 5, image: Images.Order5, title: 'iPhone 15 Pro', subtitle: 'From Mark Studio' },
+    { id: 6, image: Images.Order6, title: 'iPhone 15 Pro', subtitle: 'From Mark Studio' },
+    { id: 7, image: Images.Order7, title: 'iPhone 15 Pro', subtitle: 'From Mark Studio' },
+    { id: 8, image: Images.Order8, title: 'iPhone 15 Pro', subtitle: 'From Mark Studio' },
 ];

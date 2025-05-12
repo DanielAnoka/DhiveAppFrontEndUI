@@ -60,11 +60,9 @@ const SelectToken = () => {
       setModalVisible3(false);
     });
   };
-  const handleBack = () => {
-    navigate("/receive");
-  };
+  const handleBack = () => navigate(-1);
   const handleTf = () => {
-    navigate("/tf");
+    navigate("/");
   };
   const convertToUSD = (usdtAmount) => {
     return usdtAmount * 1;
@@ -308,7 +306,7 @@ const SelectToken = () => {
               </TouchableOpacity>
 
               <View style={styles.imageWrapper}>
-                <Image source={Images.Lock} style={styles.successImage} />
+                <Image source={Images.PadLock} style={styles.successImage} />
               </View>
               <View style={styles.textContainer}>
                 <Text style={styles.modalHeaderText}>Input Payment Pin</Text>
@@ -409,6 +407,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#eee",
     justifyContent: "center",
     alignItems: "center",
+    marginTop: 10,
   },
   headerText: {
     fontSize: 16,

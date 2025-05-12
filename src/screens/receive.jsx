@@ -25,9 +25,7 @@ const Receive = () => {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
 
-  const handleBack = () => {
-    navigate("/");
-  };
+  const handleBack = () => navigate(-1);
 
   const validatedAssets = assets.map((asset) => ({
     ...asset,

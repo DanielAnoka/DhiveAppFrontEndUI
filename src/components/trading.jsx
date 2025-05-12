@@ -11,7 +11,7 @@ import Icon from 'react-native-vector-icons/Feather';
 
 const { height } = Dimensions.get('window');
 
-const Trading = ({ visible, onClose, onSelectOption }) => {
+const Trading = ({ visible, onClose, onSelectOption, }) => {
   const options = [
     {
       id: 'bridge',

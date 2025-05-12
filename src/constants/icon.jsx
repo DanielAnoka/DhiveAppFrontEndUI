@@ -23,6 +23,19 @@ import Category from "../../assets/category-2.png";
 import Location from "../../assets/location.png";
 import Sort from "../../assets/sort.png";
 import Verify from "../../assets/verify.png";
+import ArrowUp from "../../assets/arrow-up.png";
+import Swap from "../../assets/swap.png";
+import ArrowDown2 from "../../assets/arrow-down2.png";
+import ArrowUp2 from "../../assets/arrow-up2.png";
+import Feed from "../../assets/feeds.png";
+import Home from "../../assets/home.png";
+import Trading from "../../assets/trading.png";
+import Frame from "../../assets/Frame.png";
+import Tab1 from "../../assets/tab1.png";
+import Tab2 from "../../assets/tab2.png";
+import Tab3 from "../../assets/tab3.png";
+import Hill from "../../assets/hill.png";
+import Hill2 from "../../assets/Hill2.png";
 import Trade from "../../assets/trade.png";
 import Lock2 from "../../assets/lock2.png";
 import Ethereum from "../../assets/ethereum.png";
@@ -56,4 +69,7 @@ export const Icons = {
   Scranner,
   Scranner2,
   Bell,
+  ArrowUp,Swap,ArrowDown2,ArrowUp2,Feed,Home,Trading,Frame,
+  Tab1,Tab2,Tab3,
+  Hill,Hill2
 };

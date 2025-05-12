@@ -67,7 +67,7 @@ const TransactionHistory = () => {
     }
   };
 
-  const handleBack = () => navigate("/");
+  const handleBack = () => navigate(-1);
   const handleTf = () => toggleModal();
 
   return (
@@ -75,7 +75,7 @@ const TransactionHistory = () => {
       <View style={styles.container}>
         {/* Header */}
         <View style={styles.headerRow}>
-          <TouchableOpacity style={styles.iconCircle} onPress={handleBack}>
+          <TouchableOpacity  className="w-8 h-8 rounded-full border border-gray-300 justify-center items-center mt-2" onPress={handleBack}>
             <Icon name="chevron-left" size={24} color="#000" />
           </TouchableOpacity>
           <Text style={styles.headerText}>Transaction History</Text>
@@ -293,8 +293,8 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   noTransactionsImage: {
-    width: 120,
-    height: 120,
+    width: 212,
+    height: 200,
     marginBottom: 16,
   },
   noTransactionsText: {
