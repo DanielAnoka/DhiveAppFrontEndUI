@@ -245,18 +245,79 @@ export const orders = [
     subtitle: "From Mark Studio",
   },
 ];
+export const messages = [
+  {
+    userId: "1234",
+    createdAt: "Thursday 11:40am",
+    username: "Swiftrole's",
+    message:
+      "Hey Olivia, I’ve finished with the requirements doc! I made some notes in the gdoc as well for Phoenix to look over.",
+    files: null,
+
+    avatar: Images.ChatAvatar,
+  },
+  {
+    userId: "1234",
+    createdAt: "Thursday 11:40am",
+    username: "Swiftrole's",
+    message:
+      "Hey Olivia, I’ve finished with the requirements doc! I made some notes in the gdoc as well for Phoenix to look over.",
+    files: "Tech requirements.pdf",
+    filesize: "1.2 MB",
+    avatar: Images.ChatAvatar,
+  },
+  {
+    userId: "123",
+    createdAt: "Thursday 11:40am",
+    username: "Swiftrole's",
+    files: null,
+    message: "Awesome! Thanks. I’ll look at this today.",
+    avatar: Images.ChatAvatar,
+  },
+  {
+    userId: "1234",
+    createdAt: "Thursday 11:44am",
+    username: "Swiftrole's",
+    message: "No rush though — we still have to wait for Lana’s designs.",
+    files: null,
+    avatar: Images.ChatAvatar,
+  },
+  {
+    userId: "1234",
+    createdAt: "Today 2:20pm",
+    username: "Swiftrole's",
+    message:
+      "Hey Olivia, can you please review the latest design when you can?",
+    files: null,
+
+    avatar: Images.ChatAvatar,
+    // reactions: ["👌", "❤"],
+  },
+  {
+    userId: "123",
+    createdAt: "Just now",
+    username: "Swiftrole's",
+    message: "Sure thing, I’ll have a look today. They’re looking great!",
+    files: null,
+    avatar: Images.ChatAvatar,
+    reactions: ["👌", "❤"],
+  },
+];
 
 export const p2pSelectOptions = [
   {
     title: "P2P Marketplace",
     subtext: "Visit the market place to buy and sell coin.",
+    route: "/p2p-trading",
   },
   {
     title: "Buy Offer",
     subtext: "Create to get buyers as fast as possible.",
+    route: "/buy-offer",
   },
   {
     title: "Sell Offer",
     subtext: "Create to get buyers as fast as possible.",
+    route: "/sell-offer",
   },
 ];

@@ -10,7 +10,7 @@ const SelectOption = () => {
     <View>
       {p2pSelectOptions.map((p2p) => (
         <TouchableOpacity
-          onPress={() => navigate("/p2p-trading/buy")}
+          onPress={() => navigate(p2p.route)}
           key={p2p.title}
           className="flex-row my-4 gap-x-3 items-center"
         >

@@ -43,8 +43,12 @@ import Modal3 from "../../assets/modal3.jpg";
 import Modal4 from "../../assets/modal4.jpg";
 import Avatar1 from "../../assets/avatar1.png";
 import Avatar2 from "../../assets/avatar2.png";
+import ChatAvatar from "../../assets/chatAvatar.png";
+import PDF from "../../assets/pdf.png";
 
 export const Images = {
+  PDF,
+  ChatAvatar,
   Avatar1,
   Avatar2,
   Gradient,

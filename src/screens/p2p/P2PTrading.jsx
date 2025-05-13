@@ -1,12 +1,4 @@
-import {
-  View,
-  Text,
-  SafeAreaView,
-  TouchableOpacity,
-  Image,
-  StatusBar,
-  TextInput,
-} from "react-native";
+import { View, Text, TouchableOpacity, Image, TextInput } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Feather from "react-native-vector-icons/Feather";
@@ -18,40 +10,53 @@ import { Images } from "../../constants/image";
 import BottomModal from "../../components/BottomModal";
 import { useState } from "react";
 import FilterMethods from "./FilterMethods";
+import P2PLayout from "./Layout";
 
 const P2PTrding = () => {
   const navigate = useNavigate();
 
   const [openModal, setOpenModal] = useState(false);
+  const [trade, setTrade] = useState("buy");
 
   return (
-    <SafeAreaView className="bg-[#1F235B] flex-1">
-      <StatusBar barStyle="light-content" backgroundColor="#1F235B" />
-
+    <P2PLayout
+      onClick={() => setOpenModal((prev) => !prev)}
+      title={"P2P Trading"}
+    >
       <View className={"flex-1 bg-background"}>
-        <View className="flex-row bg-[#1F235B] p-5  w-full items-center justify-between">
-          <TouchableOpacity onPress={() => navigate(-1)}>
-            <View className="w-[30px] h-[30px] rounded-full bg-transparent justify-center items-center border border-white">
-              <Ionicons name="chevron-back" size={20} color="#fff" />
-            </View>
-          </TouchableOpacity>
-
-          <Text className="text-lg text-white">P2P Trading</Text>
-
-          <TouchableOpacity onPress={() => setOpenModal((prev) => !prev)}>
-            <View className="px-2.5 py-1.5 rounded-xl bg-transparent justify-center items-center border border-white">
-              <AntDesign name="filter" size={17} color="#fff" />
-            </View>
-          </TouchableOpacity>
-        </View>
         <View className="p-5 flex-row justify-between items-center">
           <View>
             <View className="flex-row pl-5 gap-x-10 items-center">
-              <Text className="text-lg text-primary">Buy</Text>
-              <Text className="text-lg text-textgray">Sell</Text>
+              <TouchableOpacity onPress={() => setTrade("buy")}>
+                <Text
+                  className={`text-lg ${
+                    trade === "buy" ? "text-primary" : "text-textgray"
+                  }`}
+                >
+                  Buy
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => setTrade("sell")}>
+                <Text
+                  className={`text-lg ${
+                    trade === "sell" ? "text-primary" : "text-textgray"
+                  }`}
+                >
+                  Sell
+                </Text>
+              </TouchableOpacity>
             </View>
-            <View className="bg-[#717680] mt-2 w-36 h-0.5">
-              <View className="bg-primary h-full w-1/2" />
+            <View className="bg-[#717680] flex-row mt-2 w-36 h-0.5">
+              <View
+                className={`${
+                  trade === "buy" ? "bg-primary" : "bg-transparent"
+                } h-full w-1/2`}
+              />
+              <View
+                className={`${
+                  trade === "sell" ? "bg-primary" : "bg-transparent"
+                } h-full w-1/2`}
+              />
             </View>
           </View>
           <View className="flex-row items-center gap-x-1 border border-[#D5D7DA] rounded-lg py-2 px-1">
@@ -72,6 +77,7 @@ const P2PTrding = () => {
               placeholderTextColor={"#00011B"}
             />
           </View>
+
           <View className="flex-row justify-between mt-5">
             <View className="flex-row bg-[#FAFAFA] mb-3 p-2 items-center gap-x-1 rounded-2xl">
               <AntDesign name="user" />
@@ -110,10 +116,16 @@ const P2PTrding = () => {
               </View>
             </View>
             <TouchableOpacity
-              onPress={() => navigate("/buy-coin")}
-              className="bg-[#18AB15] px-7 py-3 rounded-lg"
+              onPress={
+                trade === "buy"
+                  ? () => navigate("/buy-coin")
+                  : () => navigate("/sell-coin")
+              }
+              className={`${
+                trade === "buy" ? "bg-[#18AB15]" : "bg-[#D92D20]"
+              } px-7 py-3 rounded-lg`}
             >
-              <Text className="text-white">Buy</Text>
+              <Text className="text-white capitalize">{trade}</Text>
             </TouchableOpacity>
           </View>
           <View className="flex-row border-b border-[#00011B1A] pb-5">
@@ -131,7 +143,7 @@ const P2PTrding = () => {
         {/* <Text>Hello</Text> */}
         <FilterMethods />
       </BottomModal>
-    </SafeAreaView>
+    </P2PLayout>
   );
 };
 

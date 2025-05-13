@@ -112,6 +112,12 @@ import ReviewPage from "../screens/trade-products/Review";
 import App from "../screens/wallet";
 import P2PTrading from "../screens/p2p/P2PTrading";
 import BuyCoin from "../screens/p2p/BuyCoin";
+import BuyOffer from "../screens/p2p/BuyOffer";
+import SellOffer from "../screens/p2p/SellOffer";
+import SellCoin from "../screens/p2p/SellCoin";
+import ChatSupport from "../screens/p2p/ChatSupport";
+import MakeAppeal from "../screens/p2p/MakeAppeal";
+import AppealTracking from "../screens/p2p/AppealTracking";
 
 export default function AppNavigator() {
   return (
@@ -217,8 +223,15 @@ export default function AppNavigator() {
       <Route path="/trade-products" element={<TradeProducts />} />
       <Route path="/review" element={<ReviewPage />} /> */}
       <Route path="/" element={<App />} />
-      <Route path="/p2p-trading/:status" element={<P2PTrading />} />
+      <Route path="/p2p-trading" element={<P2PTrading />} />
       <Route path="/buy-coin" element={<BuyCoin />} />
+      <Route path="/sell-coin" element={<SellCoin />} />
+      <Route path="/buy-offer" element={<BuyOffer />} />
+      <Route path="/sell-offer" element={<SellOffer />} />
+      <Route path="/chat-support" element={<ChatSupport />} />
+      {/* <Route path="/" element={<ChatSupport />} /> */}
+      <Route path="/make-appeal" element={<MakeAppeal />} />
+      <Route path="/appeal-tracking" element={<AppealTracking />} />
     </Routes>
   );
 }

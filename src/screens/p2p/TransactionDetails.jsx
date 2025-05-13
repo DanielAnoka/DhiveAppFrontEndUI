@@ -1,12 +1,8 @@
 import { View, Text, Image } from "react-native";
-import React from "react";
 import PrimaryButton from "../../components/PrimaryButton";
-import { useNavigate } from "react-router-native";
 import { Images } from "../../constants/image";
-import { Icons } from "../../constants/icon";
 
 const TransactionDetails = ({ onClick }) => {
-  const navigate = useNavigate();
   return (
     <View>
       <View className="w-full justify-center items-center">
@@ -24,7 +20,7 @@ const TransactionDetails = ({ onClick }) => {
       <View className="bg-[#FAFAFA] rounded-xl py-3 px-5 mt-5">
         <View className="flex-row justify-between mb-6 items-center">
           <Text className="text-textgray font-light">Dhiver's</Text>
-          <Text className=" font-medium text-primary">Pomaline</Text>
+          <Text className=" font-medium text-primary underline">Pomaline</Text>
         </View>
         <View className="flex-row justify-between mb-6 items-center">
           <Text className="text-textgray font-light">Asset</Text>

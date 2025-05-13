@@ -10,7 +10,7 @@ import SuccessPage from "../product-details/SuccessPage";
 import TransactionDetails from "./TransactionDetails";
 import P2PLayout from "./Layout";
 
-const BuyCoin = () => {
+const SellCoin = () => {
   const navigate = useNavigate();
 
   const [openModal, setOpenModal] = useState(false);
@@ -25,13 +25,6 @@ const BuyCoin = () => {
               setPage("success");
               setOpenModal(true);
             }}
-          />
-        );
-      case "appeal":
-        return (
-          <Details
-            isAppealPage={true}
-            onClick={() => navigate("/make-appeal")}
           />
         );
 
@@ -60,13 +53,13 @@ const BuyCoin = () => {
                 <Text>0 USDC</Text>
               </View>
             </View>
-            <View className="absolute bottom-4 w-full">
+            <View className="absolute bottom-4 w-[95%]">
               <PrimaryButton
                 onPress={() => {
                   setPage("home");
                   setOpenModal((prev) => !prev);
                 }}
-                text={"Buy Coin"}
+                text={"Sell Coin"}
                 width={"100%"}
               />
             </View>
@@ -76,7 +69,7 @@ const BuyCoin = () => {
   };
 
   return (
-    <P2PLayout title={"Buy Coin"}>
+    <P2PLayout title={"Sell Coin"}>
       <View className="flex-1 p-5">
         <RenderPage page={page} />
       </View>
@@ -96,19 +89,50 @@ const BuyCoin = () => {
           <View className="h-full">
             <SuccessPage
               headText={"0.09839 USDC"}
-              subText1="Successfully Released to"
-              subText2="Dhive Wallet"
+              subText1="Successfully Sold to"
+              subText2="Pomaline"
+              subTextUnderline={true}
               button1Text={"View Transaction Summary"}
               button2Text={"Back to Dashboard"}
               onButton1Click={() => setPage("transaction-details")}
-              onButton2Click={() => {
-                setPage("appeal");
-                setOpenModal(false);
-              }}
+              onButton2Click={() => navigate(-1)}
             />
           </View>
         ) : page === "transaction-details" ? (
           <TransactionDetails onClick={() => setOpenModal(false)} />
+        ) : page === "more" ? (
+          <View className="flex-col gap-y-7 items-start">
+            <Text className="font-light text-xs">
+              1. Do not only check the buyer's payment proof. Make sure to log
+              into your account and verify payment is received
+            </Text>
+            <Text className="font-light text-xs">
+              2. If the payment is still processing, wait until you have
+              received payment in your account before releasing the crypto
+            </Text>
+            <Text className="font-light text-xs">
+              3. Do NOT accept payment from a third-party account. Refund the
+              full amount immediately if you receive such payment to avoid
+              financial losses caused by bank chargeback after you have released
+              the crypto.
+            </Text>
+            <View className="w-full">
+              <PrimaryButton
+                onPress={() => {
+                  setPage("details");
+                  setOpenModal(false);
+                }}
+                text={"Confirm trade"}
+              />
+
+              <TouchableOpacity
+                onPress={() => setOpenModal(false)}
+                className="flex-row w-full items-center justify-center py-5"
+              >
+                <Text className="text-primary">Cancel Transaction</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
         ) : (
           <View>
             <View className="bg-[#FAFAFA] rounded-xl py-3 px-5 mt-5">
@@ -117,7 +141,7 @@ const BuyCoin = () => {
                 <Text className=" font-medium">15 Min</Text>
               </View>
               <View className="flex-row justify-between mb-6 items-center">
-                <Text className="text-textgray font-light">Seller's Name</Text>
+                <Text className="text-textgray font-light">Buy's Name</Text>
                 <Text className="font-medium">Pomaline</Text>
               </View>
               <View className="flex-row justify-between mb-6 items-center">
@@ -136,10 +160,7 @@ const BuyCoin = () => {
 
             <View className="my-5">
               <PrimaryButton
-                onPress={() => {
-                  setPage("details");
-                  setOpenModal(false);
-                }}
+                onPress={() => setPage("more")}
                 text={"Confirm Trade"}
               />
             </View>
@@ -150,4 +171,4 @@ const BuyCoin = () => {
   );
 };
 
-export default BuyCoin;
+export default SellCoin;
