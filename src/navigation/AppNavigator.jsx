@@ -123,7 +123,14 @@ export default function AppNavigator() {
   return (
     <Routes>
       {/* Routes with BottomNav */}
-      {/* <Route path="/" element={<MainLayout><Wallet /></MainLayout>} /> */}
+      <Route
+        path="/"
+        element={
+          <MainLayout>
+            <Wallet />
+          </MainLayout>
+        }
+      />
       <Route
         path="/feeds"
         element={
@@ -222,7 +229,7 @@ export default function AppNavigator() {
       <Route path="/delivery-contact" element={<DeliveryContact />} />
       <Route path="/trade-products" element={<TradeProducts />} />
       <Route path="/review" element={<ReviewPage />} /> */}
-      <Route path="/" element={<App />} />
+      {/* <Route path="/" element={<App />} /> */}
       <Route path="/p2p-trading" element={<P2PTrading />} />
       <Route path="/buy-coin" element={<BuyCoin />} />
       <Route path="/sell-coin" element={<SellCoin />} />

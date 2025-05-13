@@ -13,9 +13,12 @@ import AppealTracking from "./AppealTracking";
 
 const ChatSupport = () => {
   const navigate = useNavigate();
-  // const [page, setPage] = useState({page: "profile", title : 'Pomaline Moses'});
-  const [page, setPage] = useState({ page: "home", title: "Support" });
-  // const [page, setPage] = useState({ page: "support", title: "Support" });
+  // const [page, setPage] = useState({
+  //   page: "profile",
+  //   title: "Pomaline Moses",
+  // });
+  // const [page, setPage] = useState({ page: "home", title: "Pomaline Moses" });
+  const [page, setPage] = useState({ page: "support", title: "Support" });
   // const [page, setPage] = useState({ page: "appeal", title: "Make Appeal" });
   // const [page, setPage] = useState({
   //   page: "appeal-tracking",

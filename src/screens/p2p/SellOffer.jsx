@@ -32,7 +32,7 @@ const SellOffer = () => {
             Your Offer Has Been Listed Successfully
           </Text>
         </View>
-        <View className="absolute right-7 bottom-6 w-full">
+        <View className="absolute left-4 bottom-6 w-full">
           <PrimaryButton text={"View Offer"} width={"100%"} />
         </View>
       </BottomModal>
