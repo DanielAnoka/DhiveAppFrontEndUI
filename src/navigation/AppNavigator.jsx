@@ -99,6 +99,8 @@ import WalletPrivateKey from "../screens/userProfile/WalletPrivateKey";
 import BusinessLayout from "../MainLayout/BusinessLayout";
 import CreateTokenForm from "../screens/business/CreateTokenForm";
 import BusinessFeeds from "../screens/business/feeds";
+import BusinessAssets from "../screens/business/asssets"
+import BusinessProflie from "../screens/business/profile"
 
 // Placeholder components for feeds and explore
 import Feeds from "../screens/feeds/index";
@@ -109,6 +111,13 @@ import ProductDetails from "../screens/product-details";
 import DeliveryContact from "../screens/product-details/DeliveryContact";
 import TradeProducts from "../screens/trade-products";
 import ReviewPage from "../screens/trade-products/Review";
+import BusinessWall from "../screens/business/businessWall";
+import WithdrawAssetsScreen from "../screens/business/WithdrawAssetsScreen";
+import BusinessPost from "../screens/business/post"
+import BurnToken from "../screens/business/burnToken";
+import ProductDetailsBusiness from "../screens/business/productDetails";
+import ProductTabsScreen from "../screens/business/ProductTabsScreen";
+import ProductAnalyticsScreen from "../screens/business/ProductAnalyticsScreen"
 
 export default function AppNavigator() {
   return (
@@ -175,7 +184,14 @@ export default function AppNavigator() {
       <Route path="/sendToken" element={<SendToken />} />
       <Route path="/tf" element={<Tf />} />
       <Route path="/transaction" element={<TransactionHistory />} />
-      {/* <Route path="/tokenSwap" element={<SwapToken />} />
+      <Route path="/tokenSwap" element={<SwapToken />} />
+      {/* <Route path="/businessWall" element={<BusinessWall />} /> */}
+      <Route path="/businesswall" element={<BusinessWall />} />
+      <Route path="/withdraw" element={<WithdrawAssetsScreen />} />
+      <Route path="/create" element={< CreateTokenForm/>} />
+      <Route path="/p" element={<ProductDetailsBusiness />} />
+      <Route path="/" element={<ProductTabsScreen/>} />
+      <Route path="/analytics" element={<ProductAnalyticsScreen />} />
 
 
       // {/* Profile routes  */}
@@ -197,22 +213,40 @@ export default function AppNavigator() {
 
       {/* Business Routes  */}
       <Route
-        path="/business"
+        path="/b"
         element={
           <BusinessLayout>
             <BusinessFeeds />
           </BusinessLayout>
         }
       />
+      <Route
+        path="/business/assets"
+        element={
+          <BusinessLayout>
+            <BusinessAssets />
+          </BusinessLayout>
+        }
+      />
+      <Route
+        path="/business/post"
+        element={
+          <BusinessLayout>
+            <BusinessPost />
+          </BusinessLayout>
+        }
+      />
 
       {/* <Route path="/" element={<CreateTokenForm />} /> */}
-      <Route path="/" element={<ExplorePage />} />
+      <Route path="/explore" element={<ExplorePage />} />
       <Route path="/search" element={<Search />} />
       <Route path="/filter" element={<FilterPage />} />
       <Route path="/product-details/:status" element={<ProductDetails />} />
       <Route path="/delivery-contact" element={<DeliveryContact />} />
       <Route path="/trade-products" element={<TradeProducts />} />
       <Route path="/review" element={<ReviewPage />} />
+      <Route path="/business/profile" element={<BusinessProflie />} />
+      <Route path="/burn" element={<BurnToken/>} />
     </Routes>
   );
 }
