@@ -111,19 +111,19 @@ import ProductDetails from "../screens/product-details";
 import DeliveryContact from "../screens/product-details/DeliveryContact";
 import TradeProducts from "../screens/trade-products";
 import ReviewPage from "../screens/trade-products/Review";
-import BusinessWall from "../screens/business/businessWall";
-import WithdrawAssetsScreen from "../screens/business/WithdrawAssetsScreen";
-import BusinessPost from "../screens/business/post"
-import BurnToken from "../screens/business/burnToken";
-import ProductDetailsBusiness from "../screens/business/productDetails";
-import ProductTabsScreen from "../screens/business/ProductTabsScreen";
-import ProductAnalyticsScreen from "../screens/business/ProductAnalyticsScreen"
 
 export default function AppNavigator() {
   return (
     <Routes>
       {/* Routes with BottomNav */}
-      {/* <Route path="/" element={<MainLayout><Wallet /></MainLayout>} /> */}
+      <Route
+        path="/"
+        element={
+          <MainLayout>
+            <Wallet />
+          </MainLayout>
+        }
+      />
       <Route
         path="/feeds"
         element={
@@ -238,15 +238,13 @@ export default function AppNavigator() {
       />
 
       {/* <Route path="/" element={<CreateTokenForm />} /> */}
-      <Route path="/explore" element={<ExplorePage />} />
+      <Route path="/" element={<ExplorePage />} />
       <Route path="/search" element={<Search />} />
       <Route path="/filter" element={<FilterPage />} />
       <Route path="/product-details/:status" element={<ProductDetails />} />
       <Route path="/delivery-contact" element={<DeliveryContact />} />
       <Route path="/trade-products" element={<TradeProducts />} />
       <Route path="/review" element={<ReviewPage />} />
-      <Route path="/business/profile" element={<BusinessProflie />} />
-      <Route path="/burn" element={<BurnToken/>} />
     </Routes>
   );
 }

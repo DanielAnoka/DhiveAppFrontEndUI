@@ -10,7 +10,7 @@ const PrimaryButton = ({ text, onPress, width }) => {
         backgroundColor: "#444CE7",
         borderRadius: 8,
         paddingVertical: 14,
-        marginHorizontal: 10,
+        // marginHorizontal: 10,
         width,
       }}
       textStyle={{

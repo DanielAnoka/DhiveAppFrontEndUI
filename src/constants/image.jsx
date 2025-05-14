@@ -41,16 +41,13 @@ import Modal1 from "../../assets/modal1.jpg";
 import Modal2 from "../../assets/modal2.jpg";
 import Modal3 from "../../assets/modal3.jpg";
 import Modal4 from "../../assets/modal4.jpg";
-import Dote from "../../assets/dote.png";
-import Frame1 from "../../assets/Frame1.png"
-import Frame2 from "../../assets/Frame2.png"
-import Bag from "../../assets/bag.jpg"
-import Book from "../../assets/book.jpg"
-import Second from "../../assets/2.jpg"
-import Last from "../../assets/3.jpg"
 
 
 export const Images = {
+  PDF,
+  ChatAvatar,
+  Avatar1,
+  Avatar2,
   Gradient,
   Review1,
   Review2,
@@ -73,7 +70,8 @@ export const Images = {
   Confetti,
   Filter,
   Item,
-  Empty,PadLock,
+  Empty,
+  PadLock,
   Post1,
   Post2,
   Post3,

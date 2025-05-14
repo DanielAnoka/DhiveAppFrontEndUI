@@ -65,6 +65,8 @@ const TradeProducts = () => {
           <View className="pb-52 mb-10">
             <FlatList
               data={products}
+              showsVerticalScrollIndicator={false}
+              showsHorizontalScrollIndicator={false}
               keyExtractor={() => Math.random() * 20}
               renderItem={({ item }) => (
                 <ItemCard {...item} rating={4.3} numProducts={41} />
@@ -83,6 +85,8 @@ const TradeProducts = () => {
           <View className="pb-52 my-10">
             <FlatList
               data={dummyReviewData}
+              showsVerticalScrollIndicator={false}
+              showsHorizontalScrollIndicator={false}
               keyExtractor={() => Math.random() * 20}
               renderItem={({ item }) => <ReviewCard {...item} />}
               contentContainerStyle={{

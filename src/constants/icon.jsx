@@ -39,9 +39,11 @@ import Hill2 from "../../assets/Hill2.png";
 import Trade from "../../assets/trade.png";
 import Lock2 from "../../assets/lock2.png";
 import Ethereum from "../../assets/ethereum.png";
-import Note from "../../assets/note-text.png"
 
 export const Icons = {
+  Documentupload,
+  Messagenotif,
+  Medalstar,
   Ethereum,
   Lock2,
   DollarSign,
@@ -72,6 +74,5 @@ export const Icons = {
   Bell,
   ArrowUp,Swap,ArrowDown2,ArrowUp2,Feed,Home,Trading,Frame,
   Tab1,Tab2,Tab3,
-  Hill,Hill2,
-  Note
+  Hill,Hill2
 };
