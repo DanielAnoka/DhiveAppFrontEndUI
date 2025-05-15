@@ -205,3 +205,71 @@ export const orders = [
     { id: 7, image: Images.Order7, title: 'iPhone 15 Pro', subtitle: 'From Mark Studio' },
     { id: 8, image: Images.Order8, title: 'iPhone 15 Pro', subtitle: 'From Mark Studio' },
 ];
+
+export const Post = [
+    {
+        name: "Elegance Lounge Series",
+        price: "$25",
+        likes: '25.10k',
+        comments: '25.10k',
+        image: Images.Bag,
+    },
+    {
+        name: "Elegance Lounge Series",
+        price: "$25",
+        likes: '25.10k',
+        comments: '25.10k',
+        image: Images.Bag,
+    },
+    {
+        name: "Elegance Lounge Series",
+        price: "$25",
+        likes: '25.10k',
+        comments: '25.10k',
+        image: Images.Bag,
+    },
+]
+
+export const analyticsData = [
+    {
+        title: 'Total Followers',
+        value: '16,894',
+        tooltipTitle: 'Total Amount Sold',
+        tooltipDesc: 'This is the total amount you have made from selling this product.',
+    },
+    {
+        title: 'Total Post',
+        value: '562',
+        tooltipTitle: 'Successful Sales',
+        tooltipDesc: 'Number of transactions completed successfully.',
+    },
+    {
+        title: 'Total Likes',
+        value: '1,456,892',
+        tooltipTitle: 'Abandoned Sales',
+        tooltipDesc: 'Transactions that were started but not completed.',
+    },
+
+];
+
+const analyticsData1 = [
+    {
+        title: 'Total Revenue',
+        value: '$28,923.98',
+        tooltipTitle: 'Total Amount Sold',
+        tooltipDesc: 'This is the total amount you have made from selling this product.',
+    },
+    {
+        title: 'Total Units',
+        value: '256',
+        tooltipTitle: 'Successful Sales',
+        tooltipDesc: 'Number of transactions completed successfully.',
+    },
+    {
+        title: 'Total Units Sold',
+        value: '167',
+        tooltipTitle: 'Abandoned Sales',
+        tooltipDesc: 'Transactions that were started but not completed.',
+    },
+
+];

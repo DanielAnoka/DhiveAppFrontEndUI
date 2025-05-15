@@ -1,6 +1,6 @@
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
-import ManagementCards from "./ManagementCards";
+
 import Physical from "./physicalProudct";
 import DigitalProduct from "./digitalProduct";
 

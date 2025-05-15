@@ -118,6 +118,12 @@ import BurnToken from "../screens/business/burnToken";
 import ProductDetailsBusiness from "../screens/business/productDetails";
 import ProductTabsScreen from "../screens/business/ProductTabsScreen";
 import ProductAnalyticsScreen from "../screens/business/ProductAnalyticsScreen"
+import InsightsAnalytics from "../screens/business/Insights&Analytics"
+
+// Orders
+import IncomingOrders from "../screens/incomingOrders/index"
+import TransactionDetail from "../screens/incomingOrders/TransactionDetail";
+
 
 export default function AppNavigator() {
   return (
@@ -190,8 +196,9 @@ export default function AppNavigator() {
       <Route path="/withdraw" element={<WithdrawAssetsScreen />} />
       <Route path="/create" element={< CreateTokenForm/>} />
       <Route path="/p" element={<ProductDetailsBusiness />} />
-      <Route path="/" element={<ProductTabsScreen/>} />
+      <Route path="/product" element={<ProductTabsScreen/>} />
       <Route path="/analytics" element={<ProductAnalyticsScreen />} />
+      <Route path="/insight" element={< InsightsAnalytics/>}/>
 
 
       // {/* Profile routes  */}
@@ -247,6 +254,10 @@ export default function AppNavigator() {
       <Route path="/review" element={<ReviewPage />} />
       <Route path="/business/profile" element={<BusinessProflie />} />
       <Route path="/burn" element={<BurnToken/>} />
+
+      {/* Orders */}
+      <Route path="/" element={<IncomingOrders />} />
+      <Route path="/transactions/:transactionId" element={<TransactionDetail />} />
     </Routes>
   );
 }

@@ -48,6 +48,7 @@ import Bag from "../../assets/bag.jpg"
 import Book from "../../assets/book.jpg"
 import Second from "../../assets/2.jpg"
 import Last from "../../assets/3.jpg"
+import Down from "../../assets/down.png"
 
 
 export const Images = {
@@ -99,5 +100,6 @@ export const Images = {
   Bag,
   Book,
   Second,
-  Last
+  Last,
+  Down
 };

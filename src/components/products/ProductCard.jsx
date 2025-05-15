@@ -15,7 +15,7 @@ const PhysicalProductCard = ({ product, onOptionsPress }) => {
         <View className="absolute top-[-2] right-[-1] w-2.5 h-2.5 rounded-full bg-indigo-500 z-10" />
       </View>
 
-      {/* Product Info */}
+      
       <View className="flex-1">
         <Text className="font-semibold text-sm mb-0.5">{product.name}</Text>
         <Text className="text-xs text-[#6C6C6C] mb-1">

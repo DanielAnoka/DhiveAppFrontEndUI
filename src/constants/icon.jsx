@@ -40,6 +40,7 @@ import Trade from "../../assets/trade.png";
 import Lock2 from "../../assets/lock2.png";
 import Ethereum from "../../assets/ethereum.png";
 import Note from "../../assets/note-text.png"
+import Bagtick from "../../assets/bag-tick.png"
 
 export const Icons = {
   Ethereum,
@@ -73,5 +74,6 @@ export const Icons = {
   ArrowUp,Swap,ArrowDown2,ArrowUp2,Feed,Home,Trading,Frame,
   Tab1,Tab2,Tab3,
   Hill,Hill2,
-  Note
+  Note,
+  Bagtick
 };
