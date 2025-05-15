@@ -140,6 +140,7 @@ const TradeProducts = () => {
               </View>
             </TouchableOpacity>
           </View>
+          
           <View className="flex-row justify-between items-center mt-5">
             <View className="flex-row gap-x-2.5 mt-2.5 items-center">
               <Image
@@ -187,6 +188,7 @@ const TradeProducts = () => {
               <Text className="text-[#067647] ">Ox79....107hg</Text>
             </View>
           </View>
+          
           <View className="bg-[#FAFAFA] mt-5 flex-row justify-between px-2 py-1 rounded-md border border-[#E9EAEB]">
             <View className="px-1 w-1/3">
               <TouchableOpacity

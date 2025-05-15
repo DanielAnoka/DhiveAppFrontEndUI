@@ -41,10 +41,7 @@ import Modal1 from "../../assets/modal1.jpg";
 import Modal2 from "../../assets/modal2.jpg";
 import Modal3 from "../../assets/modal3.jpg";
 import Modal4 from "../../assets/modal4.jpg";
-import Avatar1 from "../../assets/avatar1.png";
-import Avatar2 from "../../assets/avatar2.png";
-import ChatAvatar from "../../assets/chatAvatar.png";
-import PDF from "../../assets/pdf.png";
+
 import Feed from "../../assets/feed.jpg";
 import Business1 from "../../assets/business-1.jpg";
 import Business2 from "../../assets/business-2.jpg";
@@ -112,4 +109,11 @@ export const Images = {
   Modal3,
   Modal4,
   Product,
+  Dote,
+  Frame1,
+  Frame2,
+  Bag,
+  Book,
+  Second,
+  Last,
 };
