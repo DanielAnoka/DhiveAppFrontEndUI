@@ -13,10 +13,9 @@ import { useNavigate } from "react-router-native";
 import { Images } from "../../constants/image";
 import { useState } from "react";
 import LiveCard from "./LiveCard";
-import VideoFeed from "./VideoImageFeed";
 import CommentsModal from "./CommentsModal";
 import { LinearGradient } from "expo-linear-gradient";
-import FeedItem from "./test";
+import FeedItem from "./FeedItem";
 
 const Feeds = () => {
   const navigate = useNavigate();
