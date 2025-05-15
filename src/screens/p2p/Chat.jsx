@@ -1,8 +1,10 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import { Images } from "../../constants/image";
+import { useNavigate } from "react-router-native";
 
 const Chat = ({ day, messages }) => {
   const currentUserId = "123";
+  const navigate = useNavigate();
   return (
     <View className="pt-10">
       <View className="border-t border-[#E9EAEB]" />
@@ -26,11 +28,14 @@ const Chat = ({ day, messages }) => {
                   <Text className="ml-8 text-textgray mb-1 text-xs">You</Text>
                 ) : (
                   <View className="flex-row flex-1 items-center gap-x-2">
-                    <Image
-                      source={message.avatar}
-                      resizeMode="contain"
-                      className="w-[26px] mt-2 h-[26px] rounded-full"
-                    />
+                    <TouchableOpacity onPress={() => navigate("/user-profile")}>
+                      <Image
+                        source={message.avatar}
+                        resizeMode="contain"
+                        className="w-[26px] mt-2 h-[26px] rounded-full"
+                      />
+                    </TouchableOpacity>
+
                     <Text>{message.username}</Text>
                   </View>
                 )}

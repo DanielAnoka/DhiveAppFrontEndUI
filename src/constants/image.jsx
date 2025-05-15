@@ -45,8 +45,26 @@ import Avatar1 from "../../assets/avatar1.png";
 import Avatar2 from "../../assets/avatar2.png";
 import ChatAvatar from "../../assets/chatAvatar.png";
 import PDF from "../../assets/pdf.png";
+import Feed from "../../assets/feed.jpg";
+import Business1 from "../../assets/business-1.jpg";
+import Business2 from "../../assets/business-2.jpg";
+import Business3 from "../../assets/business-3.jpg";
+import Business4 from "../../assets/business-4.jpg";
+import Media from "../../assets/anim-images.png";
+import DoubleMessages from "../../assets/double.png";
+import LiveImage from "../../assets/liveimage.png";
+import Shape from "../../assets/Shape.png";
 
 export const Images = {
+  Shape,
+  LiveImage,
+  DoubleMessages,
+  Media,
+  Business1,
+  Business2,
+  Business3,
+  Business4,
+  Feed,
   PDF,
   ChatAvatar,
   Avatar1,

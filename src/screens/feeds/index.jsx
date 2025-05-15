@@ -6,99 +6,311 @@ import {
   Image,
   FlatList,
   StatusBar,
+  Dimensions,
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { useNavigate } from "react-router-native";
-import ContainerWrapper from "../../components/ContainerWrapper";
 import { Images } from "../../constants/image";
 import { useState } from "react";
 import LiveCard from "./LiveCard";
 import VideoFeed from "./VideoImageFeed";
+import CommentsModal from "./CommentsModal";
+import { LinearGradient } from "expo-linear-gradient";
+import FeedItem from "./test";
 
 const Feeds = () => {
   const navigate = useNavigate();
   const [page, setPage] = useState("following");
+  const [openModal, setOpenModal] = useState(false);
+  const commentsList = [
+    {
+      name: "Wade Warren",
+      hasNextMessage: true,
+      comment:
+        "I wish i could just purchase this right now. Though I’ve been a different thought on the color",
+      subComments: [
+        {
+          name: "Wade Warren",
+          comment: "Alright",
+        },
+        {
+          name: "Wade Warren",
+          comment: "welcome",
+        },
+      ],
+    },
+    {
+      name: "Wade Warren",
+      comment:
+        "I wish i could just purchase this right now. Though I’ve been a different thought on the color",
+    },
+  ];
+
+  const videoSource = require("../../../test2.mp4");
+
+  const data = [
+    {
+      id: 1,
+      video: videoSource,
+      isVideo: true,
+      reposted: false,
+      isFollowing: true,
+    },
+    {
+      id: 2,
+      video: Images.Feed,
+      isVideo: false,
+      reposted: true,
+      isFollowing: false,
+    },
+    {
+      id: 3,
+      video: videoSource,
+      isVideo: true,
+      reposted: false,
+      isFollowing: true,
+    },
+    {
+      id: 4,
+      video: Images.Feed,
+      isVideo: false,
+      reposted: true,
+      isFollowing: false,
+    },
+    {
+      id: 5,
+      video: Images.Feed,
+      isVideo: false,
+      reposted: false,
+      isFollowing: true,
+    },
+    {
+      id: 6,
+      video: videoSource,
+      isVideo: true,
+      reposted: true,
+      isFollowing: false,
+    },
+  ];
 
   return (
     <SafeAreaView className="bg-background flex-1">
       <StatusBar barStyle="dark-content" />
 
-      <View className=" bg-background p-5">
-        <View className="flex-row w-full items-center justify-between">
-          <View className="flex-row items-center gap-x-4">
-            <Image
-              source={Images.ChatAvatar}
-              resizeMode="contain"
-              className="w-[30px] h-[30px] rounded-full"
-            />
-            <View className="bg-[#444CE7] px-5 rounded-md py-2">
-              <Text className="text-white">LIVE</Text>
-            </View>
-          </View>
-
-          <View className="flex-row gap-x-2 items-center">
-            <TouchableOpacity
-              // onPress={() => navigate("/filter")}
-              className="p-2 bg-[#F5F5F5] rounded-full w-fit"
-            >
-              <Ionicons name="search" size={20} />
-            </TouchableOpacity>
-            <TouchableOpacity
-              // onPress={() => navigate("/filter")}
-              className="p-2 bg-[#F5F5F5] rounded-full w-fit"
-            >
-              <Ionicons name="notifications-outline" size={20} color="#000" />
-            </TouchableOpacity>
-          </View>
-        </View>
-        <View className="bg-[#FAFAFA] mt-5 flex-row justify-between px-2 py-1 rounded-md border border-[#E9EAEB]">
-          <View className="px-1 w-1/2">
-            <TouchableOpacity
-              onPress={() => setPage("following")}
-              className={`${
-                page === "following" && "bg-white"
-              } flex-row items-center justify-center gap-x-2  text-primary rounded-md py-2.5 px-5`}
-            >
-              <Text
-                className={`${
-                  page !== "following" ? "text-[#717680]" : "text-[#414651]"
-                } `}
-              >
-                Following
-              </Text>
-            </TouchableOpacity>
-          </View>
-          <View className="px-1 w-1/2">
-            <TouchableOpacity
-              onPress={() => setPage("for you")}
-              className={`${
-                page !== "following" && "bg-white"
-              } flex-row items-center justify-center gap-x-2  text-primary rounded-md py-2.5 px-5`}
-            >
-              <Text
-                className={`${
-                  page === "following" ? "text-[#717680]" : "text-[#414651]"
-                } `}
-              >
-                For You
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </View>
+      <View className=" bg-background ">
         <FlatList
-          data={[1, 2, 3, 4, 5, 6]}
-          keyExtractor={() => Math.random() * 20}
-          renderItem={() => <LiveCard />}
-          contentContainerStyle={{
-            paddingVertical: 10,
-          }}
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}
+          data={data}
+          renderItem={({ item, index }) => (
+            <FeedItem
+              key={index}
+              index={index}
+              length={data.length}
+              onCommentClick={() => setOpenModal((prev) => !prev)}
+              source={item.video}
+              isVideo={item.isVideo}
+              reposted={item.reposted}
+              isFollowing={item.isFollowing}
+            />
+          )}
+          snapToInterval={Dimensions.get("window").height - 100}
+          snapToStart
+          decelerationRate={"fast"}
+          keyExtractor={(item) => item.id.toString()}
+          showsVerticalScrollIndicator={false}
+          // className="flex-1"
+          ListHeaderComponent={
+            <View>
+              <View className="flex-row w-full p-5 items-center justify-between">
+                <View className="flex-row items-center gap-x-4">
+                  <Image
+                    source={Images.ChatAvatar}
+                    resizeMode="contain"
+                    className="w-[30px] h-[30px] rounded-full"
+                  />
+                  <TouchableOpacity onPress={() => navigate("/business-live")}>
+                    <LinearGradient
+                      colors={["#6172F3", "#444CE7", "#2D31A6"]} // left to right gradient colors
+                      start={{ x: 0, y: 0 }}
+                      end={{ x: 1, y: 0 }}
+                      className="px-5 rounded-md py-2"
+                    >
+                      <Text className="text-white">LIVE</Text>
+                    </LinearGradient>
+                  </TouchableOpacity>
+                </View>
+
+                <View className="flex-row  gap-x-2 items-center">
+                  <TouchableOpacity
+                    // onPress={() => navigate("/filter")}
+                    className="p-2 bg-[#F5F5F5] rounded-full w-fit"
+                  >
+                    <Ionicons name="search" size={20} />
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    // onPress={() => navigate("/filter")}
+                    className="p-2 bg-[#F5F5F5] rounded-full w-fit"
+                  >
+                    <Ionicons
+                      name="notifications-outline"
+                      size={20}
+                      color="#000"
+                    />
+                  </TouchableOpacity>
+                </View>
+              </View>
+              <View className="bg-[#FAFAFA] mt-5 mx-5  flex-row justify-between px-2 py-1 rounded-md border border-[#E9EAEB]">
+                <View className="px-1 w-1/2">
+                  <TouchableOpacity
+                    onPress={() => setPage("following")}
+                    className={`${
+                      page === "following" && "bg-white"
+                    } flex-row items-center justify-center gap-x-2  text-primary rounded-md py-2.5 px-5`}
+                  >
+                    <Text
+                      className={`${
+                        page !== "following"
+                          ? "text-[#717680]"
+                          : "text-[#414651]"
+                      } `}
+                    >
+                      Following
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+                <View className="px-1 w-1/2">
+                  <TouchableOpacity
+                    onPress={() => setPage("for you")}
+                    className={`${
+                      page !== "following" && "bg-white"
+                    } flex-row items-center justify-center gap-x-2  text-primary rounded-md py-2.5 px-5`}
+                  >
+                    <Text
+                      className={`${
+                        page === "following"
+                          ? "text-[#717680]"
+                          : "text-[#414651]"
+                      } `}
+                    >
+                      For You
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              <FlatList
+                data={[1, 2, 3, 4, 5, 6]}
+                keyExtractor={() => Math.random() * 20}
+                renderItem={() => <LiveCard />}
+                contentContainerStyle={{
+                  padding: 10,
+                }}
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+              />
+            </View>
+          }
         />
-        <VideoFeed />
       </View>
+      <CommentsModal
+        visible={openModal}
+        onClose={() => setOpenModal((prev) => !prev)}
+        commentsList={commentsList}
+      />
     </SafeAreaView>
   );
 };
 
 export default Feeds;
+
+//  <VideoFeed
+//           onCommentClick={() => setOpenModal((prev) => !prev)}
+//           component={
+//             <View>
+//               <View className="flex-row w-full p-5 items-center justify-between">
+//                 <View className="flex-row items-center gap-x-4">
+//                   <Image
+//                     source={Images.ChatAvatar}
+//                     resizeMode="contain"
+//                     className="w-[30px] h-[30px] rounded-full"
+//                   />
+//                   <TouchableOpacity onPress={() => navigate("/business-live")}>
+//                     <LinearGradient
+//                       colors={["#6172F3", "#444CE7", "#2D31A6"]} // left to right gradient colors
+//                       start={{ x: 0, y: 0 }}
+//                       end={{ x: 1, y: 0 }}
+//                       className="px-5 rounded-md py-2"
+//                     >
+//                       <Text className="text-white">LIVE</Text>
+//                     </LinearGradient>
+//                   </TouchableOpacity>
+//                 </View>
+
+//                 <View className="flex-row  gap-x-2 items-center">
+//                   <TouchableOpacity
+//                     // onPress={() => navigate("/filter")}
+//                     className="p-2 bg-[#F5F5F5] rounded-full w-fit"
+//                   >
+//                     <Ionicons name="search" size={20} />
+//                   </TouchableOpacity>
+//                   <TouchableOpacity
+//                     // onPress={() => navigate("/filter")}
+//                     className="p-2 bg-[#F5F5F5] rounded-full w-fit"
+//                   >
+//                     <Ionicons
+//                       name="notifications-outline"
+//                       size={20}
+//                       color="#000"
+//                     />
+//                   </TouchableOpacity>
+//                 </View>
+//               </View>
+//               <View className="bg-[#FAFAFA] mt-5 mx-5  flex-row justify-between px-2 py-1 rounded-md border border-[#E9EAEB]">
+//                 <View className="px-1 w-1/2">
+//                   <TouchableOpacity
+//                     onPress={() => setPage("following")}
+//                     className={`${
+//                       page === "following" && "bg-white"
+//                     } flex-row items-center justify-center gap-x-2  text-primary rounded-md py-2.5 px-5`}
+//                   >
+//                     <Text
+//                       className={`${
+//                         page !== "following"
+//                           ? "text-[#717680]"
+//                           : "text-[#414651]"
+//                       } `}
+//                     >
+//                       Following
+//                     </Text>
+//                   </TouchableOpacity>
+//                 </View>
+//                 <View className="px-1 w-1/2">
+//                   <TouchableOpacity
+//                     onPress={() => setPage("for you")}
+//                     className={`${
+//                       page !== "following" && "bg-white"
+//                     } flex-row items-center justify-center gap-x-2  text-primary rounded-md py-2.5 px-5`}
+//                   >
+//                     <Text
+//                       className={`${
+//                         page === "following"
+//                           ? "text-[#717680]"
+//                           : "text-[#414651]"
+//                       } `}
+//                     >
+//                       For You
+//                     </Text>
+//                   </TouchableOpacity>
+//                 </View>
+//               </View>
+//               <FlatList
+//                 data={[1, 2, 3, 4, 5, 6]}
+//                 keyExtractor={() => Math.random() * 20}
+//                 renderItem={() => <LiveCard />}
+//                 contentContainerStyle={{
+//                   padding: 10,
+//                 }}
+//                 horizontal={true}
+//                 showsHorizontalScrollIndicator={false}
+//               />
+//             </View>
+//           }
+//         />

@@ -1,11 +1,9 @@
-import React from "react";
 import {
   Modal,
   View,
   TouchableWithoutFeedback,
   StyleSheet,
   TouchableOpacity,
-  Keyboard,
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import PaymentPin from "./PaymentPin";

@@ -118,6 +118,9 @@ import SellCoin from "../screens/p2p/SellCoin";
 import ChatSupport from "../screens/p2p/ChatSupport";
 import MakeAppeal from "../screens/p2p/MakeAppeal";
 import AppealTracking from "../screens/p2p/AppealTracking";
+import BusinessOnLive from "../screens/feeds/BusinessOnLive";
+import LivePage from "../screens/feeds/Live";
+import UserProfile from "../screens/p2p/UserProfile";
 
 export default function AppNavigator() {
   return (
@@ -236,9 +239,12 @@ export default function AppNavigator() {
       <Route path="/buy-offer" element={<BuyOffer />} />
       <Route path="/sell-offer" element={<SellOffer />} />
       <Route path="/chat-support" element={<ChatSupport />} />
+      <Route path="/user-profile" element={<UserProfile />} />
       {/* <Route path="/" element={<ChatSupport />} /> */}
       <Route path="/make-appeal" element={<MakeAppeal />} />
       <Route path="/appeal-tracking" element={<AppealTracking />} />
+      <Route path="/business-live" element={<BusinessOnLive />} />
+      <Route path="/live" element={<LivePage />} />
     </Routes>
   );
 }

@@ -1,8 +1,10 @@
-import { View, Text, TouchableOpacity, ScrollView } from "react-native";
+import { View, Text, TouchableOpacity, ScrollView, Image } from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import PrimaryButton from "../../components/PrimaryButton";
 import { useNavigate } from "react-router-native";
+import { Icons } from "../../constants/icon";
+import { LinearGradient } from "expo-linear-gradient";
 
 const Details = ({ onClick, isAppealPage }) => {
   const navigate = useNavigate();
@@ -21,12 +23,18 @@ const Details = ({ onClick, isAppealPage }) => {
           </View>
           <TouchableOpacity
             onPress={() => navigate("/chat-support")}
-            style={{ paddingRight: 10, paddingLeft: 5 }}
-            className="flex-row bg-[#444CE7] mb-3 justify-center py-2 items-center gap-x-2 rounded-3xl"
+            // style={{ paddingRight: 10, paddingLeft: 5 }}
           >
-            <MaterialIcons name="chat" color={"#fff"} />
+            <LinearGradient
+              colors={["#6172F3", "#444CE7", "#2D31A6"]} // left to right gradient colors
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+              className="flex-row justify-center pr-2 py-2 items-center gap-x-2 rounded-3xl"
+            >
+              <Image source={Icons.Messagenotif} className="w-4 h-4" />
 
-            <Text className="text-white">Chat</Text>
+              <Text className="text-white">Chat</Text>
+            </LinearGradient>
           </TouchableOpacity>
         </View>
 

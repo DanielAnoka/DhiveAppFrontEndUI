@@ -7,33 +7,15 @@ import Chat from "./Chat";
 import Support from "./Support";
 import { messages } from "../../constants";
 import MessageBox from "./MessageBox";
-import UserProfile from "./UserProfile";
-import MakeAppeal from "./MakeAppeal";
-import AppealTracking from "./AppealTracking";
-
 const ChatSupport = () => {
   const navigate = useNavigate();
-  // const [page, setPage] = useState({
-  //   page: "profile",
-  //   title: "Pomaline Moses",
-  // });
-  // const [page, setPage] = useState({ page: "home", title: "Pomaline Moses" });
-  const [page, setPage] = useState({ page: "support", title: "Support" });
-  // const [page, setPage] = useState({ page: "appeal", title: "Make Appeal" });
-  // const [page, setPage] = useState({
-  //   page: "appeal-tracking",
-  //   title: "Appeal Tracking",
-  // });
+  const [page, setPage] = useState({ page: "home", title: "Pomaline Moses" });
+  // const [page, setPage] = useState({ page: "support", title: "Support" });
 
   const RenderPage = ({ page }) => {
     switch (page) {
       case "support":
         return <Support />;
-      case "profile":
-        return <UserProfile />;
-      case "appeal-tracking":
-        return <AppealTracking />;
-
       default:
         return (
           <View className="h-full">

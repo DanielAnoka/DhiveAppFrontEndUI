@@ -42,8 +42,18 @@ import Ethereum from "../../assets/ethereum.png";
 import Medalstar from "../../assets/medalstar.png";
 import Messagenotif from "../../assets/messagenotif.png";
 import Documentupload from "../../assets/documentupload.png";
+import TradeWhite from "../../assets/trade-white.png";
+import Message from "../../assets/message.png";
+import Love from "../../assets/heart.png";
+import Graph from "../../assets/graph.png";
+import Questions from "../../assets/Questions.png";
 
 export const Icons = {
+  TradeWhite,
+  Questions,
+  Love,
+  Graph,
+  Message,
   Documentupload,
   Messagenotif,
   Medalstar,
