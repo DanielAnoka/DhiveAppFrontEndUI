@@ -120,6 +120,8 @@ import ProductTabsScreen from "../screens/business/ProductTabsScreen";
 import ProductAnalyticsScreen from "../screens/business/ProductAnalyticsScreen"
 import InsightsAnalytics from "../screens/business/Insights&Analytics"
 
+import ChatScreen from "../screens/business/ChatScreen";
+
 // Orders
 import IncomingOrders from "../screens/incomingOrders/index"
 import TransactionDetail from "../screens/incomingOrders/TransactionDetail";
@@ -256,8 +258,10 @@ export default function AppNavigator() {
       <Route path="/burn" element={<BurnToken/>} />
 
       {/* Orders */}
-      <Route path="/" element={<IncomingOrders />} />
+      <Route path="/r" element={<IncomingOrders />} />
       <Route path="/transactions/:transactionId" element={<TransactionDetail />} />
+
+      <Route path="/" element={<ChatScreen/>} />
     </Routes>
   );
 }
