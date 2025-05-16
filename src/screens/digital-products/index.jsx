@@ -6,6 +6,7 @@ import {
   Image,
   FlatList,
   StatusBar,
+  Dimensions,
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AntDesign from "react-native-vector-icons/AntDesign";
@@ -14,24 +15,26 @@ import ContainerWrapper from "../../components/ContainerWrapper";
 import PrimaryButton from "../../components/PrimaryButton";
 import { Images } from "../../constants/image";
 import { Icons } from "../../constants/icon";
-import ItemCard from "../explore/ItemCard";
+import DigitalProductCard from "./DigitalProductCard";
 import { useEffect, useState } from "react";
-import TransactionModal from "./TransactionModal";
+import TransactionModal from "../product-details/TransactionModal";
 
-const ProductDetails = () => {
+const DigitalProducts = () => {
   const navigate = useNavigate();
+  const { width } = Dimensions.get("window");
   const similarProducts = [
     {
-      name: "Apple Watch Series 9 (Pink)",
+      name: "Graphics Design Class",
       price: 132.78,
-      imgUrl: Images.Item,
-      company: "Next-Gen Electronics",
+      imgUrl: Images.Similar1,
+
+      company: "Next-Gen Academy",
     },
     {
-      name: "Apple Watch Series 9 (Pink)",
+      name: "Leadership Training Class",
       price: 132.78,
-      imgUrl: Images.Item,
-      company: "Next-Gen Electronics",
+      imgUrl: Images.Similar2,
+      company: "Next-Gen Academy",
     },
   ];
 
@@ -53,18 +56,13 @@ const ProductDetails = () => {
       <FlatList
         data={quantity > 0 ? null : similarProducts}
         keyExtractor={() => Math.random() * 20}
-        renderItem={({ item }) => (
-          <ItemCard
-            {...item}
-            onPress={() => navigate("/product-details/home")}
-          />
-        )}
+        renderItem={({ item }) => <DigitalProductCard {...item} />}
         contentContainerStyle={{
           justifyContent: "space-between",
         }}
         numColumns={2}
         ListHeaderComponent={
-          <ContainerWrapper>
+          <View className="p-5">
             <View className="flex-row w-full items-center justify-between">
               <TouchableOpacity onPress={() => navigate(-1)}>
                 <View className="w-[30px] h-[30px] rounded-full bg-[#F5F5F5] justify-center items-center border border-[#000]">
@@ -79,24 +77,16 @@ const ProductDetails = () => {
                 <Ionicons name="notifications-outline" size={20} color="#000" />
               </TouchableOpacity>
             </View>
-            <View className="mt-10">
-              <FlatList
-                data={Array(2).fill("")}
-                keyExtractor={() => Math.random() * 20}
-                renderItem={() => (
-                  <View className="h-[200px] w-[320px] mr-2.5">
-                    <Image
-                      source={Images.Product}
-                      resizeMode="contain"
-                      className="w-full h-full"
-                    />
-                  </View>
-                )}
-                horizontal={true}
-                showsHorizontalScrollIndicator={false}
-                style={{ flexGrow: 0 }}
+
+            <View className="mt-5">
+              <Image
+                source={Images.DigitalProduct}
+                // resizeMode="contain"
+                // style={{ width: width, height: 200 }}
+                className="rounded-md w-full h-[200px]"
               />
             </View>
+
             <View className="flex-row justify-between items-center mt-5">
               <View className="flex-row gap-x-2.5 mt-2.5 items-center">
                 <Image
@@ -105,7 +95,7 @@ const ProductDetails = () => {
                   className="w-12 h-12"
                 />
                 <View>
-                  <Text className="mb-1">Next-Gen Electronics</Text>
+                  <Text className="mb-1">Next-Gen Academy</Text>
                   <View className="bg-[#E9EAEB] w-1/3  h-fit p-0.5 rounded-md">
                     <Text className="text-sm text-center ">NGE</Text>
                   </View>
@@ -120,18 +110,20 @@ const ProductDetails = () => {
               </TouchableOpacity>
             </View>
             <View className="mt-5">
-              <Text className="mb-2 text-xl">Apple Watch Series 9 (Pink)</Text>
+              <Text className="mb-2 text-xl">
+                The Arts Of Not Giving A Fuck
+              </Text>
               <View className="flex-row gap-x-2">
                 <View className="bg-[#EEF4FF] flex-row items-center justify-center gap-x-1 rounded-md p-1">
                   <Text className="font-light">Brand: </Text>
-                  <Text className="text-primary">Trade</Text>
+                  <Text className="text-primary">Books</Text>
                 </View>
                 <View className="bg-[#EEF4FF] flex-row items-center justify-center gap-x-1 rounded-md p-1">
                   <Text className="font-light">Category: </Text>
-                  <Text className="text-primary">Watch</Text>
+                  <Text className="text-primary">E-Books</Text>
                 </View>
                 <View className="flex-1 flex-row justify-end items-end">
-                  <TouchableOpacity className="bg-primary flex-row items-center justify-center gap-x-2  text-primary rounded-md py-2.5 px-5">
+                  <TouchableOpacity className="bg-primary flex-row items-center justify-center text-primary rounded-md py-2.5 px-5">
                     <Text className="text-white">Follow</Text>
                   </TouchableOpacity>
                 </View>
@@ -150,7 +142,7 @@ const ProductDetails = () => {
                       <Text className="text-primary text-lg">$300</Text>
                       <View className="bg-[#FEF3F2] flex-row gap-x-1 items-center p-1 border border-[#FECDCA] rounded-3xl">
                         <View className="w-2 h-2 rounded-full bg-[#B42318]" />
-                        <Text className="text-[#B42318] ">100 Unit Left</Text>
+                        <Text className="text-[#B42318] ">E-book</Text>
                       </View>
                     </View>
                   </View>
@@ -172,7 +164,7 @@ const ProductDetails = () => {
                     </TouchableOpacity>
                   </View>
                 </View>
-                <View className="bg-[#FAFAFA] rounded-xl py-3 px-5 mt-5">
+                <View className="bg-[#FAFAFA] rounded-xl py-3 px-5 mt-10">
                   <View className="flex-row justify-between mb-6 items-center">
                     <Text className="text-textgray font-light">
                       Your Purchase Power
@@ -209,7 +201,7 @@ const ProductDetails = () => {
                   <Text className="text-primary text-lg">$300</Text>
                   <View className="bg-[#FEF3F2] flex-row gap-x-1 items-center p-1 border border-[#FECDCA] rounded-3xl">
                     <View className="w-2 h-2 rounded-full bg-[#B42318]" />
-                    <Text className="text-[#B42318] ">100 Unit Left</Text>
+                    <Text className="text-[#B42318] ">E-book</Text>
                   </View>
                 </View>
                 <View className="flex-row items-center gap-x-1.5">
@@ -221,15 +213,9 @@ const ProductDetails = () => {
                     (41)
                   </Text>
                 </View>
-                <View className="bg-[#FAFAFA] mt-5 flex-row justify-between px-2 py-1 rounded-md border border-[#E9EAEB]">
-                  <View className="px-1 w-1/2">
-                    <TouchableOpacity className="bg-white  flex-row items-center justify-center gap-x-2  text-primary rounded-md py-2.5 px-5">
-                      <Text>Description</Text>
-                    </TouchableOpacity>
-                  </View>
-
-                  <TouchableOpacity className="w-1/2 flex-row items-center justify-center gap-x-2  text-primary rounded-md py-2.5 px-5">
-                    <Text className="text-[#717680]">Specifications</Text>
+                <View className="bg-[#FAFAFA] mt-5 p-1 rounded-md border border-[#E9EAEB]">
+                  <TouchableOpacity className="bg-white w-full flex-row justify-center text-primary rounded-md py-2.5">
+                    <Text>Description</Text>
                   </TouchableOpacity>
                 </View>
                 <Text className="mt-5 text-[#535862] text-sm">
@@ -297,7 +283,7 @@ const ProductDetails = () => {
                 </View>
               </>
             )}
-          </ContainerWrapper>
+          </View>
         }
         ListFooterComponent={
           quantity > 0 ? (
@@ -322,18 +308,13 @@ const ProductDetails = () => {
               <FlatList
                 data={similarProducts}
                 keyExtractor={() => Math.random() * 20}
-                renderItem={({ item }) => (
-                  <ItemCard
-                    {...item}
-                    onPress={() => navigate("/product-details/home")}
-                  />
-                )}
+                renderItem={({ item }) => <DigitalProductCard {...item} />}
                 contentContainerStyle={{
                   justifyContent: "space-between",
                 }}
                 numColumns={2}
                 ListFooterComponent={
-                  <View className="px-5">
+                  <View className="px-5 mt-10">
                     <PrimaryButton
                       onPress={() => {
                         setQuantity((prev) => prev + 1);
@@ -359,4 +340,4 @@ const ProductDetails = () => {
   );
 };
 
-export default ProductDetails;
+export default DigitalProducts;

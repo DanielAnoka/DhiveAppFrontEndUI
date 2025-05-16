@@ -42,7 +42,7 @@ const LivePage = () => {
             <View className="flex-row  items-center gap-x-1">
               <TouchableOpacity>
                 <LinearGradient
-                  colors={["#6172F3", "#444CE7", "#2D31A6"]} // left to right gradient colors
+                  colors={["#6172F3", "#444CE7", "#2D31A6"]}
                   start={{ x: 0, y: 0 }}
                   end={{ x: 1, y: 0 }}
                   className="px-3 rounded-md py-1.5"

@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-native";
 import ItemCard from "./ItemCard";
 import BottomNav from "../../components/BottomNav";
 import { Images } from "../../constants/image";
+import { Icons } from "../../constants/icon";
 
 export const products = [
   {
@@ -90,7 +91,7 @@ const ExplorePage = () => {
             onPress={() => navigate("/search")}
             style={styles.button}
           >
-            <Ionicons name="search" size={20} />
+            <Image source={Icons.Search} className="w-5 h-5" />
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => navigate("/filter")}
@@ -107,11 +108,15 @@ const ExplorePage = () => {
       <FlatList
         data={products}
         keyExtractor={(item) => Math.random() * 20}
-        renderItem={({ item }) => <ItemCard {...item} />}
+        renderItem={({ item }) => (
+          <ItemCard
+            {...item}
+            onPress={() => navigate("/digitalproduct/home")}
+          />
+        )}
         contentContainerStyle={styles.row}
         numColumns={2}
       />
-     
     </SafeAreaView>
   );
 };

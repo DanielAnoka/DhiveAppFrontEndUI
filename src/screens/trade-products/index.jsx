@@ -55,6 +55,7 @@ export const dummyReviewData = [
 const TradeProducts = () => {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isFollowing, setisFollowing] = useState(false);
   const [phase, setPhase] = useState("default");
   const [page, setPage] = useState("trade");
 
@@ -140,7 +141,7 @@ const TradeProducts = () => {
               </View>
             </TouchableOpacity>
           </View>
-          
+
           <View className="flex-row justify-between items-center mt-5">
             <View className="flex-row gap-x-2.5 mt-2.5 items-center">
               <Image
@@ -168,7 +169,21 @@ const TradeProducts = () => {
                 </View>
               </View>
             </View>
-            <PrimaryButton text={"Follow"} />
+            {isFollowing ? (
+              <TouchableOpacity
+                onPress={() => navigate("/send-message")}
+                className="p-2 border border-[#D5D7DA] rounded-md bg-white"
+              >
+                <Text className="text-[#414651]">Send Message</Text>
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity
+                onPress={() => setisFollowing((prev) => !prev)}
+                className="py-2 px-5  rounded-md bg-primary"
+              >
+                <Text className="text-white">Follow</Text>
+              </TouchableOpacity>
+            )}
           </View>
           <Text className="my-5 text-[#535862]">
             Empowering businessess through tokenization
@@ -188,7 +203,7 @@ const TradeProducts = () => {
               <Text className="text-[#067647] ">Ox79....107hg</Text>
             </View>
           </View>
-          
+
           <View className="bg-[#FAFAFA] mt-5 flex-row justify-between px-2 py-1 rounded-md border border-[#E9EAEB]">
             <View className="px-1 w-1/3">
               <TouchableOpacity

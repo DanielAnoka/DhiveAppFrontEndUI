@@ -121,17 +121,37 @@ import AppealTracking from "../screens/p2p/AppealTracking";
 import BusinessOnLive from "../screens/feeds/BusinessOnLive";
 import LivePage from "../screens/feeds/Live";
 import UserProfile from "../screens/p2p/UserProfile";
+import LayoutBusinesses from "../MainLayout/LayoutBusinesses";
+import Businesses from "../screens/Businesses";
+import SendMessage from "../screens/Businesses/SendMessage";
+import DigitalProducts from "../screens/digital-products";
 
 export default function AppNavigator() {
   return (
     <Routes>
       {/* Routes with BottomNav */}
       <Route
-        path="/"
+        path="/wallet"
         element={
           <MainLayout>
             <Wallet />
           </MainLayout>
+        }
+      />
+      <Route
+        path="/buis"
+        element={
+          <LayoutBusinesses>
+            <Wallet />
+          </LayoutBusinesses>
+        }
+      />
+      <Route
+        path="/businesses"
+        element={
+          <LayoutBusinesses>
+            <Businesses />
+          </LayoutBusinesses>
         }
       />
       <Route
@@ -224,15 +244,23 @@ export default function AppNavigator() {
         }
       />
 
+      {/* Products routes */}
+
       {/* <Route path="/" element={<CreateTokenForm />} /> */}
-      {/* <Route path="/" element={<ExplorePage />} />
+      <Route path="/" element={<ExplorePage />} />
       <Route path="/search" element={<Search />} />
       <Route path="/filter" element={<FilterPage />} />
       <Route path="/product-details/:status" element={<ProductDetails />} />
       <Route path="/delivery-contact" element={<DeliveryContact />} />
-      <Route path="/trade-products" element={<TradeProducts />} />
-      <Route path="/review" element={<ReviewPage />} /> */}
+      <Route path="/review" element={<ReviewPage />} />
+      <Route path="/send-message" element={<SendMessage />} />
       {/* <Route path="/" element={<App />} /> */}
+      <Route path="/trade-products" element={<TradeProducts />} />
+
+      {/* Digital Product routes */}
+      <Route path="/digitalproduct/:status" element={<DigitalProducts />} />
+
+      {/* P2P routes */}
       <Route path="/p2p-trading" element={<P2PTrading />} />
       <Route path="/buy-coin" element={<BuyCoin />} />
       <Route path="/sell-coin" element={<SellCoin />} />
@@ -243,6 +271,8 @@ export default function AppNavigator() {
       {/* <Route path="/" element={<ChatSupport />} /> */}
       <Route path="/make-appeal" element={<MakeAppeal />} />
       <Route path="/appeal-tracking" element={<AppealTracking />} />
+
+      {/* Live and Feeds routes */}
       <Route path="/business-live" element={<BusinessOnLive />} />
       <Route path="/live" element={<LivePage />} />
     </Routes>

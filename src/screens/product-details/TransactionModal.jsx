@@ -10,12 +10,15 @@ import PaymentPin from "./PaymentPin";
 import TransactionDetails from "./TransactionDetails";
 import SuccessPage from "./SuccessPage";
 import OrderDetails from "./OrderDetails";
+import PaymentMethod from "./PaymentMethod";
 
 const TransactionModal = ({ visible, onClose, phase, setPhase }) => {
   const GetPage = ({ phase }) => {
     switch (phase) {
       case "payment":
         return <PaymentPin onComplete={() => setPhase("success")} />;
+      case "payment-method":
+        return <PaymentMethod onComplete={onClose} />;
 
       case "success":
         return (

@@ -39,13 +39,26 @@ import Hill2 from "../../assets/Hill2.png";
 import Trade from "../../assets/trade.png";
 import Lock2 from "../../assets/lock2.png";
 import Ethereum from "../../assets/ethereum.png";
+import Medalstar from "../../assets/medalstar.png";
+import Messagenotif from "../../assets/messagenotif.png";
+import Documentupload from "../../assets/documentupload.png";
 import TradeWhite from "../../assets/trade-white.png";
 import Message from "../../assets/message.png";
 import Love from "../../assets/heart.png";
 import Graph from "../../assets/graph.png";
 import Questions from "../../assets/Questions.png";
+import HomeTrendUp from "../../assets/home-trend-up.png";
+import Search from "../../assets/search-lg.png";
+import Shortcut from "../../assets/Shortcut.png";
+import Dhives from "../../assets/dhives.png";
+import TetherUsdt from "../../assets/tether-usdt.png";
 
 export const Icons = {
+  Dhives,
+  TetherUsdt,
+  Shortcut,
+  Search,
+  HomeTrendUp,
   TradeWhite,
   Questions,
   Love,

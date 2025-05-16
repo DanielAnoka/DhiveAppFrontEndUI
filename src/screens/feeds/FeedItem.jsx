@@ -27,6 +27,7 @@ export default function FeedItem({
 }) {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isReposted, setIsReposted] = useState(reposted);
   const { width, height } = Dimensions.get("window");
   const [status, setStatus] = useState({});
   const currentTime = formatTime(status?.positionMillis || 0);
@@ -181,7 +182,7 @@ export default function FeedItem({
         } w-full pl-1`}
       >
         <View className={`${isVideo ? "mb-4" : "mb-14"} flex-row pl-2`}>
-          {reposted ? (
+          {isReposted ? (
             <View className="flex-row items-center bg-[#F8F9FC] rounded-2xl border border-[#D5D9EB]">
               <Image
                 source={Images.ChatAvatar}
@@ -191,10 +192,13 @@ export default function FeedItem({
               <Text className="pr-2 pl-1 text-xs">You reposted</Text>
             </View>
           ) : (
-            <View className="flex-row items-center gap-x-2">
+            <TouchableOpacity
+              onPress={() => setIsReposted(true)}
+              className="flex-row items-center gap-x-2"
+            >
               <Feather name="repeat" size={30} color={"white"} />
               <Text className="text-white">Repost</Text>
-            </View>
+            </TouchableOpacity>
           )}
         </View>
         {isVideo && (

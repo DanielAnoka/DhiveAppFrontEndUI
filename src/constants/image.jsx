@@ -41,7 +41,10 @@ import Modal1 from "../../assets/modal1.jpg";
 import Modal2 from "../../assets/modal2.jpg";
 import Modal3 from "../../assets/modal3.jpg";
 import Modal4 from "../../assets/modal4.jpg";
-
+import Avatar1 from "../../assets/avatar1.png";
+import Avatar2 from "../../assets/avatar2.png";
+import ChatAvatar from "../../assets/chatAvatar.png";
+import PDF from "../../assets/pdf.png";
 import Feed from "../../assets/feed.jpg";
 import Business1 from "../../assets/business-1.jpg";
 import Business2 from "../../assets/business-2.jpg";
@@ -51,8 +54,18 @@ import Media from "../../assets/anim-images.png";
 import DoubleMessages from "../../assets/double.png";
 import LiveImage from "../../assets/liveimage.png";
 import Shape from "../../assets/Shape.png";
+import Dote from "../../assets/dote.png";
+import ChartPreview from "../../assets/chart-preview.png";
+import DigitalProduct from "../../assets/digital-product.png";
+import Similar1 from "../../assets/2.jpg";
+import Similar2 from "../../assets/3.jpg";
 
 export const Images = {
+  Similar1,
+  Similar2,
+  DigitalProduct,
+  ChartPreview,
+  PDF,
   Shape,
   LiveImage,
   DoubleMessages,
@@ -109,11 +122,11 @@ export const Images = {
   Modal3,
   Modal4,
   Product,
-  Dote,
-  Frame1,
-  Frame2,
-  Bag,
-  Book,
-  Second,
-  Last,
+  // Dote,
+  // Frame1,
+  // Frame2,
+  // Bag,
+  // Book,
+  // Second,
+  // Last,
 };

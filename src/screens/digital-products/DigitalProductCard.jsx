@@ -4,7 +4,7 @@ import { Images } from "../../constants/image";
 import { useNavigate } from "react-router-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
-const ItemCard = ({
+const DigitalProductCard = ({
   name,
   onPress,
   price,
@@ -16,18 +16,17 @@ const ItemCard = ({
   const width = Dimensions.get("window").width;
   const navigate = useNavigate();
   return (
-    <TouchableOpacity onPress={onPress} className="flex-1 m-2.5 p-2.5">
+    <TouchableOpacity onPress={onPress} className="flex-1 m-1 my-4">
       <Image
         source={imgUrl}
-        resizeMode="contain"
-        style={{ maxWidth: width * 0.5 }}
-        className="w-full h-[140px]"
+        style={{ maxWidth: width }}
+        className="w-full h-[140px] rounded-lg"
       />
-      <Text className="font-normal text-[#535862] w-[90%]" numberOfLines={1}>
+      <Text className="font-light mt-1.5 text-[#535862]" numberOfLines={1}>
         {name}
       </Text>
-      <Text className="text-lg text-[#535862] font-bold mt-2.5">${price}</Text>
-      {rating ? (
+      <Text className="text-lg font-semibold mt-1.5">${price}</Text>
+      {/* {rating ? (
         <View className="flex-row items-center gap-x-1.5">
           <View className="bg-[#F59E0B] p-1 rounded-md">
             <AntDesign name="star" size={15} color="#fff" />
@@ -37,20 +36,18 @@ const ItemCard = ({
             ({numProducts})
           </Text>
         </View>
-      ) : (
-        <View className="flex-row gap-x-2.5 mt-2.5 items-center">
-          <Image
-            source={Images.Avatar}
-            resizeMode="contain"
-            className="w-5 h-5"
-          />
-          <Text className="w-1/2" numberOfLines={2}>
-            {company}
-          </Text>
-        </View>
-      )}
+      ) : ( */}
+      <View className="flex-row space-x-1.5 mt-1.5 items-center">
+        <Image
+          source={Images.Avatar}
+          resizeMode="contain"
+          className="w-5 h-5"
+        />
+        <Text numberOfLines={1}>{company}</Text>
+      </View>
+      {/* )} */}
     </TouchableOpacity>
   );
 };
 
-export default ItemCard;
+export default DigitalProductCard;

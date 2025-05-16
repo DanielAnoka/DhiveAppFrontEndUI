@@ -197,7 +197,7 @@ const Feeds = () => {
               </View>
               <FlatList
                 data={[1, 2, 3, 4, 5, 6]}
-                keyExtractor={() => Math.random() * 20}
+                keyExtractor={() => Math.random() * 50}
                 renderItem={() => <LiveCard />}
                 contentContainerStyle={{
                   padding: 10,

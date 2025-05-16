@@ -63,10 +63,12 @@ const DeliveryContact = () => {
               />
             </View>
           </View>
-          <PrimaryButton
-            text={"Continue"}
-            onPress={() => navigate("/product-details/payment")}
-          />
+          <View className="px-5">
+            <PrimaryButton
+              text={"Continue"}
+              onPress={() => navigate("/product-details/payment")}
+            />
+          </View>
         </View>
       </TouchableWithoutFeedback>
     </SafeAreaView>

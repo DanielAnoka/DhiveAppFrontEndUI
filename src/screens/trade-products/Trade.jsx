@@ -21,7 +21,7 @@ import CryptoChart from "./Chart";
 
 const Trade = ({ onClick }) => {
   return (
-    <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false}>
       <View className="pb-64">
         <View className="bg-white shadow-lg pt-5 mx-1  mt-5 rounded-xl">
           <View className="h-2 w-10 rounded-md bg-[#F5F5F5] mb-5 mx-auto" />
