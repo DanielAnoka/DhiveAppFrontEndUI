@@ -46,7 +46,7 @@ const Phase2 = () => {
 
   const handleCopy = () => {
     Clipboard.setString(seedPhrase.join(" "));
-    console.log("Copied to clipboard");
+    // console.log("Copied to clipboard");
   };
 
   const toggleModal = () => {

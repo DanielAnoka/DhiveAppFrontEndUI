@@ -29,7 +29,7 @@ const AreaOfInterest = () => {
     };
 
     const handleContinue = () => {
-        console.log("Continue with areas:", selectedAreas);
+        // console.log("Continue with areas:", selectedAreas);
         
     };
 

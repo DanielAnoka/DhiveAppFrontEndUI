@@ -71,7 +71,7 @@ const WithdrawAssetsScreen = () => {
         >
             {/* Header */}
             <View className="flex-row items-center justify-between px-2 mb-6">
-                <TouchableOpacity onPress={() => console.log('Go back')} className="w-8 h-8 rounded-full bg-[#F5F5F5] justify-center items-center mt-2">
+                <TouchableOpacity onPress={() => navigate(-1)} className="w-8 h-8 rounded-full bg-[#F5F5F5] justify-center items-center mt-2">
                     <Ionicons name="chevron-back" size={20} color="#000" />
                 </TouchableOpacity>
                 <Text className="flex-1 text-center text-lg font-semibold -ml-6">

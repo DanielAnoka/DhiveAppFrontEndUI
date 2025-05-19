@@ -56,7 +56,7 @@ const ReceiveToken = () => {
 
                     <View style={styles.addressRow}>
                         <Text style={styles.copy}>Copy</Text>
-                        <TouchableOpacity onPress={console.log("copied")}>
+                        <TouchableOpacity >
                             <Icon name="copy-outline" size={15} color="#292D32" style={{ marginLeft: 8 }} />
                         </TouchableOpacity>
                     </View>

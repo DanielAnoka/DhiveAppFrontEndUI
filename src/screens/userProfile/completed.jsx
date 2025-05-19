@@ -23,8 +23,7 @@ const CompletedOrders = () => {
     };
 
     const handleButtonPress = () => {
-        // Your button press logic here, for example:
-        console.log('Button pressed');
+       
         setShowModal(false);  // Close the modal after pressing the button
     };
 

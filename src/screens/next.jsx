@@ -24,7 +24,7 @@ const Next = () => {
     <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
       <TouchableOpacity
         style={styles.backButton}
-        onPress={console.log("hello")}
+        // onPress={console.log("hello")}
       >
         <View style={styles.backCircle}>
           <Ionicons name="chevron-back" size={20} color="#000" />
@@ -83,7 +83,7 @@ const Next = () => {
               By proceeding, you agree to these{" "}
               <Text
                 style={styles.linkText}
-                onPress={() => console.log("Terms & Conditions")}
+                // onPress={() => console.log("Terms & Conditions")}
               >
                 Terms & Conditions
               </Text>

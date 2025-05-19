@@ -56,6 +56,13 @@ import DocumentCopy from "../../assets/document-copy.png";
 import Camera from "../../assets/camera.png";
 import Map from "../../assets/map.png";
 import UserSearch from "../../assets/user-search.png";
+import BlueFeed from "../../assets/bluefeed.png"
+import HomeTab from "../../assets/HomeTab.png"
+import MoreTab from "../../assets/moreTab.png"
+import HomeTrend from "../../assets/hometrend.png"
+import Wallet3 from "../../assets/wallet-3.png"
+import Up from "../../assets/up.png"
+import Down from "../../assets/down.png"
 
 export const Icons = {
   UserSearch,
@@ -116,4 +123,11 @@ export const Icons = {
   Tab3,
   Hill,
   Hill2,
+  BlueFeed,
+  HomeTab,
+  MoreTab,
+  HomeTrend,
+  Wallet3,
+  Up,
+  Down
 };

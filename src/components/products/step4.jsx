@@ -20,7 +20,7 @@ const Step4 = () => {
     const [showModal, setShowModal] = useState(false);
     const closeModal = () => setShowModal(false);
     const handleSubmit = () => {
-        console.log('Product added');
+        // console.log('Product added');
         setShowModal(true);
     };
 

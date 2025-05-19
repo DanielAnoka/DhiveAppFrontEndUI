@@ -47,7 +47,7 @@ const BridgeTrading = () => {
     };
 
     const handleButtonPress = () => {
-        console.log('Button Pressed');
+     
         setShowNewScreen(true);
     };
 

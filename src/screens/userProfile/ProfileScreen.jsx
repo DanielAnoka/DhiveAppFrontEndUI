@@ -8,7 +8,7 @@ const ProfileScreen = () => {
     const navigate = useNavigate();
     const handleBack = () => navigate(-1);
     const handleSave = () => {
-        console.log('Save changes pressed');
+        // console.log('Save changes pressed');
     };
 
     return (

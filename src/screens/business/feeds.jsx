@@ -8,6 +8,7 @@ import {
   Modal,
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+import { Icons } from "../../constants/icon";
 
 export default function BusinessFeeds() {
   const [showModal, setShowModal] = useState(true);
@@ -52,20 +53,27 @@ export default function BusinessFeeds() {
       {/* Modal */}
       <Modal visible={showModal} transparent animationType="fade">
         <View className="flex-1 justify-center items-center bg-black/40">
-          <View className="w-11/12 bg-white rounded-2xl p-4">
-            <View className="flex-row justify-between items-center mb-4">
-              <Text className="text-base font-semibold text-black">
+          <View className="w-11/12 bg-white rounded-3xl p-5">
+            <View className="flex-row justify-between items-center mb-10">
+              <Text className="text-[16px] font-semibold text-black">
                 Select Chain to Deploy
               </Text>
-              <TouchableOpacity onPress={() => setShowModal(false)}>
-                <Icon name="close" size={20} color="#000" />
+              <TouchableOpacity
+                onPress={() => setShowModal(false)}
+                className="w-8 h-8 rounded-full bg-[#F5F5F5] border border-black items-center justify-center"
+              >
+                <Icon name="close" size={16} color="#000" />
               </TouchableOpacity>
+
             </View>
 
             {/* Option 1 */}
-            <TouchableOpacity className="flex-row items-start space-x-3 mb-4">
+           
+            <TouchableOpacity className="flex-row items-start space-x-3 mb-4 p-2">
               <View className="mt-1">
-                <View className="w-4 h-4 rounded-full border border-gray-400" />
+                <View className="w-7 h-7 rounded-full border border-gray-400 bg-black items-center justify-center">
+                  <Image source={Icons.Up} className="w-4 h-3" resizeMode="contain" />
+                </View>
               </View>
               <View>
                 <Text className="text-sm font-medium text-black">
@@ -78,9 +86,11 @@ export default function BusinessFeeds() {
             </TouchableOpacity>
 
             {/* Option 2 */}
-            <TouchableOpacity className="flex-row items-start space-x-3">
+            <TouchableOpacity className="flex-row items-start space-x-3 p-2">
               <View className="mt-1">
-                <View className="w-4 h-4 rounded-full border border-gray-400" />
+                <View className="w-7 h-7 rounded-full border border-gray-400 bg-black items-center justify-center">
+                  <Image source={Icons.Up} className="w-4 h-3" resizeMode="contain" />
+                </View>
               </View>
               <View>
                 <Text className="text-sm font-medium text-black">
@@ -91,6 +101,8 @@ export default function BusinessFeeds() {
                 </Text>
               </View>
             </TouchableOpacity>
+
+
           </View>
         </View>
       </Modal>

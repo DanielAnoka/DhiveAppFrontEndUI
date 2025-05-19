@@ -22,7 +22,7 @@ const phase1 = () => {
       <View style={styles.headerContainer}>
         <TouchableOpacity
           style={styles.backButton}
-          onPress={() => console.log("hello")}
+          // onPress={() => console.log("hello")}
         >
           <View style={styles.circle}>
             <Ionicons name="chevron-back" size={20} color="#000" />

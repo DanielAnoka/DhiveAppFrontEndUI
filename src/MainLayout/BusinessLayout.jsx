@@ -6,10 +6,8 @@ const BusinessLayout = ({ children }) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#f9f9f9' }}>
       <View style={{ flex: 1 }}>
-        {children} 
+        {children}
       </View>
-
-     
       <BusinessBottomNav />
     </SafeAreaView>
   );

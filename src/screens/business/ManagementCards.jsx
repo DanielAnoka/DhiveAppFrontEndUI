@@ -22,7 +22,7 @@ const ManagementCards = () => {
   const closeModal = () => setActiveModal(null);
 
   const onSelectOption = (id) => {
-    console.log('Selected Option:', id);
+    // console.log('Selected Option:', id);
     closeModal();
   };
 

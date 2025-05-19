@@ -25,7 +25,7 @@ const ProfileScreen = () => {
                         >
                             <Icon name="chevron-back" size={20} color="#000" />
                         </TouchableOpacity>
-                        <Text className="text-base font-semibold text-black">Profile Information</Text>
+                        <Text className="text-base font-semibold text-black">Business Information</Text>
                         <View className="w-6" />
                     </View>
 

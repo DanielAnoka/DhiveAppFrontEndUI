@@ -431,3 +431,49 @@ export const data = [
     isFollowing: false,
   },
 ];
+
+export const Post = [
+    {
+        name: "Elegance Lounge Series",
+        price: "$25",
+        likes: '25.10k',
+        comments: '25.10k',
+        image: Images.Bag,
+    },
+    {
+        name: "Elegance Lounge Series",
+        price: "$25",
+        likes: '25.10k',
+        comments: '25.10k',
+        image: Images.Bag,
+    },
+    {
+        name: "Elegance Lounge Series",
+        price: "$25",
+        likes: '25.10k',
+        comments: '25.10k',
+        image: Images.Bag,
+    },
+]
+
+export const analyticsData = [
+    {
+        title: 'Total Followers',
+        value: '16,894',
+        tooltipTitle: 'Total Amount Sold',
+        tooltipDesc: 'This is the total amount you have made from selling this product.',
+    },
+    {
+        title: 'Total Post',
+        value: '562',
+        tooltipTitle: 'Successful Sales',
+        tooltipDesc: 'Number of transactions completed successfully.',
+    },
+    {
+        title: 'Total Likes',
+        value: '1,456,892',
+        tooltipTitle: 'Abandoned Sales',
+        tooltipDesc: 'Transactions that were started but not completed.',
+    },
+
+];

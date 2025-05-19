@@ -1,3 +1,4 @@
+
 export const formatTime = (millis = 0) => {
   const totalSeconds = Math.floor(millis / 1000);
   const minutes = Math.floor(totalSeconds / 60);
@@ -6,3 +7,5 @@ export const formatTime = (millis = 0) => {
     .toString()
     .padStart(2, "0")}`;
 };
+
+

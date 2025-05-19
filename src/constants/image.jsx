@@ -60,6 +60,11 @@ import DigitalProduct from "../../assets/digital-product.png";
 import Similar1 from "../../assets/2.jpg";
 import Similar2 from "../../assets/3.jpg";
 import FingerPrint from "../../assets/fingerprint.png";
+import Bag from "../../assets/bag.jpg"
+import Guy from "../../assets/guy.jpg"
+import Guy2 from "../../assets/guy2.jpg"
+import Guy3 from "../../assets/guy3.jpg"
+import Button from "../../assets/button.png"
 
 export const Images = {
   FingerPrint,
@@ -127,8 +132,12 @@ export const Images = {
   // Dote,
   // Frame1,
   // Frame2,
-  // Bag,
+   Bag,
   // Book,
   // Second,
   // Last,
+  Guy,
+  Guy2,
+  Guy3,
+  Button
 };

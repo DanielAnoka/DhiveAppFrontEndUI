@@ -19,7 +19,7 @@ const Auth = () => {
   const [email, setEmail] = useState("");
 
   const handleGoogleSignIn = () => {
-    console.log("Google Sign-In");
+    // console.log("Google Sign-In");
   };
 
   const handleContinue = () => {

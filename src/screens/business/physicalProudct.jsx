@@ -63,7 +63,7 @@ const Physical = ({ searchQuery = "" }) => {
 
   const handleConfirmDelete = () => {
 
-    console.log("Deleted:", selectedProduct.name);
+    // console.log("Deleted:", selectedProduct.name);
     setShowDeleteConfirm(false);
   };
 

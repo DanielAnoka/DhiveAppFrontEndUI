@@ -26,12 +26,12 @@ export default function ProfileScreen() {
   const navigate = useNavigate();
 
   const generalItems = [
-    { label: 'My Post', icon: 'document-text-outline',path: '/business/post' },
-    { label: 'My Orders', icon: 'cart-outline',path: '/myorders' },
-    { label: 'Manage Wallet', icon: 'wallet-outline',path: '/manageWallet' },
-    { label: 'Transaction History', icon: 'time-outline',path: '/transaction' },
+    { label: 'My Post', icon: 'document-text-outline', path: '/business/post' },
+    { label: 'My Orders', icon: 'cart-outline', path: '/myorders' },
+    { label: 'Manage Wallet', icon: 'wallet-outline', path: '/manageWallet' },
+    { label: 'Transaction History', icon: 'time-outline', path: '/transaction' },
     { label: 'Notifications', icon: 'notifications-outline', path: '/notifications' },
-    { label: 'Security', icon: 'lock-closed-outline',path: '/security' },
+    { label: 'Security', icon: 'lock-closed-outline', path: '/security' },
     { label: 'Preference', icon: 'settings-outline', path: '/preferences' },
   ]
 
@@ -47,7 +47,7 @@ export default function ProfileScreen() {
         <TouchableOpacity className="flex-row items-center mt-4 space-x-4" onPress={() => navigate('/business/profile')}>
           <View
             className="flex-row items-center  space-x-4"
-          
+
           >
             <Image
               source={Images.Avatar}
@@ -74,7 +74,7 @@ export default function ProfileScreen() {
         {/* Others Section */}
         <Text className="px-4 pt-2 pb-2 text-xs text-gray-500">Others</Text>
         {[
-          { label: 'Docs', icon: 'book-outline',path: '/doc' },
+          { label: 'Docs', icon: 'book-outline', path: '/doc' },
           { label: 'Feedback', icon: 'chatbubble-ellipses-outline' },
           { label: 'Join our community', icon: 'people-outline', path: '/community' },
 

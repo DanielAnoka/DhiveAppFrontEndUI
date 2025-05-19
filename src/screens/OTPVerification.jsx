@@ -38,7 +38,7 @@ const OTPVerification = () => {
     if (canResend) {
       setTimer(30);
       setCanResend(false);
-      console.log("Resending OTP code...");
+      // console.log("Resending OTP code...");
     }
   };
 

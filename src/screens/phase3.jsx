@@ -81,7 +81,7 @@ const Phase3 = () => {
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
             <View style={styles.headerContainer}>
-                <TouchableOpacity style={styles.backButton} onPress={() => console.log('Back pressed')}>
+                <TouchableOpacity style={styles.backButton} onPress={() => navigate(-1)}>
                     <View style={styles.circle}>
                         <Ionicons name="chevron-back" size={20} color="#000" />
                     </View>

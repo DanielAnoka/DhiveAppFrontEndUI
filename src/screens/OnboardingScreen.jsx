@@ -88,7 +88,7 @@ export default function OnboardingScreen() {
               Already have an account?{' '}
               <Text
                 style={styles.linkText}
-                onPress={() => console.log('Import Seed Phrase pressed')}
+                // onPress={() => console.log('Import Seed Phrase pressed')}
               >
                 Import Seed Phrase
               </Text>
