@@ -360,3 +360,74 @@ export const media = [
     imgUrl: Images.Review3,
   },
 ];
+
+export const commentsList = [
+  {
+    name: "Wade Warren",
+    hasNextMessage: true,
+    comment:
+      "I wish i could just purchase this right now. Though I’ve been a different thought on the color",
+    subComments: [
+      {
+        name: "Wade Warren",
+        comment: "Alright",
+      },
+      {
+        name: "Wade Warren",
+        comment: "welcome",
+      },
+    ],
+  },
+  {
+    name: "Wade Warren",
+    comment:
+      "I wish i could just purchase this right now. Though I’ve been a different thought on the color",
+  },
+];
+
+export const videoSource = require("../../test2.mp4");
+
+export const data = [
+  {
+    id: 1,
+    video: videoSource,
+    isVideo: true,
+    reposted: false,
+    isFollowing: true,
+  },
+  {
+    id: 2,
+    video: Images.Feed,
+    isVideo: false,
+    reposted: true,
+    isFollowing: false,
+  },
+  {
+    id: 3,
+    video: videoSource,
+    isVideo: true,
+    reposted: false,
+    isFollowing: true,
+  },
+  {
+    id: 4,
+    video: Images.Feed,
+    isVideo: false,
+    reposted: true,
+    isFollowing: false,
+  },
+  {
+    id: 5,
+    video: Images.Feed,
+    isVideo: false,
+    reposted: false,
+    isFollowing: true,
+  },
+  {
+    id: 6,
+    video: videoSource,
+    isVideo: true,
+    reposted: true,
+    isFollowing: false,
+  },
+];

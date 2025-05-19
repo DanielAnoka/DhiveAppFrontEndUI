@@ -6,7 +6,6 @@ import {
   Image,
   FlatList,
   StatusBar,
-  Dimensions,
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AntDesign from "react-native-vector-icons/AntDesign";

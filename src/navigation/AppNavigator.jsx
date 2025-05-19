@@ -127,6 +127,8 @@ import SendMessage from "../screens/Businesses/SendMessage";
 import DigitalProducts from "../screens/digital-products";
 import Support from "../screens/p2p/Support";
 import CreatePost from "../screens/feeds/CreatePost";
+import LoginPage from "../screens/auth/LoginPage";
+import Biometric from "../screens/auth/Biometric";
 
 export default function AppNavigator() {
   return (
@@ -140,6 +142,9 @@ export default function AppNavigator() {
           </MainLayout>
         }
       />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/biometric" element={<Biometric />} />
+
       <Route
         path="/buis"
         element={

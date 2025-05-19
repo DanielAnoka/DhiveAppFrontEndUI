@@ -15,6 +15,7 @@ import ChooseMedia from "./ChooseMedia";
 import { useState } from "react";
 import PreviewPage from "./PreviewPage";
 import Post from "./Post";
+import Mentions from "./Mentions";
 
 const CreatePost = () => {
   const navigate = useNavigate();
@@ -33,9 +34,11 @@ const CreatePost = () => {
         return (
           <Post
             onClick={() => setPhase("post")}
-            onBack={() => setPhase("home")}
+            onMentionsClick={() => setPhase("mentions")}
           />
         );
+      case "mentions":
+        return <Mentions onClick={() => setPhase("post")} />;
 
       default:
         return <ChooseMedia onClick={() => setPhase("preview")} />;
@@ -43,7 +46,7 @@ const CreatePost = () => {
   };
 
   return (
-    <SafeAreaView className="bg-white flex-1">
+    <SafeAreaView className="bg-background flex-1">
       <StatusBar barStyle="dark-content" />
 
       <RenderPage phase={phase} />

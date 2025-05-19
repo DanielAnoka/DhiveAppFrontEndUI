@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   Image,
   StatusBar,
-  FlatList,
   TextInput,
   TouchableWithoutFeedback,
   Keyboard,
@@ -14,7 +13,6 @@ import {
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { useNavigate } from "react-router-native";
-import ItemCard from "../explore/ItemCard";
 import { Images } from "../../constants/image";
 import { Icons } from "../../constants/icon";
 import BusinessCard from "./BusinessCard";

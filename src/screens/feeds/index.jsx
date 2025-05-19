@@ -18,82 +18,13 @@ import CommentsModal from "./CommentsModal";
 import { LinearGradient } from "expo-linear-gradient";
 import FeedItem from "./FeedItem";
 import BottomModal from "../../components/BottomModal";
+import { commentsList, data } from "../../constants";
 
 const Feeds = () => {
   const navigate = useNavigate();
   const [page, setPage] = useState("following");
   const [openModal, setOpenModal] = useState(false);
   const [openSelectModal, setOpenSelectModal] = useState(true);
-  const commentsList = [
-    {
-      name: "Wade Warren",
-      hasNextMessage: true,
-      comment:
-        "I wish i could just purchase this right now. Though I’ve been a different thought on the color",
-      subComments: [
-        {
-          name: "Wade Warren",
-          comment: "Alright",
-        },
-        {
-          name: "Wade Warren",
-          comment: "welcome",
-        },
-      ],
-    },
-    {
-      name: "Wade Warren",
-      comment:
-        "I wish i could just purchase this right now. Though I’ve been a different thought on the color",
-    },
-  ];
-
-  const videoSource = require("../../../test2.mp4");
-
-  const data = [
-    {
-      id: 1,
-      video: videoSource,
-      isVideo: true,
-      reposted: false,
-      isFollowing: true,
-    },
-    {
-      id: 2,
-      video: Images.Feed,
-      isVideo: false,
-      reposted: true,
-      isFollowing: false,
-    },
-    {
-      id: 3,
-      video: videoSource,
-      isVideo: true,
-      reposted: false,
-      isFollowing: true,
-    },
-    {
-      id: 4,
-      video: Images.Feed,
-      isVideo: false,
-      reposted: true,
-      isFollowing: false,
-    },
-    {
-      id: 5,
-      video: Images.Feed,
-      isVideo: false,
-      reposted: false,
-      isFollowing: true,
-    },
-    {
-      id: 6,
-      video: videoSource,
-      isVideo: true,
-      reposted: true,
-      isFollowing: false,
-    },
-  ];
 
   return (
     <SafeAreaView className="bg-background flex-1">

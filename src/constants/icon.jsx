@@ -55,8 +55,10 @@ import TetherUsdt from "../../assets/tether-usdt.png";
 import DocumentCopy from "../../assets/document-copy.png";
 import Camera from "../../assets/camera.png";
 import Map from "../../assets/map.png";
+import UserSearch from "../../assets/user-search.png";
 
 export const Icons = {
+  UserSearch,
   Map,
   DocumentCopy,
   Camera,

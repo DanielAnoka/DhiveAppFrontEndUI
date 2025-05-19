@@ -16,6 +16,7 @@ import { useState } from "react";
 const ChooseMedia = ({ onClick }) => {
   const navigate = useNavigate();
   const [selectedMedia, setSelectedMedia] = useState(media[0].imgUrl);
+  const [multiSelect, setMultiSelect] = useState(false);
 
   return (
     <View className={"flex-1 bg-[#0A0D12] px-3"}>
@@ -42,7 +43,7 @@ const ChooseMedia = ({ onClick }) => {
         renderItem={({ item }) => (
           <TouchableOpacity
             onPress={() => setSelectedMedia(item.imgUrl)}
-            className="w-full flex-1 m-0.5"
+            className="w-full flex-1 m-0.5 relative"
           >
             <Image
               style={{
@@ -51,6 +52,9 @@ const ChooseMedia = ({ onClick }) => {
               }}
               source={item.imgUrl}
             />
+            {multiSelect && (
+              <View className="h-4 w-4 rounded-full border border-white bg-white/50 absolute top-2 right-2"></View>
+            )}
           </TouchableOpacity>
         )}
         contentContainerStyle={{
@@ -68,9 +72,19 @@ const ChooseMedia = ({ onClick }) => {
               className="w-full"
             />
             <View className="flex-row items-end justify-end space-x-2 my-3">
-              <View className="bg-white p-2 rounded-full">
-                <Image className="w-5 h-5" source={Icons.DocumentCopy} />
-              </View>
+              <TouchableOpacity
+                onPress={() => setMultiSelect((prev) => !prev)}
+                className={`${
+                  multiSelect ? "bg-white" : "bg-[#717680]"
+                } p-2 rounded-full`}
+              >
+                <Ionicons
+                  name="documents-outline"
+                  color={multiSelect ? "#000" : "#fff"}
+                  size={20}
+                />
+                {/* <Image className="w-5 h-5" source={Icons.DocumentCopy} /> */}
+              </TouchableOpacity>
               <View className="bg-[#717680] p-2 rounded-full">
                 <Image className="w-5 h-5" source={Icons.Camera} />
               </View>

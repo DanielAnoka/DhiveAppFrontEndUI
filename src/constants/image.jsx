@@ -59,8 +59,10 @@ import ChartPreview from "../../assets/chart-preview.png";
 import DigitalProduct from "../../assets/digital-product.png";
 import Similar1 from "../../assets/2.jpg";
 import Similar2 from "../../assets/3.jpg";
+import FingerPrint from "../../assets/fingerprint.png";
 
 export const Images = {
+  FingerPrint,
   Similar1,
   Similar2,
   DigitalProduct,
