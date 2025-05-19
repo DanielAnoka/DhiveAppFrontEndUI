@@ -11,17 +11,15 @@ import {
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import { useNavigate, useParams } from "react-router-native";
-import ContainerWrapper from "../../components/ContainerWrapper";
 import PrimaryButton from "../../components/PrimaryButton";
 import { Images } from "../../constants/image";
 import { Icons } from "../../constants/icon";
 import DigitalProductCard from "./DigitalProductCard";
 import { useEffect, useState } from "react";
-import TransactionModal from "../product-details/TransactionModal";
+import DigitalProductModal from "./DigitalProductModal";
 
 const DigitalProducts = () => {
   const navigate = useNavigate();
-  const { width } = Dimensions.get("window");
   const similarProducts = [
     {
       name: "Graphics Design Class",
@@ -330,7 +328,7 @@ const DigitalProducts = () => {
           )
         }
       />
-      <TransactionModal
+      <DigitalProductModal
         visible={isModalOpen}
         onClose={() => setIsModalOpen((prev) => !prev)}
         phase={phase}

@@ -1,8 +1,9 @@
 import { View, Text, Dimensions, TouchableOpacity } from "react-native";
-import React from "react";
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { Image } from "react-native";
 import { Images } from "../../constants/image";
 import PrimaryButton from "../../components/PrimaryButton";
+import { useNavigate } from "react-router-native";
 
 const SuccessPage = ({
   onButton1Click,
@@ -13,7 +14,9 @@ const SuccessPage = ({
   button1Text,
   button2Text,
   subTextUnderline,
+  isDigitalProduct,
 }) => {
+  const navigate = useNavigate();
   return (
     <View
       className="flex-col justify-center gap-y-3 pt-20 pb-3 px-3 items-center"
@@ -32,8 +35,20 @@ const SuccessPage = ({
         <Text className="text-primary underline font-medium">{subText2}</Text>
       )}
       <View className="mb-5 pt-24 w-full flex-col items-center">
-        <TouchableOpacity onPress={onButton1Click} className="py-4 mb-3">
+        <TouchableOpacity
+          onPress={onButton1Click}
+          className="py-4 mb-3 flex-row items-center space-x-2"
+        >
           <Text className="text-primary">{button1Text}</Text>
+          {isDigitalProduct && (
+            <View className="p-1 rounded-full border  border-primary">
+              <MaterialIcons
+                name="arrow-right-alt"
+                color={"#444CE7"}
+                size={20}
+              />
+            </View>
+          )}
         </TouchableOpacity>
         <PrimaryButton
           onPress={onButton2Click}
@@ -42,7 +57,10 @@ const SuccessPage = ({
         />
       </View>
 
-      <Text className="font-medium flex-row text-sm w-[85%] mt-5 gap-1 text-primary text-center">
+      <Text
+        onPress={() => navigate("/support")}
+        className="font-medium flex-row text-sm w-[85%] mt-5 gap-1 text-primary text-center"
+      >
         <Text className="font-light text-center text-textgray">
           Having any issues with this transaction? Reach out to us via our{" "}
         </Text>

@@ -125,13 +125,15 @@ import LayoutBusinesses from "../MainLayout/LayoutBusinesses";
 import Businesses from "../screens/Businesses";
 import SendMessage from "../screens/Businesses/SendMessage";
 import DigitalProducts from "../screens/digital-products";
+import Support from "../screens/p2p/Support";
+import CreatePost from "../screens/feeds/CreatePost";
 
 export default function AppNavigator() {
   return (
     <Routes>
       {/* Routes with BottomNav */}
       <Route
-        path="/wallet"
+        path="/"
         element={
           <MainLayout>
             <Wallet />
@@ -247,7 +249,7 @@ export default function AppNavigator() {
       {/* Products routes */}
 
       {/* <Route path="/" element={<CreateTokenForm />} /> */}
-      <Route path="/" element={<ExplorePage />} />
+      <Route path="/explore" element={<ExplorePage />} />
       <Route path="/search" element={<Search />} />
       <Route path="/filter" element={<FilterPage />} />
       <Route path="/product-details/:status" element={<ProductDetails />} />
@@ -258,7 +260,7 @@ export default function AppNavigator() {
       <Route path="/trade-products" element={<TradeProducts />} />
 
       {/* Digital Product routes */}
-      <Route path="/digitalproduct/:status" element={<DigitalProducts />} />
+      <Route path="/digitalproduct" element={<DigitalProducts />} />
 
       {/* P2P routes */}
       <Route path="/p2p-trading" element={<P2PTrading />} />
@@ -267,6 +269,7 @@ export default function AppNavigator() {
       <Route path="/buy-offer" element={<BuyOffer />} />
       <Route path="/sell-offer" element={<SellOffer />} />
       <Route path="/chat-support" element={<ChatSupport />} />
+      <Route path="/support" element={<Support />} />
       <Route path="/user-profile" element={<UserProfile />} />
       {/* <Route path="/" element={<ChatSupport />} /> */}
       <Route path="/make-appeal" element={<MakeAppeal />} />
@@ -275,6 +278,7 @@ export default function AppNavigator() {
       {/* Live and Feeds routes */}
       <Route path="/business-live" element={<BusinessOnLive />} />
       <Route path="/live" element={<LivePage />} />
+      <Route path="/create-post" element={<CreatePost />} />
     </Routes>
   );
 }

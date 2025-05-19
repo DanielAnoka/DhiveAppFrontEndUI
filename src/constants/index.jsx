@@ -321,3 +321,42 @@ export const p2pSelectOptions = [
     route: "/sell-offer",
   },
 ];
+
+export const media = [
+  {
+    imgUrl: Images.DigitalProduct,
+  },
+  {
+    imgUrl: Images.LiveImage,
+  },
+  {
+    imgUrl: Images.Similar1,
+  },
+  {
+    imgUrl: Images.Similar2,
+  },
+  {
+    imgUrl: Images.Feed,
+  },
+  {
+    imgUrl: Images.Review1,
+  },
+  {
+    imgUrl: Images.Similar1,
+  },
+  {
+    imgUrl: Images.Similar2,
+  },
+  {
+    imgUrl: Images.Feed,
+  },
+  {
+    imgUrl: Images.Review1,
+  },
+  {
+    imgUrl: Images.Review2,
+  },
+  {
+    imgUrl: Images.Review3,
+  },
+];

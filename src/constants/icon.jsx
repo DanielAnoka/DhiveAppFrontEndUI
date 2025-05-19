@@ -52,8 +52,14 @@ import Search from "../../assets/search-lg.png";
 import Shortcut from "../../assets/Shortcut.png";
 import Dhives from "../../assets/dhives.png";
 import TetherUsdt from "../../assets/tether-usdt.png";
+import DocumentCopy from "../../assets/document-copy.png";
+import Camera from "../../assets/camera.png";
+import Map from "../../assets/map.png";
 
 export const Icons = {
+  Map,
+  DocumentCopy,
+  Camera,
   Dhives,
   TetherUsdt,
   Shortcut,

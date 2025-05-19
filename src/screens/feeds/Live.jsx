@@ -14,10 +14,11 @@ import Fontisto from "react-native-vector-icons/Fontisto";
 import { useNavigate } from "react-router-native";
 import { Images } from "../../constants/image";
 import { Icons } from "../../constants/icon";
+import { useState } from "react";
 
 const LivePage = () => {
   const navigate = useNavigate();
-  const isFollowing = false;
+  const [isFollowing, setIsFollowing] = useState(false);
 
   return (
     <SafeAreaView className="bg-black flex-1">
@@ -40,7 +41,9 @@ const LivePage = () => {
               <Text className="text-white">Swiftrole's Dhive</Text>
             </View>
             <View className="flex-row  items-center gap-x-1">
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => setIsFollowing((prev) => (prev ? prev : !prev))}
+              >
                 <LinearGradient
                   colors={["#6172F3", "#444CE7", "#2D31A6"]}
                   start={{ x: 0, y: 0 }}

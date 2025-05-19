@@ -19,6 +19,7 @@
     "expo-av": "^15.1.4",
     "expo-blur": "~14.1.4",
     "expo-linear-gradient": "~14.1.4",
+    "expo-media-library": "^17.1.6",
     "expo-status-bar": "~2.2.3",
     "lodash": "^4.17.21",
     "nativewind": "^2.0.11",

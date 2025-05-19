@@ -13,7 +13,6 @@ const SecondaryButton = ({ text, onPress, width }) => {
         borderWidth: 1,
         marginTop: 10,
         paddingVertical: 14,
-        marginHorizontal: 10,
         width,
       }}
       textStyle={{

@@ -111,7 +111,7 @@ const ExplorePage = () => {
         renderItem={({ item }) => (
           <ItemCard
             {...item}
-            onPress={() => navigate("/digitalproduct/home")}
+            onPress={() => navigate("/product-details/home")}
           />
         )}
         contentContainerStyle={styles.row}

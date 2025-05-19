@@ -9,7 +9,7 @@ const PrimaryButton = ({ text, onPress, width }) => {
       style={{
         backgroundColor: "#444CE7",
         borderRadius: 8,
-        paddingVertical: 14,
+        paddingVertical: 16,
         // marginHorizontal: 10,
         width,
       }}

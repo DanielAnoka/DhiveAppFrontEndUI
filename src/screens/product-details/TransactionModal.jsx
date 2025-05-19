@@ -11,8 +11,11 @@ import TransactionDetails from "./TransactionDetails";
 import SuccessPage from "./SuccessPage";
 import OrderDetails from "./OrderDetails";
 import PaymentMethod from "./PaymentMethod";
+import { useNavigate } from "react-router-native";
 
 const TransactionModal = ({ visible, onClose, phase, setPhase }) => {
+  const navigate = useNavigate();
+
   const GetPage = ({ phase }) => {
     switch (phase) {
       case "payment":
@@ -31,13 +34,39 @@ const TransactionModal = ({ visible, onClose, phase, setPhase }) => {
             onButton1Click={() => setPhase("view-order")}
             button1Text={"View Your Order"}
             button2Text={"Message The Business"}
+            onButton2Click={() => navigate("/send-message")}
           />
         );
       case "view-order":
-        return <OrderDetails />;
+        return (
+          <OrderDetails
+            amount={"600"}
+            product={"Apple Watch Series 9"}
+            quantity={"2"}
+            refID={"090338839CP"}
+            status={"Successful"}
+            hash={"090338839"}
+            time={"Apr 26, 2025 - 7:10PM"}
+            buttonText={"I Have Received This Product"}
+          />
+        );
 
       default:
-        return <TransactionDetails />;
+        return (
+          <TransactionDetails
+            onClick={() => navigate("/delivery-contact")}
+            name={"Apple Watch Series 9 (Pink)"}
+            brand={"Trade"}
+            category={"Watch"}
+            purchasePower={"2,000,000 USDC"}
+            quantity={"2"}
+            unitAmount={"132.75 USDC - $300"}
+            total={"265.5 USDC - $600"}
+            sender={"0x49e3b...oabeb3"}
+            networkFee={"$0.14"}
+            estTime={"1 min."}
+          />
+        );
     }
   };
   return (

@@ -30,31 +30,8 @@ const CommentsModal = ({ visible, onClose, commentsList }) => {
         <View className="flex-col space-y-20 mb-5">
           <ScrollView className="px-4">
             <Text className="text-xl mb-3">Comments</Text>
-            {/* <Comment
-              name={"Wade Warren"}
-              comment={
-                "I wish i could just purchase this right now. Though I’ve been a different thought on the color"
-              }
-              hasNextMessage
-              subComments={[
-                {
-                  name: "Wade Warren",
-                  comment: "Alright",
-                },
-                {
-                  name: "Wade Warren",
-                  comment: "welcome",
-                },
-              ]}
-            />
-            <Comment
-              name={"Wade Warren"}
-              comment={
-                "I wish i could just purchase this right now. Though I’ve been a different thought on the color"
-              }
-            /> */}
             {commentsList.length > 0 ? (
-              commentsList.map((item, i) => <Comment {...item} />)
+              commentsList.map((item, i) => <Comment key={i} {...item} />)
             ) : (
               <View className="flex-col my-20 items-center justify-center">
                 <Image source={Images.DoubleMessages} className="w-20 h-20" />
