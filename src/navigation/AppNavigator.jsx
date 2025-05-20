@@ -99,13 +99,13 @@ import WalletPrivateKey from "../screens/userProfile/WalletPrivateKey";
 import BusinessLayout from "../MainLayout/BusinessLayout";
 import CreateTokenForm from "../screens/business/CreateTokenForm";
 import BusinessFeeds from "../screens/business/feeds";
-import BusinessAssets from "../screens/business/asssets"
-import BusinessProfile from "../screens/business/profile"
-import BusinessPost from "../screens/business/post"
-import BusinessLive from "../screens/business/businessLive"
-import BusinessInsight from "../screens/business/Insights&Analytics"
-import Live from "../screens/business/live"
-import GoLive from "../screens/business/goLive"
+import BusinessAssets from "../screens/business/asssets";
+import BusinessProfile from "../screens/business/profile";
+import BusinessPost from "../screens/business/post";
+import BusinessLive from "../screens/business/businessLive";
+import BusinessInsight from "../screens/business/Insights&Analytics";
+import Live from "../screens/business/live";
+import GoLive from "../screens/business/goLive";
 
 // Placeholder components for feeds and explore
 import Feeds from "../screens/feeds/index";
@@ -142,7 +142,7 @@ export default function AppNavigator() {
     <Routes>
       {/* Routes with BottomNav */}
       <Route
-        path="/"
+        path="/wallet"
         element={
           <MainLayout>
             <Wallet />
@@ -153,7 +153,7 @@ export default function AppNavigator() {
       <Route path="/biometric" element={<Biometric />} />
 
       <Route
-        path="/buis"
+        path="/"
         element={
           <LayoutBusinesses>
             <Wallet />
@@ -292,18 +292,36 @@ export default function AppNavigator() {
       <Route path="/live" element={<LivePage />} />
       <Route path="/create-post" element={<CreatePost />} />
 
-
-
       {/* Business */}
-      <Route path="/business/assets" element={<BusinessLayout><BusinessAssets /></BusinessLayout>} />
+      <Route
+        path="/business/assets"
+        element={
+          <BusinessLayout>
+            <BusinessAssets />
+          </BusinessLayout>
+        }
+      />
       <Route path="/business/profile" element={<BusinessProfile />} />
-      <Route path="/business/post" element={<BusinessLayout><BusinessPost /></BusinessLayout>} />
-      <Route path="/business/live" element={<BusinessLayout><BusinessLive /></BusinessLayout>} />
+      <Route
+        path="/business/post"
+        element={
+          <BusinessLayout>
+            <BusinessPost />
+          </BusinessLayout>
+        }
+      />
+      <Route
+        path="/business/live"
+        element={
+          <BusinessLayout>
+            <BusinessLive />
+          </BusinessLayout>
+        }
+      />
       <Route path="/business/insights" element={<BusinessInsight />} />
-      <Route path="/business/goLive" element={<Live />}/>
-      <Route path="/goLive" element={<GoLive/>} />
+      <Route path="/business/goLive" element={<Live />} />
+      <Route path="/goLive" element={<GoLive />} />
       <Route />
     </Routes>
-
   );
 }

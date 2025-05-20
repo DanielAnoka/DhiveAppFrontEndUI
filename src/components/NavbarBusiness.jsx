@@ -66,13 +66,16 @@ const NavbarBusiness = () => {
 
         <TouchableOpacity
           onPress={() => navigate("/businesses")}
-          className="flex-col items-center ml-5"
+          className="pl-3"
+          style={[styles.tab, styles.rightTab]}
+          cl
         >
-          <Image source={Icons.HomeTrendUp} className="w-6 h-6" />
+          <Image source={Icons.HomeTrendUp} style={styles.icon} />
           <Text
-            className={`text-xs ${
-              currentPath === "/businesses" ? "text-primary" : "text-textgray"
-            }`}
+            style={[
+              styles.label,
+              currentPath === "/businesses" && styles.activeLabel,
+            ]}
           >
             Businesses
           </Text>
@@ -82,7 +85,7 @@ const NavbarBusiness = () => {
           onPress={() => navigate("/assets")}
           style={[styles.tab]}
         >
-          <Image source={Icons.Wallet} style={styles.icon} />
+          <Image source={Icons.Wallet3} style={styles.icon} />
           <Text
             style={[
               styles.label,
