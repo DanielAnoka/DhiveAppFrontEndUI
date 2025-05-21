@@ -3,6 +3,7 @@ import Icon from "../../assets/icon.png";
 import Profile from "../../assets/profile.png";
 import Buy from "../../assets/buy-crypto.png";
 import Shop from "../../assets/shop.png";
+import Shop2 from "../../assets/shop2.png";
 import Wallet from "../../assets/wallet.png";
 import Feeds from "../../assets/document.png";
 import Send from "../../assets/send.png";
@@ -56,13 +57,13 @@ import DocumentCopy from "../../assets/document-copy.png";
 import Camera from "../../assets/camera.png";
 import Map from "../../assets/map.png";
 import UserSearch from "../../assets/user-search.png";
-import BlueFeed from "../../assets/bluefeed.png"
-import HomeTab from "../../assets/HomeTab.png"
-import MoreTab from "../../assets/moreTab.png"
-import HomeTrend from "../../assets/hometrend.png"
-import Wallet3 from "../../assets/wallet-3.png"
-import Up from "../../assets/up.png"
-import Down from "../../assets/down.png"
+import BlueFeed from "../../assets/bluefeed.png";
+import HomeTab from "../../assets/HomeTab.png";
+import MoreTab from "../../assets/moreTab.png";
+import HomeTrend from "../../assets/hometrend.png";
+import Wallet3 from "../../assets/wallet-3.png";
+import Up from "../../assets/up.png";
+import Down from "../../assets/down.png";
 
 export const Icons = {
   UserSearch,
@@ -129,5 +130,6 @@ export const Icons = {
   HomeTrend,
   Wallet3,
   Up,
-  Down
+  Down,
+  Shop2,
 };

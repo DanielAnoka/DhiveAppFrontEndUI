@@ -1,7 +1,10 @@
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import Entypo from "react-native-vector-icons/Entypo";
+import { useNavigate } from "react-router-native";
 
 const MessageBox = () => {
+  const navigate = useNavigate();
+
   return (
     <View>
       <TextInput
@@ -21,7 +24,10 @@ const MessageBox = () => {
             <View className="w-1 h-1 bg-[#717680] rounded-full" />
           </View>
         </TouchableOpacity>
-        <TouchableOpacity className="bg-primary p-3 rounded-lg">
+        <TouchableOpacity
+          onPress={() => navigate(-1)}
+          className="bg-primary p-3 rounded-lg"
+        >
           <Text className="text-white">Send message</Text>
         </TouchableOpacity>
       </View>

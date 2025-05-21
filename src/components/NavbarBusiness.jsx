@@ -29,7 +29,10 @@ const NavbarBusiness = () => {
     <>
       <View style={styles.container}>
         <TouchableOpacity onPress={() => navigate("/feeds")} style={styles.tab}>
-          <Image source={Icons.Feed} style={styles.icon} />
+          <Image
+            source={currentPath === "/feeds" ? Icons.Feeds : Icons.Feed}
+            style={styles.icon}
+          />
           <Text
             style={[
               styles.label,
@@ -44,7 +47,10 @@ const NavbarBusiness = () => {
           onPress={() => navigate("/explore")}
           style={[styles.tab, styles.leftTab]}
         >
-          <Image source={Icons.Shop} style={styles.icon} />
+          <Image
+            source={currentPath === "/explore" ? Icons.Shop2 : Icons.Shop}
+            style={styles.icon}
+          />
           <Text
             style={[
               styles.label,
@@ -70,7 +76,14 @@ const NavbarBusiness = () => {
           style={[styles.tab, styles.rightTab]}
           cl
         >
-          <Image source={Icons.HomeTrendUp} style={styles.icon} />
+          <Image
+            source={
+              currentPath === "/businesses"
+                ? Icons.HomeTrendUp
+                : Icons.HomeTrend
+            }
+            style={styles.icon}
+          />
           <Text
             style={[
               styles.label,
@@ -85,7 +98,10 @@ const NavbarBusiness = () => {
           onPress={() => navigate("/assets")}
           style={[styles.tab]}
         >
-          <Image source={Icons.Wallet3} style={styles.icon} />
+          <Image
+            source={currentPath === "/assets" ? Icons.Wallet : Icons.Wallet3}
+            style={styles.icon}
+          />
           <Text
             style={[
               styles.label,

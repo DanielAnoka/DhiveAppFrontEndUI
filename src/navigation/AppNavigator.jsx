@@ -171,17 +171,25 @@ export default function AppNavigator() {
       <Route
         path="/feeds"
         element={
-          <MainLayout>
+          <LayoutBusinesses>
             <Feeds />
-          </MainLayout>
+          </LayoutBusinesses>
         }
       />
       <Route
         path="/explore"
         element={
-          <MainLayout>
+          <LayoutBusinesses>
             <ExplorePage />
-          </MainLayout>
+          </LayoutBusinesses>
+        }
+      />
+      <Route
+        path="/assets"
+        element={
+          <LayoutBusinesses>
+            <ProfileScreen />
+          </LayoutBusinesses>
         }
       />
       <Route

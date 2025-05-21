@@ -18,8 +18,6 @@ import MessageBox from "../p2p/MessageBox";
 import { messages } from "../../constants";
 
 const SendMessage = () => {
-  const navigate = useNavigate();
-
   return (
     <SafeAreaView className="bg-[#FDFDFD] px-5">
       <StatusBar barStyle="dark-content" backgroundColor="#fdfdfd" />

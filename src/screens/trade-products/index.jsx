@@ -189,7 +189,7 @@ const TradeProducts = () => {
             Empowering businessess through tokenization
           </Text>
 
-          <View className="flex-row items-center gap-x-2 my-1.5">
+          <View className="flex-row items-center justify-between space-x-1.5 my-1.5">
             <View className="bg-[#F8F9FC] flex-row gap-x-1 items-center p-1 border border-[#D5D9EB] rounded-3xl">
               <View className="w-2 h-2 rounded-full bg-[#4E5BA6]" />
               <Text className="text-[#363F72] ">Ox79....107hg</Text>
@@ -200,7 +200,7 @@ const TradeProducts = () => {
             </View>
             <View className="bg-[#ECFDF3] flex-row gap-x-1 items-center p-1 border border-[#ABEFC6] rounded-3xl">
               <View className="w-2 h-2 rounded-full bg-[#4E5BA6]" />
-              <Text className="text-[#067647] ">Ox79....107hg</Text>
+              <Text className="text-[#067647] ">Cash Back - 20%</Text>
             </View>
           </View>
 
