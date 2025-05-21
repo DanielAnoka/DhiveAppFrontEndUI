@@ -9,7 +9,6 @@ import {
   Dimensions,
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import Feather from "react-native-vector-icons/Feather";
 import { useNavigate } from "react-router-native";
 import { Images } from "../../constants/image";
 import { useState } from "react";
@@ -55,11 +54,14 @@ const Feeds = () => {
             <View>
               <View className="flex-row w-full p-5 items-center justify-between">
                 <View className="flex-row items-center gap-x-4">
-                  <Image
-                    source={Images.ChatAvatar}
-                    resizeMode="contain"
-                    className="w-[30px] h-[30px] rounded-full"
-                  />
+                  <TouchableOpacity onPress={() => navigate("/profile")}>
+                    <Image
+                      source={Images.ChatAvatar}
+                      resizeMode="contain"
+                      className="w-[30px] h-[30px] rounded-full"
+                    />
+                  </TouchableOpacity>
+
                   <TouchableOpacity onPress={() => navigate("/business-live")}>
                     <LinearGradient
                       colors={["#6172F3", "#444CE7", "#2D31A6"]} // left to right gradient colors
@@ -148,45 +150,6 @@ const Feeds = () => {
         onClose={() => setOpenModal((prev) => !prev)}
         commentsList={commentsList}
       />
-      <BottomModal
-        visible={openSelectModal}
-        onClose={() => setOpenSelectModal((prev) => !prev)}
-        title={"Select Option"}
-      >
-        <TouchableOpacity
-          // onPress={() => navigate(p2p.route)}
-
-          className="flex-row my-4 gap-x-3 items-center"
-        >
-          <View className="bg-[#EEF4FF] rounded-full p-2">
-            <View className="bg-primary rounded-full p-1.5">
-              <Feather name="trending-up" color={"#fff"} />
-            </View>
-          </View>
-          <View>
-            <Text className="text font-medium">Tokenize Your Business</Text>
-            <Text className="text-sm text-textgray font-light">
-              Create a tradable token for your business.
-            </Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => navigate("/create-post")}
-          className="flex-row mt-4 mb-10 gap-x-3 items-center"
-        >
-          <View className="bg-[#EEF4FF] rounded-full p-2">
-            <View className="bg-primary rounded-full p-1.5">
-              <Feather name="trending-up" color={"#fff"} />
-            </View>
-          </View>
-          <View>
-            <Text className="text font-medium">Make a Post</Text>
-            <Text className="text-sm text-textgray font-light">
-              Keep your audience in the loop
-            </Text>
-          </View>
-        </TouchableOpacity>
-      </BottomModal>
     </SafeAreaView>
   );
 };

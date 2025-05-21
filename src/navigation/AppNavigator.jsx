@@ -151,7 +151,6 @@ export default function AppNavigator() {
       />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/biometric" element={<Biometric />} />
-
       <Route
         path="/"
         element={
@@ -188,7 +187,7 @@ export default function AppNavigator() {
         path="/assets"
         element={
           <LayoutBusinesses>
-            <ProfileScreen />
+            <Wallet />
           </LayoutBusinesses>
         }
       />
@@ -208,7 +207,6 @@ export default function AppNavigator() {
           </MainLayout>
         }
       />
-
       {/* Modal/tab-triggered routes */}
       <Route
         path="/bridge"
@@ -226,7 +224,6 @@ export default function AppNavigator() {
           </MainLayout>
         }
       />
-
       {/* Routes without BottomNav */}
       <Route path="/token" element={<ManageToken />} />
       <Route path="/import" element={<ImportCryptoScreen />} />
@@ -250,12 +247,11 @@ export default function AppNavigator() {
       // <Route path="/success" element={<Success />} />
       // <Route path="/doc" element={<Doc />} />
       // <Route path="/community" element={<Community />} />
-      // <Route path="/profileScreen" element={<ProfileScreen />} />
       // <Route path="/manageWallet" element={<ManageWalletScreen />} />
       // <Route path="/privatekey" element={<PrivateKey />} />
       // <Route path="/walletprivatekey" element={<WalletPrivateKey />} /> */}
       {/* Placeholder routes */}
-
+      // <Route path="/profileScreen" element={<ProfileScreen />} />
       {/* Business Routes  */}
       <Route
         path="/business"
@@ -265,9 +261,7 @@ export default function AppNavigator() {
           </BusinessLayout>
         }
       />
-
       {/* Products routes */}
-
       {/* <Route path="/" element={<CreateTokenForm />} /> */}
       <Route path="/explore" element={<ExplorePage />} />
       <Route path="/search" element={<Search />} />
@@ -278,10 +272,8 @@ export default function AppNavigator() {
       <Route path="/send-message" element={<SendMessage />} />
       {/* <Route path="/" element={<App />} /> */}
       <Route path="/trade-products" element={<TradeProducts />} />
-
       {/* Digital Product routes */}
       <Route path="/digitalproduct" element={<DigitalProducts />} />
-
       {/* P2P routes */}
       <Route path="/p2p-trading" element={<P2PTrading />} />
       <Route path="/buy-coin" element={<BuyCoin />} />
@@ -294,12 +286,10 @@ export default function AppNavigator() {
       {/* <Route path="/" element={<ChatSupport />} /> */}
       <Route path="/make-appeal" element={<MakeAppeal />} />
       <Route path="/appeal-tracking" element={<AppealTracking />} />
-
       {/* Live and Feeds routes */}
       <Route path="/business-live" element={<BusinessOnLive />} />
       <Route path="/live" element={<LivePage />} />
       <Route path="/create-post" element={<CreatePost />} />
-
       {/* Business */}
       <Route
         path="/business/assets"

@@ -8,8 +8,9 @@ import {
   Image,
 } from "react-native";
 import { Icons } from "../constants/icon";
-import Trading from "./trading";
+import Feather from "react-native-vector-icons/Feather";
 import { useNavigate, useLocation } from "react-router-native";
+import BottomModal from "./BottomModal";
 
 const { width } = Dimensions.get("window");
 
@@ -18,12 +19,6 @@ const NavbarBusiness = () => {
   const location = useLocation();
   const currentPath = location.pathname;
   const [modalVisible, setModalVisible] = useState(false);
-
-  const handleSelectOption = (optionId) => {
-    setModalVisible(false);
-    if (optionId === "bridge") navigate("/bridge");
-    if (optionId === "swap") navigate("/swap");
-  };
 
   return (
     <>
@@ -64,7 +59,7 @@ const NavbarBusiness = () => {
         <View style={styles.fabWrapper}>
           <TouchableOpacity
             style={styles.fabButton}
-            onPress={() => setModalVisible(true)}
+            onPress={() => setModalVisible((prev) => !prev)}
           >
             <Image source={Icons.Home} style={styles.fabIcon} />
           </TouchableOpacity>
@@ -113,11 +108,45 @@ const NavbarBusiness = () => {
         </TouchableOpacity>
       </View>
 
-      <Trading
+      <BottomModal
         visible={modalVisible}
-        onClose={() => setModalVisible(false)}
-        onSelectOption={handleSelectOption}
-      />
+        onClose={() => setModalVisible((prev) => !prev)}
+        title={"Select Option"}
+      >
+        <TouchableOpacity
+          // onPress={() => navigate(p2p.route)}
+
+          className="flex-row my-4 gap-x-3 items-center"
+        >
+          <View className="bg-[#EEF4FF] rounded-full p-2">
+            <View className="bg-primary rounded-full p-1.5">
+              <Feather name="trending-up" color={"#fff"} />
+            </View>
+          </View>
+          <View>
+            <Text className="text font-medium">Tokenize Your Business</Text>
+            <Text className="text-sm text-textgray font-light">
+              Create a tradable token for your business.
+            </Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigate("/create-post")}
+          className="flex-row mt-4 mb-10 gap-x-3 items-center"
+        >
+          <View className="bg-[#EEF4FF] rounded-full p-2">
+            <View className="bg-primary rounded-full p-1.5">
+              <Feather name="trending-up" color={"#fff"} />
+            </View>
+          </View>
+          <View>
+            <Text className="text font-medium">Make a Post</Text>
+            <Text className="text-sm text-textgray font-light">
+              Keep your audience in the loop
+            </Text>
+          </View>
+        </TouchableOpacity>
+      </BottomModal>
     </>
   );
 };

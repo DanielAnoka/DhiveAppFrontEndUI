@@ -15,6 +15,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { Icons } from "../../constants/icon";
 import { Images } from "../../constants/image";
 import { formatTime } from "../../utils";
+import { useNavigate } from "react-router-native";
 
 export default function FeedItem({
   source,
@@ -25,6 +26,7 @@ export default function FeedItem({
   isFollowing,
   reposted,
 }) {
+  const navigate = useNavigate();
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isReposted, setIsReposted] = useState(reposted);
@@ -127,7 +129,8 @@ export default function FeedItem({
         } items-center space-y-5`}
       >
         <View className="flex-col mb-5 items-center justify-center">
-          <View
+          <TouchableOpacity
+            onPress={() => navigate("/trade-products")}
             className={`p-[1px]   rounded-full  bg-transparent border-2 border-[#444CE7] ${
               index === 0 && "hidden"
             }`}
@@ -137,7 +140,7 @@ export default function FeedItem({
               resizeMode="contain"
               className="w-[42px] h-[42px] rounded-full"
             />
-          </View>
+          </TouchableOpacity>
           {!isFollowing && (
             <TouchableOpacity className="-mt-2">
               <AntDesign
