@@ -12,8 +12,8 @@ const BusinessBottomNav = () => {
   const navItems = [
     { label: 'Feeds', icon: Icons.BlueFeed, path: '/business' },
     { label: 'Explore', icon: Icons.HomeTab, path: '/business/explore' },
-    { label: 'More', icon: Icons.MoreTab, path: '/business/live' },
-    { label: 'Businesses', icon: Icons.HomeTrend, path: '/business/insights' },
+    { label: 'More', icon: Icons.MoreTab, path: '/goLive' },
+    { label: 'Businesses', icon: Icons.HomeTrend, path: '/business/wall' },
     { label: 'Assets', icon: Icons.Wallet3, path: '/business/assets' },
   ];
 
@@ -53,3 +53,4 @@ const BusinessBottomNav = () => {
 };
 
 export default BusinessBottomNav;
+

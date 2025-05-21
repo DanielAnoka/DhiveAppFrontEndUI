@@ -6,13 +6,13 @@ import Tabs from './tabs2';
 
 const ProductTabsScreen = () => {
     const navigate = useNavigate();
-     const [page, setPage] = useState("Physical Products");
+    const [page, setPage] = useState("Physical Products");
     return (
         <SafeAreaView className="bg-[#FDFDFD] flex-1">
             <StatusBar barStyle="dark-content" backgroundColor="#fdfdfd" />
             <View className="flex-1 px-5 mt-5">
                 <View className="flex-row w-full items-center justify-between mb-4">
-                   
+
                     <View className="flex-row items-center gap-2">
                         <TouchableOpacity onPress={() => navigate(-1)}>
                             <View className="w-[30px] h-[30px] rounded-full bg-[#F5F5F5] justify-center items-center border border-[#000]">
@@ -22,8 +22,8 @@ const ProductTabsScreen = () => {
                         <Text className="text-lg font-semibold pl-4">Product Details</Text>
                     </View>
 
-                   
-                    <TouchableOpacity className="bg-transparent px-4 border py-2 rounded-xl">
+
+                    <TouchableOpacity className="bg-transparent px-4 border py-2 rounded-xl" onPress={() => navigate('/business/productdetails')}>
                         <Text className="text-black   text-sm">Add Product +</Text>
                     </TouchableOpacity>
                 </View>

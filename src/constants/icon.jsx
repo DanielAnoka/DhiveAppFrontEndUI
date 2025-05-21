@@ -63,7 +63,7 @@ import HomeTrend from "../../assets/hometrend.png"
 import Wallet3 from "../../assets/wallet-3.png"
 import Up from "../../assets/up.png"
 import Down from "../../assets/down.png"
-
+import Face from "../../assets/facesmile.png"
 export const Icons = {
   UserSearch,
   Map,
@@ -129,5 +129,6 @@ export const Icons = {
   HomeTrend,
   Wallet3,
   Up,
-  Down
+  Down,
+  Face
 };

@@ -15,10 +15,12 @@ import Step1 from '../../components/products/step1';
 import Step2 from '../../components/products/step2';
 import Step3 from '../../components/products/step3';
 import Step4 from '../../components/products/step4';
+import { useNavigate } from "react-router-native";
 
 const ProductDetails = () => {
     const [stepAdded, setStepAdded] = useState(false);
     const [activeStep, setActiveStep] = useState(1);
+     const navigate = useNavigate();
 
     const handleAddProduct = () => {
         setStepAdded(true);
@@ -35,7 +37,7 @@ const ProductDetails = () => {
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
             <SafeAreaView className="flex-1 bg-white">
                 <View className="flex-row items-center pt-5 px-5">
-                    <TouchableOpacity className="mr-2">
+                    <TouchableOpacity className="mr-2" onPress={()=> navigate(-1)}>
                         <View className="w-[30px] h-[30px] rounded-full border border-black items-center justify-center">
                             <Ionicons name="chevron-back" size={20} color="#000" />
                         </View>

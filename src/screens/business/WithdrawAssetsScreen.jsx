@@ -15,6 +15,7 @@ import BottomModal from '../../components/BottomModal';
 import CustomButton from '../../components/Button';
 import { Images } from '../../constants/image';
 import DetailRow from '../../components/DetailRow';
+import { useNavigate } from 'react-router-native';
 
 const coins = [
     { id: '1', name: 'USDT' },
@@ -28,9 +29,10 @@ const WithdrawAssetsScreen = () => {
     const [showModal, setShowModal] = useState(false);
     const [showConfirmationModal, setShowConfirmationModal] = useState(false);
     const [showSuccessModal, setShowSuccessModal] = useState(false);
-    const [showTransactionSummaryModal, setShowTransactionSummaryModal] = useState(false); // New state
+    const [showTransactionSummaryModal, setShowTransactionSummaryModal] = useState(false);
     const [pin, setPin] = useState(["", "", "", ""]);
     const pinInputs = useRef([]);
+     const navigate = useNavigate();
 
     const handlePinChange = (value, index) => {
         const newPin = [...pin];
@@ -263,7 +265,7 @@ const WithdrawAssetsScreen = () => {
 
                     <CustomButton
                         text="Back home"
-                        onPress={() => setShowSuccessModal(false)}
+                        onPress={() => navigate('/business')}
                         className="py-4 rounded-lg w-full"
                     />
 
@@ -299,7 +301,7 @@ const WithdrawAssetsScreen = () => {
                         <DetailRow label="Status:" value="Pending" valueColor="#F79009" />
                         <DetailRow label="Time Stamp:" value=" April 25, 2025 - 5:00PM" />
                     </View>
-                    <CustomButton text='Done' className="mt-4 bg-[#5F6DFB]"  />
+                    <CustomButton text='Done' className="mt-4 bg-[#5F6DFB]"  onPress={() => navigate('/business')}  />
                     <Text className="text-center text-xs text-gray-400 mt-4">
                         Having any issues with this transaction?{`\n`}
                         Reach out to us via our <Text className="text-blue-500">Support Channel</Text>.

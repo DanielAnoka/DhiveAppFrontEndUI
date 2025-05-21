@@ -7,7 +7,7 @@ import BottomModal from '../BottomModal';
 const productOptions = [
   { label: 'Edit Product', icon: 'pencil-outline', color: '#E0E7FF', route: '/edit-product' },
   { label: 'Share Link', icon: 'share-social-outline', color: '#E0F2FE', route: '/share-link' },
-  { label: 'View Analytics', icon: 'stats-chart-outline', color: '#E0F7FA', route: '/analytics' },
+  { label: 'View Analytics', icon: 'stats-chart-outline', color: '#E0F7FA', route: '/business/analytics' },
   { label: 'Duplicate Product', icon: 'copy-outline', color: '#EDE7F6', route: '/duplicate-product' },
   { label: 'Delete Product', icon: 'trash-outline', color: '#FFEBEE', danger: true },
 ];

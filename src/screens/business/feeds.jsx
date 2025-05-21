@@ -9,10 +9,11 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { Icons } from "../../constants/icon";
+import { useNavigate } from 'react-router-native';
 
 export default function BusinessFeeds() {
   const [showModal, setShowModal] = useState(true);
-
+   const navigate = useNavigate();
   return (
     <View className="flex-1 bg-gray-50">
       {/* Header */}
@@ -69,7 +70,7 @@ export default function BusinessFeeds() {
 
             {/* Option 1 */}
            
-            <TouchableOpacity className="flex-row items-start space-x-3 mb-4 p-2">
+            <TouchableOpacity className="flex-row items-start space-x-3 mb-4 p-2" onPress={()=>navigate('/create')} >
               <View className="mt-1">
                 <View className="w-7 h-7 rounded-full border border-gray-400 bg-black items-center justify-center">
                   <Image source={Icons.Up} className="w-4 h-3" resizeMode="contain" />
@@ -86,7 +87,7 @@ export default function BusinessFeeds() {
             </TouchableOpacity>
 
             {/* Option 2 */}
-            <TouchableOpacity className="flex-row items-start space-x-3 p-2">
+            <TouchableOpacity className="flex-row items-start space-x-3 p-2" onPress={()=>navigate('/create')}>
               <View className="mt-1">
                 <View className="w-7 h-7 rounded-full border border-gray-400 bg-black items-center justify-center">
                   <Image source={Icons.Up} className="w-4 h-3" resizeMode="contain" />

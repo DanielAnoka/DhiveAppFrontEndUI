@@ -14,9 +14,11 @@ import PrimaryButton from "../../components/PrimaryButton";
 import { Video } from "expo-av";
 import { Icons } from "../../constants/icon";
 import { Images } from "../../constants/image";
+import { useNavigate } from "react-router-native";
 
 const Post = ({ onClick, onMentionsClick }) => {
   const isPostingImage = true;
+  const navigate = useNavigate();
 
   const videoSource = require("../../../preview.mp4");
 
@@ -46,7 +48,7 @@ const Post = ({ onClick, onMentionsClick }) => {
                 paddingBottom: 50,
               }}
               horizontal={true}
-              // showsHorizontalScrollIndicator={false}
+            // showsHorizontalScrollIndicator={false}
             />
           ) : (
             <View className="relative mb-10 w-[177px] h-[280px]">
@@ -72,9 +74,8 @@ const Post = ({ onClick, onMentionsClick }) => {
           )}
           <View className="border-t border-[#D5D7DA] py-3 w-full">
             <TextInput
-              className={`bg-transparent text-xs ${
-                isPostingImage ? "h-40" : "h-20"
-              } `}
+              className={`bg-transparent text-xs ${isPostingImage ? "h-40" : "h-20"
+                } `}
               placeholder="Write a caption and hashtags......."
               multiline={true}
               numberOfLines={15}
@@ -119,7 +120,7 @@ const Post = ({ onClick, onMentionsClick }) => {
             </TouchableOpacity>
           </View>
           <View className="flex-1">
-            <PrimaryButton onPress={onClick} text={"Post"} />
+            <PrimaryButton onPress={() => navigate('/business')} text={"Post"} />
           </View>
         </View>
       </View>

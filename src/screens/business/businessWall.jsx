@@ -21,7 +21,7 @@ const BusinessWall = () => {
     const [page, setPage] = useState("manage");
     return (
         <SafeAreaView className="bg-[#FDFDFD] flex-1">
-            <StatusBar barStyle="dark-content" backgroundColor="#fdfdfd" />
+            {/* <StatusBar barStyle="dark-content" backgroundColor="#fdfdfd" /> */}
             <View className="flex-1 bg-[#FDFDFD] px-5 mt-5">
 
                 {/* Header (Fixed, not scrollable) */}
@@ -124,13 +124,13 @@ const BusinessWall = () => {
                             <Text className="font-semibold text-base">Escrow Balance</Text>
                             <View className="flex-row items-center justify-between py-0.5 px-1 rounded-md">
                                 <Text className="text-black font-semibold text-lg">$6,000,000 USDT</Text>
-                                <PrimaryButton text={"Withdraw"} />
+                                <PrimaryButton text={"Withdraw"} onPress={()=>navigate('/withdraw')} />
                             </View>
                         </View>
 
                         {/* Menu Options */}
                         <View className="mt-5 space-y-3">
-                            <TouchableOpacity className="flex-row items-center justify-between bg-[#FFFFFF] p-5 rounded-md">
+                            <TouchableOpacity className="flex-row items-center justify-between bg-[#FFFFFF] p-5 rounded-md"onPress={()=> navigate('/business/product')} >
                                 <View className="flex-row items-center gap-x-2">
                                     <View className="w-10 h-10 rounded-full bg-[#e3e4e9a3] justify-center items-center">
                                         <Image
@@ -144,7 +144,7 @@ const BusinessWall = () => {
                                 <Ionicons name="chevron-forward" size={20} color="#000" />
                             </TouchableOpacity>
 
-                            <TouchableOpacity className="flex-row items-center justify-between bg-[#FFFFFF] p-5 rounded-md">
+                            <TouchableOpacity className="flex-row items-center justify-between bg-[#FFFFFF] p-5 rounded-md" onPress={()=> navigate('/business/insights')}>
                                 <View className="flex-row items-center gap-x-2">
                                     <View className="w-10 h-10 rounded-full bg-[#e3e4e9a3] justify-center items-center">
                                         <Image

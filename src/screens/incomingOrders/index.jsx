@@ -2,12 +2,11 @@ import { View, Text, SafeAreaView, TouchableOpacity, StatusBar } from 'react-nat
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-native";
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Tabs3 from './tabs3';
+import Tabs from './tabs';
 
-const InsightsAnalytics = () => {
+const Orders = () => {
+    const [page, setPage] = useState("Order List"); 
     const navigate = useNavigate();
-    const [page, setPage] = useState("Product Sales"); 
-
     return (
         <SafeAreaView className="flex-1 bg-white">
             <StatusBar barStyle="dark-content" backgroundColor="#fdfdfd" />
@@ -18,14 +17,21 @@ const InsightsAnalytics = () => {
                     </View>
                 </TouchableOpacity>
                 <Text className="text-[18px] text-black font-semibold flex-1 text-center -ml-8">
-                    Insights & Analytics
+                    Incoming Orders
                 </Text>
             </View>
-            <View className="px-3">
-                <Tabs3 page={page} setPage={setPage} />
+            <View className="px-8 mt-7">
+                <Text className="text-[#00011B] text-[14px]">
+                    Click each of your order to view or have more information about it.
+                </Text>
             </View>
-        </SafeAreaView>
-    );
-};
 
-export default InsightsAnalytics;
+            <View className="mt-1 px-2">
+                <Tabs page={page} setPage={setPage} />
+            </View>
+
+        </SafeAreaView>
+    )
+}
+
+export default Orders

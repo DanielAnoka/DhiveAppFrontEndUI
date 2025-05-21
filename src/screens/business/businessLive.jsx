@@ -7,6 +7,7 @@ import {
   FlatList,
   StatusBar,
   Dimensions,
+  Modal
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Feather from "react-native-vector-icons/Feather";
@@ -19,12 +20,15 @@ import { LinearGradient } from "expo-linear-gradient";
 import FeedItem from "./FeedItem";
 import BottomModal from "../../components/BottomModal";
 import { commentsList, data } from "../../constants";
+import Icon from "react-native-vector-icons/Ionicons";
+import { Icons } from "../../constants/icon";
 
 const Feeds = () => {
   const navigate = useNavigate();
   const [page, setPage] = useState("following");
   const [openModal, setOpenModal] = useState(false);
   const [openSelectModal, setOpenSelectModal] = useState(false);
+  const [showModal, setShowModal] = useState(true);
 
   return (
     <SafeAreaView className="bg-background flex-1">
@@ -187,6 +191,62 @@ const Feeds = () => {
           </View>
         </TouchableOpacity>
       </BottomModal>
+
+       <Modal visible={showModal} transparent animationType="fade">
+              <View className="flex-1 justify-center items-center bg-black/40">
+                <View className="w-11/12 bg-white rounded-3xl p-5">
+                  <View className="flex-row justify-between items-center mb-10">
+                    <Text className="text-[16px] font-semibold text-black">
+                      Select Chain to Deploy
+                    </Text>
+                    <TouchableOpacity
+                      onPress={() => setShowModal(false)}
+                      className="w-8 h-8 rounded-full bg-[#F5F5F5] border border-black items-center justify-center"
+                    >
+                      <Icon name="close" size={16} color="#000" />
+                    </TouchableOpacity>
+      
+                  </View>
+      
+                  {/* Option 1 */}
+                 
+                  <TouchableOpacity className="flex-row items-start space-x-3 mb-4 p-2" onPress={()=>navigate('/create')} >
+                    <View className="mt-1">
+                      <View className="w-7 h-7 rounded-full border border-gray-400 bg-black items-center justify-center">
+                        <Image source={Icons.Up} className="w-4 h-3" resizeMode="contain" />
+                      </View>
+                    </View>
+                    <View>
+                      <Text className="text-sm font-medium text-black">
+                        ERC-20 Tokens (Ethereum Standard)
+                      </Text>
+                      <Text className="text-xs text-gray-500">
+                        Ethereum and EVM-compatible blockchains
+                      </Text>
+                    </View>
+                  </TouchableOpacity>
+      
+                  {/* Option 2 */}
+                  <TouchableOpacity className="flex-row items-start space-x-3 p-2" onPress={()=>navigate('/create')}>
+                    <View className="mt-1">
+                      <View className="w-7 h-7 rounded-full border border-gray-400 bg-black items-center justify-center">
+                        <Image source={Icons.Up} className="w-4 h-3" resizeMode="contain" />
+                      </View>
+                    </View>
+                    <View>
+                      <Text className="text-sm font-medium text-black">
+                        SPL Tokens (Solana Standard)
+                      </Text>
+                      <Text className="text-xs text-gray-500">
+                        Token standard on Solana, kind of like ERC-20
+                      </Text>
+                    </View>
+                  </TouchableOpacity>
+      
+      
+                </View>
+              </View>
+            </Modal>
     </SafeAreaView>
   );
 };

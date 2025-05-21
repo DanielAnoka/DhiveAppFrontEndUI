@@ -155,7 +155,7 @@ const LivePage = () => {
                             className="flex-row items-center gap-x-2 justify-start py-3   mb-3"
                             onPress={() => {
                                 setShowEndLiveModal(false);
-                                navigate('/business/live');
+                                navigate('/business');
                             }}
                         >
                             <View className="w-7 h-7 rounded-full  bg-red-600 items-center justify-center">

@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import CustomButton from '../../components/Button';
 import BottomModal from '../../components/BottomModal';
 import { Images } from '../../constants/image'
+import { useNavigate } from 'react-router-native';
 
 const Step3Component = ({
     businessType,
@@ -19,6 +20,7 @@ const Step3Component = ({
     const [showRevenueList, setShowRevenueList] = useState(false);
     const [showLocationList, setShowLocationList] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const navigate = useNavigate();
 
     const businessTypes = ['Retail', 'Wholesale', 'Service', 'Manufacturing'];
     const revenueOptions = ['Under $500K', '$500K - $1M', '$1M - $5M', 'Over $5M'];
@@ -130,7 +132,7 @@ const Step3Component = ({
 
                     <CustomButton
                         text="Continue to Business Page"
-                        onPress={() => setShowModal(false)}
+                        onPress={() => navigate('/business')}
                         className="bg-[#5F6DFB] text-white px-12 py-3 w-[343px]"
                     />
                 </View>

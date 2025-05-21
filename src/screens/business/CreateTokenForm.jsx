@@ -14,10 +14,10 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Step1 from './step1';
 import Step2 from './step2';
 import Step3 from './step3';
-
+import { useNavigate } from 'react-router-native';
 const TokenCreationForm = () => {
   const [step, setStep] = useState(1);
-
+const navigate = useNavigate();
   const [businessName, setBusinessName] = useState('');
   const [tokenSymbol, setTokenSymbol] = useState('');
   const [supplyChain, setSupplyChain] = useState('');
@@ -34,7 +34,7 @@ const TokenCreationForm = () => {
 
         {/* Header */}
         <View className="flex-row items-center pt-5 px-5">
-          <TouchableOpacity className="mr-2">
+          <TouchableOpacity className="mr-2" onPress={()=>navigate(-1)}>
             <View className="w-[30px] h-[30px] rounded-full border border-black items-center justify-center">
               <Ionicons name="chevron-back" size={20} color="#000" />
             </View>

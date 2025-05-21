@@ -2,6 +2,8 @@ import { View, Text, Pressable, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import BottomModal from '../../components/BottomModal'; // Adjust the path if needed
 import Icon from 'react-native-vector-icons/Feather';
+import { useNavigate } from 'react-router-native';
+
 
 const options = [
   {
@@ -18,7 +20,7 @@ const options = [
 
 const ManagementCards = () => {
   const [activeModal, setActiveModal] = useState(null);
-
+  const navigate = useNavigate();
   const closeModal = () => setActiveModal(null);
 
   const onSelectOption = (id) => {
@@ -57,7 +59,7 @@ const ManagementCards = () => {
         <View className="flex-row space-x-3">
           <Pressable
             className="bg-purple-100 px-4 py-2 rounded-full"
-            onPress={() => setActiveModal('supply')}
+            onPress={() => navigate('/business/order')}
           >
             <Text className="text-purple-700 font-medium">Incoming Orders →</Text>
           </Pressable>

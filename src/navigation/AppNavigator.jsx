@@ -106,6 +106,14 @@ import BusinessLive from "../screens/business/businessLive"
 import BusinessInsight from "../screens/business/Insights&Analytics"
 import Live from "../screens/business/live"
 import GoLive from "../screens/business/goLive"
+import BusinessWall from "../screens/business/businessWall";
+import WithdrawAssetsScreen from "../screens/business/WithdrawAssetsScreen";
+import BusinessProductDetails from "../screens/business/productDetails"
+import BusinessProduct from "../screens/business/ProductTabsScreen"
+import ProductAnalyticsScreen from "../screens/business/ProductAnalyticsScreen";
+import IncomingOrders from "../screens/incomingOrders/index";
+import TransactionDetail from "../screens/incomingOrders/TransactionDetail";
+import ChatScreen from "../screens/business/ChatScreen";
 
 // Placeholder components for feeds and explore
 import Feeds from "../screens/feeds/index";
@@ -253,14 +261,14 @@ export default function AppNavigator() {
         path="/business"
         element={
           <BusinessLayout>
-            <BusinessFeeds />
+            <BusinessLive />
           </BusinessLayout>
         }
       />
 
       {/* Products routes */}
 
-      {/* <Route path="/" element={<CreateTokenForm />} /> */}
+
       <Route path="/explore" element={<ExplorePage />} />
       <Route path="/search" element={<Search />} />
       <Route path="/filter" element={<FilterPage />} />
@@ -298,10 +306,18 @@ export default function AppNavigator() {
       <Route path="/business/assets" element={<BusinessLayout><BusinessAssets /></BusinessLayout>} />
       <Route path="/business/profile" element={<BusinessProfile />} />
       <Route path="/business/post" element={<BusinessLayout><BusinessPost /></BusinessLayout>} />
-      <Route path="/business/live" element={<BusinessLayout><BusinessLive /></BusinessLayout>} />
+      <Route path="/business/wall" element={<BusinessWall />} />
       <Route path="/business/insights" element={<BusinessInsight />} />
-      <Route path="/business/goLive" element={<Live />}/>
-      <Route path="/goLive" element={<GoLive/>} />
+      <Route path="/business/goLive" element={<Live />} />
+      <Route path="/goLive" element={<GoLive />} />
+      <Route path="/create" element={<CreateTokenForm />} />
+      <Route path="/withdraw" element={<WithdrawAssetsScreen />} />
+      <Route path="/business/productdetails" element={<BusinessProductDetails />} />
+      <Route path="/business/product" element={<BusinessProduct />} />
+      <Route path="/business/analytics" element={<ProductAnalyticsScreen />} />
+      <Route path="/business/order" element={<IncomingOrders />} />
+      <Route path="/transactions/:transactionId" element={<TransactionDetail />} />
+      <Route path="/message" element={<ChatScreen />} />
       <Route />
     </Routes>
 

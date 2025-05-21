@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import BottomModal from '../BottomModal';
 import { Images } from '../../constants/image';
 import { Icons } from '../../constants/icon';
+import { useNavigate } from 'react-router-native';
 
 const ImageCard = () => (
     <TouchableOpacity
@@ -17,6 +18,7 @@ const ImageCard = () => (
 );
 
 const Step4 = () => {
+     const navigate = useNavigate();
     const [showModal, setShowModal] = useState(false);
     const closeModal = () => setShowModal(false);
     const handleSubmit = () => {
@@ -61,7 +63,7 @@ const Step4 = () => {
                         </Text>
                     </View>
                     <TouchableOpacity
-                        onPress={closeModal}
+                        onPress={()=> navigate('/business/product')}
                         className="py-4 rounded-lg w-full bg-[#444CE7]"
                     >
                         <Text className="text-center text-white">Continue to Product Page</Text>
