@@ -21,7 +21,7 @@ const LiveCard = () => {
       {/* <View className="bg-[#444CE7] -mt-2.5 border border-white p-1 flex-row rounded">
       </View> */}
       <LinearGradient
-        colors={["#6172F3", "#444CE7", "#2D31A6"]} // left to right gradient colors
+        colors={["#6172F3", "#444CE7", "#2D31A6"]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         className="-mt-2.5 border border-white p-1 flex-row rounded"

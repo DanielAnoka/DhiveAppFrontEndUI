@@ -21,12 +21,9 @@ const Details = ({ onClick, isAppealPage }) => {
             <Text>Pomaline</Text>
             <MaterialIcons name="verified" color={"#6172F3"} />
           </View>
-          <TouchableOpacity
-            onPress={() => navigate("/chat-support")}
-            // style={{ paddingRight: 10, paddingLeft: 5 }}
-          >
+          <TouchableOpacity onPress={() => navigate("/chat-support")}>
             <LinearGradient
-              colors={["#6172F3", "#444CE7", "#2D31A6"]} // left to right gradient colors
+              colors={["#6172F3", "#444CE7", "#2D31A6"]}
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 0 }}
               className="flex-row justify-center pr-2 py-2 items-center gap-x-2 rounded-3xl"

@@ -64,7 +64,7 @@ const Feeds = () => {
 
                   <TouchableOpacity onPress={() => navigate("/business-live")}>
                     <LinearGradient
-                      colors={["#6172F3", "#444CE7", "#2D31A6"]} // left to right gradient colors
+                      colors={["#6172F3", "#444CE7", "#2D31A6"]}
                       start={{ x: 0, y: 0 }}
                       end={{ x: 1, y: 0 }}
                       className="px-5 rounded-md py-2"
