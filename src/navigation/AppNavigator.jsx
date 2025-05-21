@@ -194,9 +194,9 @@ export default function AppNavigator() {
       <Route
         path="/profile"
         element={
-          <MainLayout>
+          <LayoutBusinesses>
             <Profile />
-          </MainLayout>
+          </LayoutBusinesses>
         }
       />
       <Route
