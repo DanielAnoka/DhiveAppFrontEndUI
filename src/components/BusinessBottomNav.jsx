@@ -1,56 +1,116 @@
-// components/BusinessBottomNav.js
 import React from 'react';
-import { View, Text, TouchableOpacity, SafeAreaView, Image } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { View, Text, TouchableOpacity, SafeAreaView, Image, StyleSheet, Dimensions } from 'react-native';
 import { useLocation, useNavigate } from 'react-router-native';
 import { Icons } from '../constants/icon';
+
+const { width } = Dimensions.get("window");
 
 const BusinessBottomNav = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const navItems = [
-    { label: 'Feeds', icon: Icons.BlueFeed, path: '/business' },
-    { label: 'Explore', icon: Icons.HomeTab, path: '/business/explore' },
-    { label: 'More', icon: Icons.MoreTab, path: '/goLive' },
-    { label: 'Businesses', icon: Icons.HomeTrend, path: '/business/wall' },
-    { label: 'Assets', icon: Icons.Wallet3, path: '/business/assets' },
-  ];
-
   return (
-    <SafeAreaView className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-200">
-      <View className="flex-row justify-around py-1.5">
-        {navItems.map((item, index) => {
-          const isActive = location.pathname === item.path;
-          return (
-            <TouchableOpacity
-              key={index}
-              onPress={() => navigate(item.path)}
-              className="items-center justify-center"
-            >
-              <Image
-                source={item.icon}
-                style={{
-                  width: 24,
-                  height: 24,
-                  tintColor: isActive ? '#3B5FFF' : '#6B7280',
-                }}
-                resizeMode="contain"
-              />
+    <View style={styles.container}>
+      <TouchableOpacity onPress={() => navigate("/business")} style={styles.tab}>
+        <Image source={Icons.Feed} style={styles.icon} />
+        <Text style={[styles.label, location.pathname === "/business" && styles.activeLabel]}>
+          Feeds
+        </Text>
+      </TouchableOpacity>
 
-              <Text
-                className={`text-[11px] mt-1 ${isActive ? 'text-[#3B5FFF] font-medium' : 'text-gray-500'
-                  }`}
-              >
-                {item.label}
-              </Text>
-            </TouchableOpacity>
-          );
-        })}
+      <TouchableOpacity onPress={() => navigate("/business/explore")} style={[styles.tab, styles.leftTab]}>
+        <Image source={Icons.Shop} style={styles.icon} />
+        <Text style={[styles.label, location.pathname === "/business/explore" && styles.activeLabel]}>
+          Explore
+        </Text>
+      </TouchableOpacity>
+
+      <View style={styles.fabWrapper}>
+        <TouchableOpacity style={styles.fabButton} onPress={() => navigate("/goLive")}>
+          <Image source={Icons.Home} style={styles.fabIcon} />
+        </TouchableOpacity>
       </View>
-    </SafeAreaView>
+
+      <TouchableOpacity onPress={() => navigate("/business/wall")} style={[styles.tab, styles.rightTab]}>
+        <Image source={Icons.HomeTrend} style={styles.icon} />
+        <Text style={[styles.label, location.pathname === "/business/wall" && styles.activeLabel]}>
+          Business
+        </Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => navigate("/business/assets")} style={styles.tab}>
+        <Image source={Icons.Wallet3} style={styles.icon} />
+        <Text style={[styles.label, location.pathname === "/business/assets" && styles.activeLabel]}>
+          Assets
+        </Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 
-export default BusinessBottomNav;
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: "row",
+    height: 70,
+    borderTopWidth: 1,
+    borderColor: "#eee",
+    backgroundColor: "#fff",
+    justifyContent: "space-around",
+    alignItems: "center",
+    paddingHorizontal: 6,
+    paddingBottom: 10,
+  },
+  tab: {
+    alignItems: "center",
+    justifyContent: "center",
+    flex: 1,
+  },
+  leftTab: {
+    marginRight: 25,
+  },
+  rightTab: {
+    marginLeft: 25,
+  },
+  icon: {
+    width: 24,
+    height: 24,
+    resizeMode: "contain",
+  },
+  label: {
+    fontSize: 11,
+    color: "#666",
+    marginTop: 2,
+  },
+  activeLabel: {
+    color: "#5F6DFB",
+    fontWeight: "600",
+  },
+  fabWrapper: {
+    position: "absolute",
+    top: -19,
+    left: width / 2 - 30,
+    backgroundColor: "#fff",
+    borderRadius: 30,
+    padding: 4,
+    elevation: 4,
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    shadowOffset: { width: 0, height: 2 },
+  },
+  fabButton: {
+    width: 60,
+    height: 60,
+    backgroundColor: "#5F6DFB",
+    borderRadius: 30,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  fabIcon: {
+    width: 28,
+    height: 28,
+    resizeMode: "contain",
+  },
+});
 
+export default BusinessBottomNav;

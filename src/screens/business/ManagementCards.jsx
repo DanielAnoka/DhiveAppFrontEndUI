@@ -44,7 +44,7 @@ const ManagementCards = () => {
           </Pressable>
           <Pressable
             className="bg-green-100 px-4 py-2 rounded-full"
-            onPress={() => setActiveModal('supply')}
+            onPress={() => navigate('/business/token')}
           >
             <Text className="text-green-700 font-medium">Mint Token →</Text>
           </Pressable>

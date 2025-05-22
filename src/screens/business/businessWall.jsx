@@ -27,7 +27,7 @@ const BusinessWall = () => {
                 {/* Header (Fixed, not scrollable) */}
                 <View className="flex-row w-full items-center justify-between mb-4">
                     <View className="flex-row items-center gap-2">
-                        <TouchableOpacity onPress={() => navigate(-1)}>
+                        <TouchableOpacity onPress={() => navigate('/business')}>
                             <View className="w-[30px] h-[30px] rounded-full bg-[#F5F5F5] justify-center items-center border border-[#000]">
                                 <Ionicons name="chevron-back" size={20} color="#000" />
                             </View>

@@ -114,6 +114,7 @@ import ProductAnalyticsScreen from "../screens/business/ProductAnalyticsScreen";
 import IncomingOrders from "../screens/incomingOrders/index";
 import TransactionDetail from "../screens/incomingOrders/TransactionDetail";
 import ChatScreen from "../screens/business/ChatScreen";
+import ManagementCards from "../screens/business/burnToken";
 
 // Placeholder components for feeds and explore
 import Feeds from "../screens/feeds/index";
@@ -318,6 +319,7 @@ export default function AppNavigator() {
       <Route path="/business/order" element={<IncomingOrders />} />
       <Route path="/transactions/:transactionId" element={<TransactionDetail />} />
       <Route path="/message" element={<ChatScreen />} />
+      <Route path="/business/token" element={<ManagementCards/>} />
       <Route />
     </Routes>
 
