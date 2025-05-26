@@ -6,6 +6,7 @@ import {
     Image,
     StatusBar,
     ScrollView,
+    StyleSheet,
 } from "react-native";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-native";
@@ -15,9 +16,31 @@ import ContainerWrapper from "../../components/ContainerWrapper";
 import PrimaryButton from "../../components/PrimaryButton";
 import TokenChart from "./TokenChart";
 import Tabs from "./Tabs";
+import BottomModal from '../../components/BottomModal';
+import { Icons } from "../../constants/icon";
+
+const modalOptions = [
+    {
+        title: "Edit Business Page",
+        subtitle: "Update your business profile....",
+        icon: Icons.Up,
+        onPress: () => {
+            // handle edit
+        },
+    },
+    {
+        title: "Turn off Business Page",
+        subtitle: "Hide your business from public view. You can turn it back on anytime.",
+        icon: Icons.Up,
+        onPress: () => {
+            // handle turn off
+        },
+    },
+];
 
 const BusinessWall = () => {
     const navigate = useNavigate();
+    const [showModal, setShowModal] = useState(false);
     const [page, setPage] = useState("manage");
     return (
         <SafeAreaView className="bg-[#FDFDFD] flex-1">
@@ -37,8 +60,8 @@ const BusinessWall = () => {
 
                     <TouchableOpacity
                         onPress={() => {
-                           
-                            setIsModalOpen((prev) => !prev);
+
+                            setShowModal((prev) => !prev);
                         }}
                     >
                         <View className="px-1.5 py-2 flex-row items-center justify-center gap-x-0.5 border border-[#00011B33] rounded-md">
@@ -124,13 +147,13 @@ const BusinessWall = () => {
                             <Text className="font-semibold text-base">Escrow Balance</Text>
                             <View className="flex-row items-center justify-between py-0.5 px-1 rounded-md">
                                 <Text className="text-black font-semibold text-lg">$6,000,000 USDT</Text>
-                                <PrimaryButton text={"Withdraw"} onPress={()=>navigate('/withdraw')} />
+                                <PrimaryButton text={"Withdraw"} onPress={() => navigate('/withdraw')} />
                             </View>
                         </View>
 
                         {/* Menu Options */}
                         <View className="mt-5 space-y-3">
-                            <TouchableOpacity className="flex-row items-center justify-between bg-[#FFFFFF] p-5 rounded-md"onPress={()=> navigate('/business/product')} >
+                            <TouchableOpacity className="flex-row items-center justify-between bg-[#FFFFFF] p-5 rounded-md" onPress={() => navigate('/business/product')} >
                                 <View className="flex-row items-center gap-x-2">
                                     <View className="w-10 h-10 rounded-full bg-[#e3e4e9a3] justify-center items-center">
                                         <Image
@@ -144,7 +167,7 @@ const BusinessWall = () => {
                                 <Ionicons name="chevron-forward" size={20} color="#000" />
                             </TouchableOpacity>
 
-                            <TouchableOpacity className="flex-row items-center justify-between bg-[#FFFFFF] p-5 rounded-md" onPress={()=> navigate('/business/insights')}>
+                            <TouchableOpacity className="flex-row items-center justify-between bg-[#FFFFFF] p-5 rounded-md" onPress={() => navigate('/business/insights')}>
                                 <View className="flex-row items-center gap-x-2">
                                     <View className="w-10 h-10 rounded-full bg-[#e3e4e9a3] justify-center items-center">
                                         <Image
@@ -161,8 +184,31 @@ const BusinessWall = () => {
 
                         <Tabs page={page} setPage={setPage} />
                     </ContainerWrapper>
+
                 </ScrollView>
             </View>
+            <BottomModal visible={showModal} onClose={() => setShowModal(false)} title="Select Option">
+                <View className="py-3 px-2 mb-5">
+                    {modalOptions.map((item, index) => (
+                        <TouchableOpacity
+                            key={index}
+                            onPress={item.onPress}
+                            className="flex-row items-start space-x-3 mb-4 p-2"
+                        >
+                            <View className="mt-1">
+                                <View className="w-7 h-7 rounded-full border border-gray-400 bg-[#444CE7] items-center justify-center">
+                                    <Image source={item.icon} className="w-4 h-3" resizeMode="contain" />
+                                </View>
+                            </View>
+                            <View>
+                                <Text className="text-sm font-medium text-[#181D27]">{item.title}</Text>
+                                <Text className="text-xs text-gray-500">{item.subtitle}</Text>
+                            </View>
+                        </TouchableOpacity>
+                    ))}
+                </View>
+            </BottomModal>
+
         </SafeAreaView>
     );
 };
