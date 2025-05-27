@@ -6,7 +6,7 @@ import {
   Dimensions,
   PanResponder,
 } from "react-native";
-import { Video } from "expo-av";
+// import { Video } from "expo-av";
 import { useState, useRef } from "react";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Feather from "react-native-vector-icons/Feather";
@@ -16,6 +16,7 @@ import { Icons } from "../../constants/icon";
 import { Images } from "../../constants/image";
 import { formatTime } from "../../utils";
 import { useNavigate } from "react-router-native";
+import Video from "react-native-video";
 
 export default function FeedItem({
   source,

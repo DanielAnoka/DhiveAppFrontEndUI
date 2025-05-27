@@ -11,19 +11,18 @@ import {
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { useNavigate } from "react-router-native";
 import { Images } from "../../constants/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import LiveCard from "./LiveCard";
 import CommentsModal from "./CommentsModal";
 import { LinearGradient } from "expo-linear-gradient";
 import FeedItem from "./FeedItem";
-import BottomModal from "../../components/BottomModal";
-import { commentsList, data } from "../../constants";
+import { commentsList, data,  } from "../../constants";
 
 const Feeds = () => {
   const navigate = useNavigate();
   const [page, setPage] = useState("following");
   const [openModal, setOpenModal] = useState(false);
-  const [openSelectModal, setOpenSelectModal] = useState(true);
+  const videoRef = useRef<import("react-native-video").VideoRef>(null);
 
   return (
     <SafeAreaView className="bg-background flex-1">
@@ -33,6 +32,7 @@ const Feeds = () => {
         <FlatList
           data={data}
           renderItem={({ item, index }) => (
+        
             <FeedItem
               key={index}
               index={index}

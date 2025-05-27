@@ -6,7 +6,9 @@ import {
   Dimensions,
   PanResponder,
 } from "react-native";
-import { Video } from "expo-av";
+// import { Video } from "expo-av";
+import Video from "react-native-video";
+
 import { useState, useRef } from "react";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Feather from "react-native-vector-icons/Feather";

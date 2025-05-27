@@ -8,7 +8,9 @@ import {
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import PrimaryButton from "../../components/PrimaryButton";
-import { Video } from "expo-av";
+// import { Video } from "expo-av";
+import Video from "react-native-video";
+
 import { Images } from "../../constants/image";
 
 const PreviewPage = ({ onClick, onBack }) => {

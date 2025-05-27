@@ -11,7 +11,9 @@ import {
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import PrimaryButton from "../../components/PrimaryButton";
-import { Video } from "expo-av";
+// import { Video } from "expo-av";
+import Video from "react-native-video";
+
 import { Icons } from "../../constants/icon";
 import { Images } from "../../constants/image";
 
