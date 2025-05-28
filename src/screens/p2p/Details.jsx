@@ -4,7 +4,7 @@ import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import PrimaryButton from "../../components/PrimaryButton";
 import { useNavigate } from "react-router-native";
 import { Icons } from "../../constants/icon";
-import { LinearGradient } from "expo-linear-gradient";
+import LinearGradient from "react-native-linear-gradient";
 
 const Details = ({ onClick, isAppealPage }) => {
   const navigate = useNavigate();

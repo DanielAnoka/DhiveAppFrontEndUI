@@ -8,8 +8,7 @@ import {
   TextInput,
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import { LinearGradient } from "expo-linear-gradient";
-
+import LinearGradient from "react-native-linear-gradient";
 import Fontisto from "react-native-vector-icons/Fontisto";
 import { useNavigate } from "react-router-native";
 import { Images } from "../../constants/image";

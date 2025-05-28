@@ -14,15 +14,15 @@ import { Images } from "../../constants/image";
 import { useRef, useState } from "react";
 import LiveCard from "./LiveCard";
 import CommentsModal from "./CommentsModal";
-import { LinearGradient } from "expo-linear-gradient";
+import LinearGradient from "react-native-linear-gradient";
 import FeedItem from "./FeedItem";
-import { commentsList, data,  } from "../../constants";
+import { commentsList, data } from "../../constants";
 
 const Feeds = () => {
   const navigate = useNavigate();
   const [page, setPage] = useState("following");
   const [openModal, setOpenModal] = useState(false);
-  const videoRef = useRef<import("react-native-video").VideoRef>(null);
+  const videoRef = useRef < import("react-native-video").VideoRef > null;
 
   return (
     <SafeAreaView className="bg-background flex-1">
@@ -32,7 +32,6 @@ const Feeds = () => {
         <FlatList
           data={data}
           renderItem={({ item, index }) => (
-        
             <FeedItem
               key={index}
               index={index}

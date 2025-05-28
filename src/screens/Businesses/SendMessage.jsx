@@ -2,17 +2,14 @@ import {
   View,
   Text,
   SafeAreaView,
-  TouchableOpacity,
   Image,
   StatusBar,
   ScrollView,
 } from "react-native";
-import Ionicons from "react-native-vector-icons/Ionicons";
 import AntDesign from "react-native-vector-icons/AntDesign";
-import { useNavigate } from "react-router-native";
 import ContainerWrapper from "../../components/ContainerWrapper";
 import { Images } from "../../constants/image";
-import { LinearGradient } from "expo-linear-gradient";
+import LinearGradient from "react-native-linear-gradient";
 import Chat from "../p2p/Chat";
 import MessageBox from "../p2p/MessageBox";
 import { messages } from "../../constants";

@@ -1,7 +1,7 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { Images } from "../../constants/image";
 import { useNavigate } from "react-router-native";
-import { LinearGradient } from "expo-linear-gradient";
+import LinearGradient from "react-native-linear-gradient";
 
 const LiveCard = () => {
   const navigate = useNavigate();

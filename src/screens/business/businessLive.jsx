@@ -15,7 +15,7 @@ import { Images } from "../../constants/image";
 import { useState } from "react";
 import LiveCard from "./LiveCard";
 import CommentsModal from "./CommentsModal";
-import { LinearGradient } from "expo-linear-gradient";
+import LinearGradient from "react-native-linear-gradient";
 import FeedItem from "./FeedItem";
 import BottomModal from "../../components/BottomModal";
 import { commentsList, data } from "../../constants";
@@ -60,9 +60,9 @@ const Feeds = () => {
                     resizeMode="contain"
                     className="w-[30px] h-[30px] rounded-full"
                   />
-                 <TouchableOpacity onPress={() => setOpenSelectModal(true)}>
+                  <TouchableOpacity onPress={() => setOpenSelectModal(true)}>
                     <LinearGradient
-                      colors={["#6172F3", "#444CE7", "#2D31A6"]} 
+                      colors={["#6172F3", "#444CE7", "#2D31A6"]}
                       start={{ x: 0, y: 0 }}
                       end={{ x: 1, y: 0 }}
                       className="px-5 rounded-md py-2"
@@ -154,8 +154,7 @@ const Feeds = () => {
         title={"Select Option"}
       >
         <TouchableOpacity
-           onPress={() => navigate('/business/goLive')}
-
+          onPress={() => navigate("/business/goLive")}
           className="flex-row my-4 gap-x-3 items-center"
         >
           <View className="bg-[#EEF4FF] rounded-full p-2">
